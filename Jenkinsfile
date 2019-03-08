@@ -3,7 +3,8 @@ pipeline {
     stages {
         stage('Build') {
 			steps {
-				echo 'Building'
+				sh '(cd ./Pense-Bet/; mvn clean package)'
+				stash name: "app", includes: "**"
 			}
         }
         stage('IntegrationTest'){

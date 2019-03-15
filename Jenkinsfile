@@ -2,12 +2,22 @@ pipeline {
     agent any
     stages {
         stage('Build') {
+			agent {
+			  docker {
+			   image 'maven:3-alpine'
+			  }
+			}
 			steps {
 				sh '(cd ./Pense-Bet/; mvn clean package)'
 				stash name: "app", includes: "**"
 			}
         }
         stage('IntegrationTest'){
+			agent {
+			  docker {
+			   image 'maven:3-alpine'
+			  }
+			}
 			steps {
 				unstash "app"
 				sh 'java -jar ./Pense-Bet/target/Pense-Bet-0.0.1-SNAPSHOT.jar >/dev/null 2>&1 &' 

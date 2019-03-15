@@ -29,6 +29,8 @@ public class Bet {
 	
 	@Column
 	public Date endingDate;
+	
+	@Column
 	public float amout;
 	
 	@Column
@@ -37,18 +39,38 @@ public class Bet {
     @ManyToOne
     @JoinColumn
 	public State state;
+
+    @ManyToOne
+    @JoinColumn
+	public User owner;
 	
 	public Bet() { }
 	
-	public Bet(String subject, Date endingDate, float amout, State state) {
+	public Bet(String subject, Date endingDate, float amout, State state, User owner) {
 		this.subject = subject;
 		this.endingDate = endingDate;
 		this.amout = amout;
 		this.state = state;
+		this.owner = owner;
 		
 		creationDate = new Date();
 	}
 	
+	public Integer getId() {
+		return id;
+	}
+	public Boolean getResult() {
+		return result;
+	}
+	public void setResult(Boolean result) {
+		this.result = result;
+	}
+	public User getOwner() {
+		return owner;
+	}
+	public void setOwner(User owner) {
+		this.owner = owner;
+	}
 	public String getSubject() {
 		return subject;
 	}
@@ -72,12 +94,6 @@ public class Bet {
 	}
 	public void setAmout(float amout) {
 		this.amout = amout;
-	}
-	public boolean isResult() {
-		return result;
-	}
-	public void setResult(boolean result) {
-		this.result = result;
 	}
 	public State getState() {
 		return state;

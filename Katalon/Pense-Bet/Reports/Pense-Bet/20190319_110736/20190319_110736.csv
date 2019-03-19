@@ -1,0 +1,8 @@
+Suite/Test/Step Name,Browser,Description,Start time,End time,Duration,Status
+Pense-Bet,Chrome 73.0.3683.75,,2019-03-19 11:07:42,2019-03-19 11:07:49,7.233s,PASSED
+,,,,,,
+Test Cases/New Test Case,Chrome 73.0.3683.75,,2019-03-19 11:07:42,2019-03-19 11:07:49,6.992s,PASSED
+"openBrowser("""")",Chrome 73.0.3683.75,,2019-03-19 11:07:42,2019-03-19 11:07:46,3.277s,PASSED
+"navigateToUrl(""https://katalon-demo-cura.herokuapp.com/"")",Chrome 73.0.3683.75,,2019-03-19 11:07:46,2019-03-19 11:07:48,2.419s,PASSED
+"click(findTestObject(""Object Repository/Page_CURA Healthcare Service/a_Make Appointment""))",Chrome 73.0.3683.75,,2019-03-19 11:07:48,2019-03-19 11:07:48,0.398s,PASSED
+closeBrowser(),Chrome 73.0.3683.75,,2019-03-19 11:07:48,2019-03-19 11:07:49,0.620s,PASSED

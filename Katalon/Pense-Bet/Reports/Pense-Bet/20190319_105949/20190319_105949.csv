@@ -1,0 +1,5 @@
+Suite/Test/Step Name,Browser,Description,Start time,End time,Duration,Status
+Pense-Bet,,,2019-03-19 10:59:57,2019-03-19 10:59:58,0.835s,FAILED
+,,,,,,
+Test Cases/first test,,,2019-03-19 10:59:57,2019-03-19 10:59:58,0.538s,FAILED
+acceptAlert(),,,2019-03-19 10:59:58,2019-03-19 10:59:58,0.302s,FAILED

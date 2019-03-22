@@ -1,12 +1,17 @@
 package ch.arc.pensebet.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -17,17 +22,27 @@ public class User {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column
-	public Integer id;
+	private Integer id;
 	
 	@Column
-	public String nickname;
+	private String nickname;
 	
 	@Column
-	public String email;
+	private String email;
 
     @ManyToOne
     @JoinColumn
-	public Role role;
+    private Role role;
+    
+    @OneToMany(mappedBy="user")
+    private List<Participation> users;
+
+    @ManyToMany
+    @JoinTable(
+      name="INVITATION",
+      joinColumns=@JoinColumn(name="USERID", referencedColumnName="ID"),
+      inverseJoinColumns=@JoinColumn(name="BET_ID", referencedColumnName="ID"))
+    private List<Bet> bets;
     
     public User() { }
     

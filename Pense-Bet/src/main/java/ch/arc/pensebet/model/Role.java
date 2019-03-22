@@ -18,10 +18,10 @@ public class Role {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column
-	public Integer id;
+	private Integer id;
 	
 	@Column
-	public String name;
+	private String name;
     
     @OneToMany(mappedBy = "role", cascade = CascadeType.ALL)
     private Set<User> users;

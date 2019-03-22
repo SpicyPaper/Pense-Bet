@@ -1,4 +1,4 @@
-package ch.arc.pensebet.data;
+package ch.arc.pensebet.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

@@ -1,6 +1,7 @@
 package ch.arc.pensebet.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,7 +9,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -19,30 +22,36 @@ public class Bet {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column
-	public Integer id;
+	private Integer id;
 	
 	@Column
-	public String subject;
+	private String subject;
 	
 	@Column
-	public Date creationDate;
+	private Date creationDate;
 	
 	@Column
-	public Date endingDate;
+	private Date endingDate;
 	
 	@Column
-	public float amout;
+	private float amout;
 	
 	@Column
-	public Boolean result = null;
+	private Boolean result = null;
 
     @ManyToOne
     @JoinColumn
-	public State state;
+    private State state;
 
     @ManyToOne
     @JoinColumn
-	public User owner;
+    private User owner;
+    
+    @OneToMany(mappedBy="bet")
+    private List<Participation> parti_bets;
+    
+    @ManyToMany(mappedBy="bets")
+    private List<User> users;
 	
 	public Bet() { }
 	

@@ -12,6 +12,23 @@ pipeline {
 				stash name: "app", includes: "**"
 			}
         }
+    stage('QualityTest') { 
+	    agent {
+	      docker {
+	       image 'maven:3-alpine'
+	      }
+	    }
+	    steps {
+	    unstash "app"
+	    sh '(cd ./Pense-Bet/; mvn clean test)'
+	    sh '(cd ./Pense-Bet/; 
+	    	mvn sonar:sonar \
+		  -Dsonar.projectKey=pense-bet \
+		  -Dsonar.organization=kurokabe-github \
+		  -Dsonar.host.url=https://sonarcloud.io \
+		  -Dsonar.login=8d2840df823c95282f352faf9cc40f342857743f}
+	}
+	    
         stage('IntegrationTest'){
 			agent{ 
 			docker{

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Bet Creation</title>
+</head>
+<body>
+	<!-- Import Header -->
+	<div th:insert="fragments/header :: header"></div>
+
+	<div>
+		<form th:action="@{/bet/create}" th:object="${bet}" method="post">
+			<div>
+				<label>Bet subject</label> <input type="text"placeholder="Subject" />
+			</div>
+			
+			<div>
+				<label>Ending date</label> <input type="date"/>
+			</div>
+			
+			<div>
+				<label>Amount</label> <input type="number" />
+			</div>
+			
+			<button type="submit">Register User</button>
+		</form>
+	</div>
+
+</body>
+</html>

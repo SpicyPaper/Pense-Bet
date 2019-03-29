@@ -7,5 +7,5 @@ import ch.arc.pensebet.model.Role;
 
 @Repository("roleRepository")
 public interface IRoleDAO extends JpaRepository<Role, Integer> {
-
+//	Role findByRole(String name);
 }

@@ -28,6 +28,9 @@ public class User {
 	private String nickname;
 	
 	@Column
+	private String password;
+	
+	@Column
 	private String email;
 
     @ManyToOne
@@ -72,6 +75,12 @@ public class User {
 	}
 	public Integer getId() {
 		return id;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 }

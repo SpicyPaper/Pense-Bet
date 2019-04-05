@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import ch.arc.pensebet.model.Role;
 import ch.arc.pensebet.model.User;
 import ch.arc.pensebet.repository.IRoleDAO;
 import ch.arc.pensebet.repository.IUserDAO;
@@ -28,8 +29,8 @@ public class UserService implements IUserService {
 	@Override
 	public void saveUser(User user) {
 		user.setPassword(pwdEncoder.encode(user.getPassword()));
-//		Role role = roleDAO.findByRole("ADMIN");
-//		user.setRole(role);
+		Role role = roleDAO.findByName("ADMIN");
+		user.setRole(role);
 		userDAO.save(user);
 	}
 

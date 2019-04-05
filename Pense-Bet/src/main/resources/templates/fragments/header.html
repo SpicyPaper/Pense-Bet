@@ -7,7 +7,8 @@
 			<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
 			    <div class="container">
 			        <a class="navbar-brand p-0" href="/">
-						Pense-Bet
+						 <img th:src="@{/favicon.png}"
+						 	class="img-fluid" alt="Pense BET" style="height:30px;"/>
 			        </a>
 			
 			        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,22 +47,6 @@
 			            <!-- Right Side Of Navbar -->
 			            <ul class="navbar-nav ml-auto">
 			            
-			            	<!--
-			            	Display this if user is login
-			            	
-		                    <li class="nav-item">
-		                        <a class="nav-link" href="/login">
-		                            <i class="fas fa-sign-in-alt mr-1"></i>
-		                            Login
-		                        </a>
-		                    </li>
-		                    <li class="nav-item">
-		                        <a class="nav-link" href="/register">
-		                            <i class="fas fa-user-plus mr-1"></i>
-		                            Register
-		                        </a>
-		                    </li>
-		                    -->
 			                <li class="nav-item dropdown">
 			                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
 			                        Username <span class="caret"></span>

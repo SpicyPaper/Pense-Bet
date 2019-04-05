@@ -17,11 +17,6 @@ public class HomeController {
         return "index";
     }
     
-    @GetMapping("/bet/create")
-    public String createBet() {
-        return "create-bet";
-    }
-    
     @GetMapping("/bet/{id}/detail")
     public String detailBet() {
         return "detail-bet";

@@ -34,7 +34,7 @@ public class Bet {
 	private Date endingDate;
 	
 	@Column
-	private float amout;
+	private float amount;
 	
 	@Column
 	private Boolean result = null;
@@ -55,10 +55,10 @@ public class Bet {
 	
 	public Bet() { }
 	
-	public Bet(String subject, Date endingDate, float amout, State state, User owner) {
+	public Bet(String subject, Date endingDate, float amount, State state, User owner) {
 		this.subject = subject;
 		this.endingDate = endingDate;
-		this.amout = amout;
+		this.amount = amount;
 		this.state = state;
 		this.owner = owner;
 		
@@ -98,11 +98,11 @@ public class Bet {
 	public void setEndingDate(Date endingDate) {
 		this.endingDate = endingDate;
 	}
-	public float getAmout() {
-		return amout;
+	public float getAmount() {
+		return amount;
 	}
-	public void setAmout(float amout) {
-		this.amout = amout;
+	public void setAmount(float amount) {
+		this.amount = amount;
 	}
 	public State getState() {
 		return state;

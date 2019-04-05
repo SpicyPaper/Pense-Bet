@@ -98,11 +98,11 @@ public class Bet {
 	public void setEndingDate(Date endingDate) {
 		this.endingDate = endingDate;
 	}
-	public float getAmout() {
+	public float getAmount() {
 		return amount;
 	}
-	public void setAmout(float amout) {
-		this.amount = amout;
+	public void setAmount(float amount) {
+		this.amount = amount;
 	}
 	public State getState() {
 		return state;

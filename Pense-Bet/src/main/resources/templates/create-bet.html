@@ -11,18 +11,18 @@
 	<div>
 		<form th:action="@{/bet/create}" th:object="${bet}" method="post">
 			<div>
-				<label>Bet subject</label> <input type="text"placeholder="Subject" />
+				<label>Bet subject</label> <input type="text" placeholder="Subject" th:field="*{subject}" />
 			</div>
 			
 			<div>
-				<label>Ending date</label> <input type="date"/>
+				<label>Ending date</label> <input type="date" th:field="*{endingDate}" />
 			</div>
 			
 			<div>
-				<label>Amount</label> <input type="number" />
+				<label>Amount</label> <input type="number" th:field="*{amount}" />
 			</div>
 			
-			<button type="submit">Register User</button>
+			<button type="submit">Register Bet</button>
 		</form>
 	</div>
 

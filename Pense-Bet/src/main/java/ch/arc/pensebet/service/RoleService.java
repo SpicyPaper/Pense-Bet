@@ -10,10 +10,10 @@ import ch.arc.pensebet.repository.IRoleRepository;
 public class RoleService implements IRoleService {
 
 	@Autowired
-	private IRoleRepository roleDAO;
+	private IRoleRepository roleRepository;
 
 	@Override
 	public Role findRoleByName(String name) {
-		return roleDAO.findByName(name);
+		return roleRepository.findByName(name);
 	}
 }

@@ -15,30 +15,30 @@ import ch.arc.pensebet.repository.IUserRepository;
 public class UserService implements IUserService {
 	
 	@Autowired
-	private IUserRepository userDAO;
+	private IUserRepository userRepository;
 
 	@Autowired
-	private IRoleRepository roleDAO;
+	private IRoleRepository roleRepository;
 	
 	@Autowired
 	private BCryptPasswordEncoder pwdEncoder;
 
 	@Override
 	public User findUserByNickname(String nickname) {
-		return userDAO.findByNickname(nickname);
+		return userRepository.findByNickname(nickname);
 	}
 	
 	@Override
 	public List<User> findAllUsers() {
-		return userDAO.findAll();
+		return userRepository.findAll();
 	}
 
 	@Override
 	public void saveUser(User user) {
 		user.setPassword(pwdEncoder.encode(user.getPassword()));
-		Role role = roleDAO.findByName("ADMIN");
+		Role role = roleRepository.findByName("ADMIN");
 		user.setRole(role);
-		userDAO.save(user);
+		userRepository.save(user);
 	}
 
 }

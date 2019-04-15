@@ -13,16 +13,16 @@ import ch.arc.pensebet.repository.IBetRepository;
 public class BetService implements IBetService {
 	
 	@Autowired
-	private IBetRepository betDAO;
+	private IBetRepository betRepository;
 	
 	@Override
 	public Optional<Bet> findBetById(Integer id) {
-		return betDAO.findById(id);
+		return betRepository.findById(id);
 	}
 
 	@Override
 	public void saveBet(Bet bet) {
 		bet.setCreationDate(new Date());
-		betDAO.save(bet);
+		betRepository.save(bet);
 	}
 }

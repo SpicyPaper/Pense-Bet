@@ -11,11 +11,11 @@ import ch.arc.pensebet.repository.IStateRepository;
 public class StateService implements IStateService {
 	
 	@Autowired
-	private IStateRepository stateDAO;
+	private IStateRepository stateRepository;
 	
 	@Override
 	public State findStateByName(String name) {
-		return stateDAO.findByName(name);
+		return stateRepository.findByName(name);
 	}
 
 }

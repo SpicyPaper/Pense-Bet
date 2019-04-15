@@ -17,11 +17,6 @@ public class HomeController {
         return "index";
     }
     
-    @GetMapping("/bet/{id}/detail")
-    public String detailBet() {
-        return "detail-bet";
-    }
-    
     @GetMapping("/bet/user")
     public String personnalBets() {
         return "personnal-bets";

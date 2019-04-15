@@ -45,6 +45,7 @@ public class CreateBetController {
 	@GetMapping("/bet/create")
 	public String betCreation(Model model) {
 		model.addAttribute("bet", new Bet());
+		model.addAttribute("users", userService.findAllUsers());
 		return "create-bet";
 	}
 

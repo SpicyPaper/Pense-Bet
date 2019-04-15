@@ -22,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ch.arc.pensebet.model.Bet;
 import ch.arc.pensebet.service.IBetService;
+import ch.arc.pensebet.service.IStateService;
 import ch.arc.pensebet.service.IUserService;
 
 @Controller
@@ -32,6 +33,9 @@ public class CreateBetController {
 	
 	@Autowired
 	private IUserService userService;
+	
+	@Autowired
+	private IStateService stateService;
 	
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
@@ -47,6 +51,7 @@ public class CreateBetController {
 	@PostMapping("/bet/create")
 	public String createBet(@ModelAttribute Bet bet, Authentication authentication) {
 		bet.setOwner(userService.findUserByNickname(authentication.getName()));
+		bet.setState(stateService.findStateByName("ACTIVE"));
 		betService.saveBet(bet);
 		return "index.html";
 	}

@@ -1,12 +1,15 @@
 package ch.arc.pensebet.controller;
 
 import java.text.SimpleDateFormat;
+import java.util.Collection;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.ServletRequestDataBinder;
@@ -19,18 +22,20 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ch.arc.pensebet.model.Bet;
 import ch.arc.pensebet.service.IBetService;
+import ch.arc.pensebet.service.IUserService;
 
 @Controller
 public class CreateBetController {
 
 	@Autowired
 	private IBetService betService;
-
+	
+	@Autowired
+	private IUserService userService;
+	
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
-		binder.registerCustomEditor(Date.class, 
-				new CustomDateEditor(new SimpleDateFormat("yyy-MM-dd"), 
-				true, 10));
+		binder.registerCustomEditor(Date.class, new CustomDateEditor(new SimpleDateFormat("yyy-MM-dd"), true, 10));
 	}
 
 	@GetMapping("/bet/create")
@@ -40,7 +45,8 @@ public class CreateBetController {
 	}
 
 	@PostMapping("/bet/create")
-	public String createBet(@ModelAttribute Bet bet) {
+	public String createBet(@ModelAttribute Bet bet, Authentication authentication) {
+		bet.setOwner(userService.findUserByNickname(authentication.getName()));
 		betService.saveBet(bet);
 		return "index.html";
 	}

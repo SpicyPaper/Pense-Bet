@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 import ch.arc.pensebet.model.Bet;
 
 @Repository("betRepository")
-public interface IBetDAO extends JpaRepository<Bet, Integer> {
+public interface IBetRepository extends JpaRepository<Bet, Integer> {
 	public Optional<Bet> findById(Integer id);
 }

@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import ch.arc.pensebet.model.User;
 
 @Repository("userRepository")
-public interface IUserDAO extends JpaRepository<User, Integer> {
+public interface IUserRepository extends JpaRepository<User, Integer> {
 	User findByNickname(String nickname);
 }

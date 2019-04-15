@@ -5,13 +5,13 @@ import org.springframework.stereotype.Service;
 
 import ch.arc.pensebet.model.State;
 import ch.arc.pensebet.model.User;
-import ch.arc.pensebet.repository.IStateDAO;
+import ch.arc.pensebet.repository.IStateRepository;
 
 @Service("stateService")
 public class StateService implements IStateService {
 	
 	@Autowired
-	private IStateDAO stateDAO;
+	private IStateRepository stateDAO;
 	
 	@Override
 	public State findStateByName(String name) {

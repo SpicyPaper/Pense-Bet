@@ -4,13 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ch.arc.pensebet.model.Role;
-import ch.arc.pensebet.repository.IRoleDAO;
+import ch.arc.pensebet.repository.IRoleRepository;
 
 @Service("roleService")
 public class RoleService implements IRoleService {
 
 	@Autowired
-	private IRoleDAO roleDAO;
+	private IRoleRepository roleDAO;
 
 	@Override
 	public Role findRoleByName(String name) {

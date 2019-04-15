@@ -8,17 +8,17 @@ import org.springframework.stereotype.Service;
 
 import ch.arc.pensebet.model.Role;
 import ch.arc.pensebet.model.User;
-import ch.arc.pensebet.repository.IRoleDAO;
-import ch.arc.pensebet.repository.IUserDAO;
+import ch.arc.pensebet.repository.IRoleRepository;
+import ch.arc.pensebet.repository.IUserRepository;
 
 @Service("userService")
 public class UserService implements IUserService {
 	
 	@Autowired
-	private IUserDAO userDAO;
+	private IUserRepository userDAO;
 
 	@Autowired
-	private IRoleDAO roleDAO;
+	private IRoleRepository roleDAO;
 	
 	@Autowired
 	private BCryptPasswordEncoder pwdEncoder;

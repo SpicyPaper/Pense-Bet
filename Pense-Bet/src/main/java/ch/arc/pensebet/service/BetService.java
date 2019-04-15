@@ -7,13 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ch.arc.pensebet.model.Bet;
-import ch.arc.pensebet.repository.IBetDAO;
+import ch.arc.pensebet.repository.IBetRepository;
 
 @Service
 public class BetService implements IBetService {
 	
 	@Autowired
-	private IBetDAO betDAO;
+	private IBetRepository betDAO;
 	
 	@Override
 	public Optional<Bet> findBetById(Integer id) {

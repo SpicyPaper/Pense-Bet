@@ -26,19 +26,19 @@ public class PersonnalBetsController {
 
     @GetMapping("/bet/user/created/active")
     public String personnalBetsActive(@AuthenticationPrincipal User activeUser, Model model) {
-    	model.addAttribute("bets", betService.findAllActive(activeUser, new PageRequest(0, 3)));
+    	model.addAttribute("bets", betService.findPersonnalActive(activeUser, new PageRequest(0, 3)));
         return "personnal-bets";
     }
 
     @GetMapping("/bet/user/created/ended")
     public String personnalBetsEnded(@AuthenticationPrincipal User activeUser, Model model) {
-    	model.addAttribute("bets", betService.findAllActive(activeUser, new PageRequest(0, 3)));
+    	model.addAttribute("bets", betService.findPersonnalEnded(activeUser, new PageRequest(0, 3)));
         return "personnal-bets";
     }
 
     @GetMapping("/bet/user/created/closed")
     public String personnalBetsClosed(@AuthenticationPrincipal User activeUser, Model model) {
-    	model.addAttribute("bets", betService.findAllActive(activeUser, new PageRequest(0, 3)));
+    	model.addAttribute("bets", betService.findPersonnalClosed(activeUser, new PageRequest(0, 3)));
         return "personnal-bets";
     }
 }

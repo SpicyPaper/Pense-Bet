@@ -2,6 +2,7 @@ package ch.arc.pensebet.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -37,10 +38,10 @@ public class User {
     @JoinColumn
     private Role role;
     
-    @OneToMany(mappedBy="user")
+    @OneToMany(mappedBy="user", cascade = CascadeType.ALL)
     private List<Participation> users;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
       name="INVITATION",
       joinColumns=@JoinColumn(name="USERID", referencedColumnName="ID"),

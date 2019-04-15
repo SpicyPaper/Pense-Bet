@@ -3,6 +3,7 @@ package ch.arc.pensebet.model;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -53,10 +54,10 @@ public class Bet {
     @JoinColumn
     private User owner;
     
-    @OneToMany(mappedBy="bet")
+    @OneToMany(mappedBy="bet", cascade = CascadeType.ALL)
     private List<Participation> parti_bets;
     
-    @ManyToMany(mappedBy="bets")
+    @ManyToMany(mappedBy="bets", cascade = CascadeType.ALL)
     private List<User> users;
 	
 	public Bet() { }

@@ -16,9 +16,4 @@ public class HomeController {
     public String home() {
         return "index";
     }
-    
-    @GetMapping("/bet/user")
-    public String personnalBets() {
-        return "personnal-bets";
-    }
 }

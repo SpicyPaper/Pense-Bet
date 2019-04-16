@@ -1,39 +1,27 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="ISO-8859-1">
-<title>Bet Creation</title>
-</head>
-<body>
-	<!-- Import Header -->
-	<div th:insert="fragments/header :: header"></div>
 
-	<div>
-		<form th:action="@{/bet/create}" th:object="${bet}" method="post">
-			<div>
-				<label>Bet subject</label> <input type="text" placeholder="Subject" th:field="*{subject}" />
-			</div>
-			
-			<div>
-				<label>Ending date</label> <input type="date" th:field="*{endingDate}" />
-			</div>
-			
-			<div>
-				<label>Amount</label> <input type="number" th:field="*{amount}" />
-			</div>
-			
-			<div>
-				Invitation
-				<select >
-				    <option th:each="user : ${users}"
-                            th:value="${user.id}"
-                            th:utext="${user.nickname}"/>
-				</select>
-			</div>
-			
-			<button type="submit">Register Bet</button>
-		</form>
-	</div>
-
-</body>
-</html>
+<div th:fragment="content">
+	<form th:action="@{/bet/create}" th:object="${bet}" method="post">
+		<div>
+			<label>Bet subject</label> <input type="text" placeholder="Subject" th:field="*{subject}" />
+		</div>
+		
+		<div>
+			<label>Ending date</label> <input type="date" th:field="*{endingDate}" />
+		</div>
+		
+		<div>
+			<label>Amount</label> <input type="number" th:field="*{amount}" />
+		</div>
+		
+		<div>
+			Invitation
+			<select >
+			    <option th:each="user : ${users}"
+                           th:value="${user.id}"
+                           th:utext="${user.nickname}"/>
+			</select>
+		</div>
+		
+		<button type="submit">Register Bet</button>
+	</form>
+</div>

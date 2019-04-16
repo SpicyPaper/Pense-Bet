@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import ch.arc.pensebet.model.Bet;
 import ch.arc.pensebet.model.Role;
 import ch.arc.pensebet.model.User;
 import ch.arc.pensebet.repository.IRoleDAO;
@@ -41,4 +42,8 @@ public class UserService implements IUserService {
 		userDAO.save(user);
 	}
 
+	@Override
+	public User findOne(Integer id) {
+		return userDAO.findById(id).get();
+	}
 }

@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
@@ -13,12 +15,12 @@ import javax.persistence.Table;
 @Table(name="participation")
 
 public class Participation implements Serializable {
-	 @Id
-	 private long bet_id;
 	 
-	 @Id
-	 private long user_id;
-	 
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column
+	private Integer id;
+	
 	 @Column
 	 private boolean agree;
 	 
@@ -29,4 +31,37 @@ public class Participation implements Serializable {
 	 @ManyToOne
 	 @PrimaryKeyJoinColumn(name="USER_ID", referencedColumnName="ID")
 	 private User user;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public boolean isAgree() {
+		return agree;
+	}
+
+	public void setAgree(boolean agree) {
+		this.agree = agree;
+	}
+
+	public Bet getBet() {
+		return bet;
+	}
+
+	public void setBet(Bet bet) {
+		this.bet = bet;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+	 	 
 }

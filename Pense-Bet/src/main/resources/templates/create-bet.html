@@ -22,23 +22,6 @@
 				<label>Amount</label> <input type="number" th:field="*{amount}" />
 			</div>
 			
-			<div>
-				<label>First Choice</label> <input type="text" th:field="*{firstChoice}" />
-			</div>
-			
-			<div>
-				<label>Second Choice</label> <input type="text" th:field="*{secondChoice}" />
-			</div>
-			
-			<div>
-				Invitation
-				<select >
-				    <option th:each="user : ${users}"
-                            th:value="${user.id}"
-                            th:utext="${user.nickname}"/>
-				</select>
-			</div>
-			
 			<button type="submit">Register Bet</button>
 		</form>
 	</div>

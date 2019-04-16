@@ -25,4 +25,9 @@ public class BetService implements IBetService {
 		bet.setCreationDate(new Date());
 		betDAO.save(bet);
 	}
+
+	@Override
+	public Bet findOne(Integer id) {
+		return betDAO.findById(id).get();
+	}
 }

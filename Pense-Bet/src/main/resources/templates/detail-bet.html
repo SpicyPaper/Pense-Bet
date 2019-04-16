@@ -11,5 +11,18 @@
 	<p th:text="${bet.endingDate}"></p>
 	<p th:text="${bet.amount}"></p>
 	
+	
+	<div>
+		<form th:action="@{/bet/} + ${bet.id} + @{/invite}" th:object="${invitation}" method="post">
+			Invitation 
+			<select th:field="*{user}">
+			    <option th:each="user : ${users}"
+	                          th:value="${user.id}"
+	                          th:utext="${user.nickname}"/>
+			</select>
+			<button type="submit">Register participant</button>
+		</form>
+	</div>
+	
 </body>
 </html>

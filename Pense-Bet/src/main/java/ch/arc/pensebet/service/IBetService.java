@@ -23,5 +23,4 @@ public interface IBetService {
 	public Page<Bet> findAllEnded(User user, Pageable pageable);
 	public Optional<Bet> findBetById(Integer id);
 	public void saveBet(Bet bet);
-	public Bet findOne(Integer id);
 }

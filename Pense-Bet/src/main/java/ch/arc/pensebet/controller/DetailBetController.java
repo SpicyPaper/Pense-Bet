@@ -46,14 +46,9 @@ public class DetailBetController {
 	
 	@PostMapping("/bet/{id}/invite")
     public String inviteUser(@ModelAttribute Invitation invitation, @PathVariable("id") Integer id, Model model) {
-
 		Bet bet = betService.findBetById(id).get();
 		bet.addInvitation(invitation);
 		betService.saveBet(bet);
-		System.out.println(invitation.getBet());
-		System.out.println(invitation.getUser());
-//		invitationService.saveInvitation(invitation);
-		System.out.println("TEST");
 		model.addAttribute("bet", bet);
 		model.addAttribute("users", getInvitableUsers(userService.findAllUsers(), bet));
 		model.addAttribute("invitation", new Invitation());

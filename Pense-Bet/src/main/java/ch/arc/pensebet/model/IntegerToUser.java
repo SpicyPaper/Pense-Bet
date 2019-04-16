@@ -7,14 +7,13 @@ import org.springframework.stereotype.Component;
 import ch.arc.pensebet.service.UserService;
 
 @Component
-public class StringToUser implements Converter<String, User> {
+public class IntegerToUser implements Converter<Integer, User> {
 
 	@Autowired
 	private UserService userService;
 
 	@Override
-	public User convert(String arg0) {
-		Integer id = new Integer(arg0);
+	public User convert(Integer id) {
 		return userService.findOne(id);
 	}
 }

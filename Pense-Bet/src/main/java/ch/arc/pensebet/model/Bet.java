@@ -51,8 +51,8 @@ public class Bet {
     @OneToMany(mappedBy="bet", cascade = CascadeType.ALL)
     private List<Participation> parti_bets;
     
-    @ManyToMany(mappedBy="bets", cascade = CascadeType.ALL)
-    private List<User> users;
+    @OneToMany(mappedBy="bet", cascade = CascadeType.ALL)
+    private List<Invitation> invitations;
 	
 	public Bet() { }
 	
@@ -115,5 +115,11 @@ public class Bet {
 	@Override
 	public String toString() {
 		return getSubject();
+	}
+	
+	public void addInvitation(Invitation invitation)
+	{
+		invitation.setBet(this);
+		invitations.add(invitation);
 	}
 }

@@ -99,8 +99,8 @@ public class BetService implements IBetService {
 		return findAll(user, stateRepository.findByName("ENDED"), pageable);
 	}
 
-	@Override
 	public Bet findOne(Integer id) {
-		return betDAO.findById(id).get();
+		return findBetById(id).get();
 	}
+
 }

@@ -41,12 +41,8 @@ public class User {
     @OneToMany(mappedBy="user", cascade = CascadeType.ALL)
     private List<Participation> users;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-      name="INVITATION",
-      joinColumns=@JoinColumn(name="USERID", referencedColumnName="ID"),
-      inverseJoinColumns=@JoinColumn(name="BET_ID", referencedColumnName="ID"))
-    private List<Bet> bets;
+    @OneToMany(mappedBy="user", cascade = CascadeType.ALL)
+    private List<Invitation> invitations;
     
     public User() { }
     

@@ -2,6 +2,7 @@ package ch.arc.pensebet.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,12 +24,12 @@ public class Invitation implements Serializable {
 	private static final long serialVersionUID = 7057651885542882143L;
 
 	@Id
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "bet_id")
     private Bet bet;
 	
 	@Id
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User user;
 

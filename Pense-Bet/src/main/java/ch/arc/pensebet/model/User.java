@@ -39,7 +39,7 @@ public class User {
     private Role role;
     
     @OneToMany(mappedBy="user", cascade = CascadeType.ALL)
-    private List<Participation> users;
+    private List<Participation> participations;
 
     @OneToMany(mappedBy="user", cascade = CascadeType.ALL)
     private List<Invitation> invitations;

@@ -3,7 +3,10 @@ package ch.arc.pensebet.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -46,15 +49,36 @@ public class DetailBetController {
 	
 	@PostMapping("/bet/{id}")
     public String inviteUser(@ModelAttribute Invitation invitation, @PathVariable("id") Integer id, Model model) {
+		System.out.println("INVITATION ENTER");
 		Bet bet = betService.findBetById(id).get();
 		bet.addInvitation(invitation);
 		betService.saveBet(bet);
 		model.addAttribute("bet", bet);
 		model.addAttribute("users", getInvitableUsers(userService.findAllUsers(), bet));
 		model.addAttribute("invitation", new Invitation());
-		
+		System.out.println("INVITATION CREATED");
         return "detail-bet";
     }
+	
+	@GetMapping("/bet/{id}/participate/accept/{agree}")
+	public String participateBet(@PathVariable("id") Integer id, @PathVariable("agree") boolean agree, Authentication authentication)
+	{
+		System.out.println("PARTICIPATION");
+		Bet bet = betService.findBetById(id).get();
+		User user = userService.findUserByNickname(authentication.getName());
+		Participation participation = new Participation();
+		participation.setBet(bet);
+		participation.setUser(user);
+		participation.setAgree(agree);
+		bet.addParticipation(participation);
+		System.out.println("CONTROLLER TAILLE AVANT " + bet.getInvitations().size());
+		betService.saveBet(bet);
+		bet.printInvitations();
+		System.out.println("CONTROLLER TAILLE APRÈS " + bet.getInvitations().size());
+		System.out.println("PARTICIPATION ADDED");
+		
+		return "index";
+	}
 	
 	private List<User> getInvitableUsers(List<User> allUsers, Bet bet)
 	{

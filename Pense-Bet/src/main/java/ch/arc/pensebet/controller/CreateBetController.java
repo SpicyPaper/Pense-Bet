@@ -52,6 +52,7 @@ public class CreateBetController {
 	public String createBet(@ModelAttribute Bet bet, Authentication authentication) {
 		bet.setOwner(userService.findUserByNickname(authentication.getName()));
 		bet.setState(stateService.findStateByName("ACTIVE"));
+		bet.setCreationDate(new Date());
 		betService.saveBet(bet);
 		return "index.html";
 	}

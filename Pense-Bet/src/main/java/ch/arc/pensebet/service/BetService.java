@@ -43,7 +43,6 @@ public class BetService implements IBetService {
 
 	@Override
 	public void saveBet(Bet bet) {
-		bet.setCreationDate(new Date());
 		betRepository.save(bet);
 	}
 

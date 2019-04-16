@@ -9,22 +9,21 @@ import org.springframework.stereotype.Service;
 import ch.arc.pensebet.model.Bet;
 import ch.arc.pensebet.model.Invitation;
 import ch.arc.pensebet.model.User;
-import ch.arc.pensebet.repository.IBetDAO;
-import ch.arc.pensebet.repository.IInvitationDAO;
+import ch.arc.pensebet.repository.IInvitationRepository;
 
 @Service("invitationService")
 public class InvitationService implements IInvitationService {
 	
 	@Autowired
-	private IInvitationDAO invitationDAO;
+	private IInvitationRepository invitationRepository;
 	
 	@Override
 	public List<Invitation> findAllInvitations() {
-		return invitationDAO.findAll();
+		return invitationRepository.findAll();
 	}
 	
 	@Override
 	public void saveInvitation(Invitation invitation) {
-		invitationDAO.save(invitation);
+		invitationRepository.save(invitation);
 	}
 }

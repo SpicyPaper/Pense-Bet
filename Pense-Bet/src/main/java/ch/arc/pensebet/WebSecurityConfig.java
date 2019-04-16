@@ -42,6 +42,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 				.antMatchers("/").permitAll()
 				.antMatchers("/login").permitAll()
 				.antMatchers("/register").permitAll()
+
+				.antMatchers("/bet/create").authenticated()
+				
+				.antMatchers("/bet/user/waiting/{page}").authenticated()
+				.antMatchers("/bet/user/active/{page}").authenticated()
+				.antMatchers("/bet/user/ended/{page}").authenticated()
+				.antMatchers("/bet/user/closed/{page}").authenticated()
+				.antMatchers("/bet/user/created/active/{page}").authenticated()
+				.antMatchers("/bet/user/created/ended/{page}").authenticated()
+				.antMatchers("/bet/user/created/closed/{page}").authenticated()
+				
 				.antMatchers("/admin").authenticated().and().formLogin()
 				.loginPage("/login").failureUrl("/login?error=true")
 				.defaultSuccessUrl("/",true)

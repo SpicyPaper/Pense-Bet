@@ -15,6 +15,7 @@ import ch.arc.pensebet.model.Bet;
 import ch.arc.pensebet.model.Invitation;
 import ch.arc.pensebet.model.Participation;
 import ch.arc.pensebet.model.User;
+import ch.arc.pensebet.repository.IBetRepository;
 import ch.arc.pensebet.service.IBetService;
 import ch.arc.pensebet.service.IInvitationService;
 import ch.arc.pensebet.service.IUserService;
@@ -27,6 +28,9 @@ public class DetailBetController {
 	
 	@Autowired
 	private IBetService betService;
+	
+	@Autowired
+	private IBetRepository betRepository;
 	
 	@Autowired
 	private IInvitationService invitationService;
@@ -44,11 +48,12 @@ public class DetailBetController {
     public String inviteUser(@ModelAttribute Invitation invitation, @PathVariable("id") Integer id, Model model) {
 
 		Bet bet = betService.findBetById(id).get();
-		invitation.setBet(bet);
-		System.out.println(invitation.getId());
+		bet.addInvitation(invitation);
+		betService.saveBet(bet);
 		System.out.println(invitation.getBet());
 		System.out.println(invitation.getUser());
-		invitationService.saveInvitation(invitation);
+//		invitationService.saveInvitation(invitation);
+		System.out.println("TEST");
 		model.addAttribute("bet", bet);
 		model.addAttribute("users", getInvitableUsers(userService.findAllUsers(), bet));
 		model.addAttribute("invitation", new Invitation());

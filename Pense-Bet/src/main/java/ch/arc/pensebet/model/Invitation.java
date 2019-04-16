@@ -2,10 +2,7 @@ package ch.arc.pensebet.model;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.ManyToOne;
@@ -13,14 +10,13 @@ import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
-@IdClass(ParticipationId.class)
-@Table(name = "participation")
-
-public class Participation implements Serializable {
+@IdClass(InvitationId.class)
+@Table(name = "invitation")
+public class Invitation implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -6325995693678991091L;
+	private static final long serialVersionUID = 7057651885542882143L;
 
 	@Id
 	@ManyToOne
@@ -31,17 +27,6 @@ public class Participation implements Serializable {
 	@ManyToOne
 	@PrimaryKeyJoinColumn(name = "USER_ID", referencedColumnName = "ID")
 	private User user;
-
-	@Column
-	private boolean agree;
-
-	public boolean isAgree() {
-		return agree;
-	}
-
-	public void setAgree(boolean agree) {
-		this.agree = agree;
-	}
 
 	public Bet getBet() {
 		return bet;
@@ -58,4 +43,5 @@ public class Participation implements Serializable {
 	public void setUser(User user) {
 		this.user = user;
 	}
+
 }

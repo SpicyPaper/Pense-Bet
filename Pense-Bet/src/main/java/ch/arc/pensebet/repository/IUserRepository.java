@@ -9,6 +9,6 @@ import ch.arc.pensebet.model.Bet;
 import ch.arc.pensebet.model.User;
 
 @Repository("userRepository")
-public interface IUserDAO extends JpaRepository<User, Integer> {
+public interface IUserRepository extends JpaRepository<User, Integer> {
 	User findByNickname(String nickname);
 }

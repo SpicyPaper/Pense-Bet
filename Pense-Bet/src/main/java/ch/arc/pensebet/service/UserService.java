@@ -9,37 +9,37 @@ import org.springframework.stereotype.Service;
 import ch.arc.pensebet.model.Bet;
 import ch.arc.pensebet.model.Role;
 import ch.arc.pensebet.model.User;
-import ch.arc.pensebet.repository.IRoleDAO;
-import ch.arc.pensebet.repository.IUserDAO;
+import ch.arc.pensebet.repository.IRoleRepository;
+import ch.arc.pensebet.repository.IUserRepository;
 
 @Service("userService")
 public class UserService implements IUserService {
 	
 	@Autowired
-	private IUserDAO userDAO;
+	private IUserRepository userRepository;
 
 	@Autowired
-	private IRoleDAO roleDAO;
+	private IRoleRepository roleRepository;
 	
 	@Autowired
 	private BCryptPasswordEncoder pwdEncoder;
 
 	@Override
 	public User findUserByNickname(String nickname) {
-		return userDAO.findByNickname(nickname);
+		return userRepository.findByNickname(nickname);
 	}
 	
 	@Override
 	public List<User> findAllUsers() {
-		return userDAO.findAll();
+		return userRepository.findAll();
 	}
 
 	@Override
 	public void saveUser(User user) {
 		user.setPassword(pwdEncoder.encode(user.getPassword()));
-		Role role = roleDAO.findByName("ADMIN");
+		Role role = roleRepository.findByName("ADMIN");
 		user.setRole(role);
-		userDAO.save(user);
+		userRepository.save(user);
 	}
 
 	@Override

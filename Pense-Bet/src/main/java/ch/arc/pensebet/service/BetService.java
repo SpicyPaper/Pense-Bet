@@ -9,9 +9,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import ch.arc.pensebet.model.Bet;
+import ch.arc.pensebet.model.Invitation;
 import ch.arc.pensebet.model.Participation;
+import ch.arc.pensebet.model.State;
 import ch.arc.pensebet.model.User;
 import ch.arc.pensebet.repository.IBetRepository;
+import ch.arc.pensebet.repository.IInvitationRepository;
 import ch.arc.pensebet.repository.IParticipationRepository;
 import ch.arc.pensebet.repository.IStateRepository;
 
@@ -26,6 +29,9 @@ public class BetService implements IBetService {
 	
 	@Autowired
 	private IParticipationRepository participationRepository;
+	
+	@Autowired
+	private IInvitationRepository invitationRepository;
 	
 	@Override
 	public Optional<Bet> findBetById(Integer id) {
@@ -54,44 +60,39 @@ public class BetService implements IBetService {
 	}
 
 	@Override
+	public List<Bet> findAll(User user, State state, Pageable pageable) {
+		List<Participation> participations = participationRepository.findByUser(user, pageable);
+		List<Bet> bets = null;
+		for (int i = 0; i < participations.size(); i++) {
+			if (participations.get(i).getBet().getState().getId() == state.getId()) {
+				bets.add(participations.get(i).getBet());
+			}
+		}
+		return bets;
+	}
+
+	@Override
 	public List<Bet> findAllWaiting(User user, Pageable pageable) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Invitation> invitations = invitationRepository.findByUser(user, pageable);
+		List<Bet> bets = null;
+		for (int i = 0; i < invitations.size(); i++) {
+			bets.add(invitations.get(i).getBet());
+		}
+		return bets;
 	}
 
 	@Override
 	public List<Bet> findAllActive(User user, Pageable pageable) {
-		List<Participation> participations = participationRepository.findByUser(user, pageable);
-		List<Bet> bets = null;
-		for (int i = 0; i < participations.size(); i++) {
-			if (participations.get(i).getBet().getState().getId() == stateRepository.findByName("ACTIVE").getId()) {
-				bets.add(participations.get(i).getBet());
-			}
-		}
-		return bets;
+		return findAll(user, stateRepository.findByName("ACTIVE"), pageable);
 	}
 
 	@Override
 	public List<Bet> findAllClosed(User user, Pageable pageable) {
-		List<Participation> participations = participationRepository.findByUser(user, pageable);
-		List<Bet> bets = null;
-		for (int i = 0; i < participations.size(); i++) {
-			if (participations.get(i).getBet().getState().getId() == stateRepository.findByName("CLOSED").getId()) {
-				bets.add(participations.get(i).getBet());
-			}
-		}
-		return bets;
+		return findAll(user, stateRepository.findByName("CLOSED"), pageable);
 	}
 
 	@Override
 	public List<Bet> findAllEnded(User user, Pageable pageable) {
-		List<Participation> participations = participationRepository.findByUser(user, pageable);
-		List<Bet> bets = null;
-		for (int i = 0; i < participations.size(); i++) {
-			if (participations.get(i).getBet().getState().getId() == stateRepository.findByName("ENDED").getId()) {
-				bets.add(participations.get(i).getBet());
-			}
-		}
-		return bets;
+		return findAll(user, stateRepository.findByName("ENDED"), pageable);
 	}
 }

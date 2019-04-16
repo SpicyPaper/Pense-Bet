@@ -1,85 +1,79 @@
-<!DOCTYPE html>
-<html>
-	<head>
-	</head>
-	<body>
-		<div th:fragment="header">
-			<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-			    <div class="container">
-			        <a class="navbar-brand p-0" href="/">
-						 <img th:src="@{/favicon.png}"
-						 	class="img-fluid" alt="Pense BET" style="height:30px;"/>
-			        </a>
-			
-			        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-			            <span class="navbar-toggler-icon"></span>
-			        </button>
-			
-			        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-			            <!-- Left Side Of Navbar -->
-			            <ul class="navbar-nav mr-auto">
-			                <li class="nav-item">
-			                    <a class="nav-link" href="#waiting">
-			                        <i class="far fa-hourglass mr-1"></i>
-			                        Waiting
-			                    </a>
-			                </li>
-			                <li class="nav-item">
-			                    <a class="nav-link" href="#inprogress">
-			                        <i class="fas fa-hourglass-half mr-1"></i>
-			                        In progress
-			                    </a>
-			                </li>
-			                <li class="nav-item">
-			                    <a class="nav-link" href="#done">
-			                        <i class="fas fa-hourglass-end mr-1"></i>
-			                        Done
-			                    </a>
-			                </li>
-			                <li class="nav-item">
-			                    <a class="nav-link" href="#closed">
-			                        <i class="fas fa-clipboard-check mr-1"></i>
-			                        Closed
-			                    </a>
-			                </li>
-			            </ul>
-			
-			            <!-- Right Side Of Navbar -->
-			            <ul class="navbar-nav ml-auto">
-			            
-			                <li class="nav-item dropdown">
-			                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-			                        Username <span class="caret"></span>
-			                        <i class="fas fa-user ml-1"></i>
-			                    </a>
-			
-			                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-			
-			                        <a class="dropdown-item" href="#">
-			                            <i class="fas fa-user-edit"></i>
-			                            Profile
-			                        </a>
-			                        
-			                        <a class="dropdown-item" href="#">
-			                            <i class="fas fa-folder-open"></i>
-			                            My bets
-			                        </a>
-			                        
-			                        <a class="dropdown-item" href="#">
-			                            <i class="fas fa-plus-circle"></i>
-			                            Create new bet
-			                        </a>
-			
-			                        <a class="dropdown-item" href="#">
-			                            <i class="fas fa-sign-out-alt"></i>
-			                            Logout
-			                        </a>
-			                    </div>
-			                </li>
-			            </ul>
-			        </div>
-			    </div>
-			</nav>
-		</div>
-  	</body>
-</html>
+
+<div th:fragment="header">
+	<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+	    <div class="container">
+	        <a class="navbar-brand p-0" href="/">
+				 <img th:src="@{/favicon.png}"
+				 	class="img-fluid" alt="Pense BET" style="height:30px;"/>
+	        </a>
+	
+	        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	            <span class="navbar-toggler-icon"></span>
+	        </button>
+	
+	        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	            <!-- Left Side Of Navbar -->
+	            <ul class="navbar-nav mr-auto">
+	                <li class="nav-item">
+	                    <a class="nav-link" href="#waiting">
+	                        <i class="far fa-hourglass mr-1"></i>
+	                        Waiting
+	                    </a>
+	                </li>
+	                <li class="nav-item">
+	                    <a class="nav-link" href="#inprogress">
+	                        <i class="fas fa-hourglass-half mr-1"></i>
+	                        In progress
+	                    </a>
+	                </li>
+	                <li class="nav-item">
+	                    <a class="nav-link" href="#done">
+	                        <i class="fas fa-hourglass-end mr-1"></i>
+	                        Done
+	                    </a>
+	                </li>
+	                <li class="nav-item">
+	                    <a class="nav-link" href="#closed">
+	                        <i class="fas fa-clipboard-check mr-1"></i>
+	                        Closed
+	                    </a>
+	                </li>
+	            </ul>
+	
+	            <!-- Right Side Of Navbar -->
+	            <ul class="navbar-nav ml-auto">
+	            
+	                <li class="nav-item dropdown">
+	                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+	                        Username <span class="caret"></span>
+	                        <i class="fas fa-user ml-1"></i>
+	                    </a>
+	
+	                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+	
+	                        <a class="dropdown-item" href="#">
+	                            <i class="fas fa-user-edit"></i>
+	                            Profile
+	                        </a>
+	                        
+	                        <a class="dropdown-item" href="#">
+	                            <i class="fas fa-folder-open"></i>
+	                            My bets
+	                        </a>
+	                        
+	                        <a class="dropdown-item" href="#">
+	                            <i class="fas fa-plus-circle"></i>
+	                            Create new bet
+	                        </a>
+	
+	                        <a class="dropdown-item" href="#">
+	                            <i class="fas fa-sign-out-alt"></i>
+	                            Logout
+	                        </a>
+	                    </div>
+	                </li>
+	            </ul>
+	        </div>
+	    </div>
+	</nav>
+</div>

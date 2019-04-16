@@ -1,17 +1,9 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
+
+<div th:fragment="content">
 	<h1>Detail bet</h1>
 	<p th:text="${bet.subject}"></p>
 	<p th:text="${bet.endingDate}"></p>
 	<p th:text="${bet.amount}"></p>
-	
-	
 	<div>
 		<form th:action="@{/bet/} + ${bet.id} + @{/invite}" th:object="${invitation}" method="post">
 			Invitation 
@@ -23,6 +15,4 @@
 			<button type="submit">Register participant</button>
 		</form>
 	</div>
-	
-</body>
-</html>
+</div>

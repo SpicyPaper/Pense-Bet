@@ -5,7 +5,7 @@
 	<p th:text="${bet.endingDate}"></p>
 	<p th:text="${bet.amount}"></p>
 	<div>
-		<form th:action="@{/bet/} + ${bet.id} + @{/invite}" th:object="${invitation}" method="post">
+		<form th:action="@{/bet/} + ${bet.id}" th:object="${invitation}" method="post">
 			Invitation 
 			<select th:field="*{user}">
 			    <option th:each="user : ${users}"

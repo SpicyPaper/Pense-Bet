@@ -35,7 +35,7 @@ public class DetailBetController {
 	@Autowired
 	private IInvitationService invitationService;
 	
-	@GetMapping("/bet/{id}/detail")
+	@GetMapping("/bet/{id}")
     public String detailBet(Model model, @PathVariable("id") Integer id) {
 		Bet bet = betService.findBetById(id).get();
 		model.addAttribute("bet", bet);
@@ -44,7 +44,7 @@ public class DetailBetController {
         return "detail-bet";
     }
 	
-	@PostMapping("/bet/{id}/invite")
+	@PostMapping("/bet/{id}")
     public String inviteUser(@ModelAttribute Invitation invitation, @PathVariable("id") Integer id, Model model) {
 		Bet bet = betService.findBetById(id).get();
 		bet.addInvitation(invitation);

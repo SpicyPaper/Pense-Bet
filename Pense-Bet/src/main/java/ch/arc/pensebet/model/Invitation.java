@@ -13,6 +13,11 @@ import javax.persistence.Table;
 @IdClass(InvitationId.class)
 @Table(name = "invitation")
 public class Invitation implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7057651885542882143L;
+
 	@Id
 	@ManyToOne
 	@PrimaryKeyJoinColumn(name = "BET_ID", referencedColumnName = "ID")

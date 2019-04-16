@@ -38,12 +38,6 @@ public class Bet {
 	private float amount;
 	
 	@Column
-	private String firstChoice;
-	
-	@Column
-	private String secondChoice;
-	
-	@Column
 	private Boolean result = null;
 
     @ManyToOne
@@ -110,18 +104,6 @@ public class Bet {
 	}
 	public void setAmount(float amount) {
 		this.amount = amount;
-	}
-	public String getFirstChoice() {
-		return firstChoice;
-	}
-	public void setFirstChoice(String firstChoice) {
-		this.firstChoice = firstChoice;
-	}
-	public String getSecondChoice() {
-		return secondChoice;
-	}
-	public void setSecondChoice(String secondChoice) {
-		this.secondChoice = secondChoice;
 	}
 	public State getState() {
 		return state;

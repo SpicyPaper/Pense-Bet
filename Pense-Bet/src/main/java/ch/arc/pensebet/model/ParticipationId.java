@@ -3,6 +3,10 @@ package ch.arc.pensebet.model;
 import java.io.Serializable;
 
 public class ParticipationId implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2525802566000390769L;
 	private Bet bet;
 	private User user;
 

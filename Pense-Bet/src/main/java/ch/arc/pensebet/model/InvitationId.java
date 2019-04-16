@@ -3,10 +3,15 @@ package ch.arc.pensebet.model;
 import java.io.Serializable;
 
 public class InvitationId implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3691614449171995771L;
 	private Bet bet;
 	private User user;
 
-	public InvitationId() {}
+	public InvitationId() {
+	}
 
 	public InvitationId(Bet bet, User user) {
 		this.bet = bet;

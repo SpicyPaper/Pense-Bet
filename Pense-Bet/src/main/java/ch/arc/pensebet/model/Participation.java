@@ -15,8 +15,10 @@ import javax.persistence.Table;
 @Table(name = "participation")
 
 public class Participation implements Serializable {
-	@Column
-	private boolean agree;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6325995693678991091L;
 
 	@Id
 	@ManyToOne
@@ -27,6 +29,9 @@ public class Participation implements Serializable {
 	@ManyToOne
 	@PrimaryKeyJoinColumn(name = "USER_ID", referencedColumnName = "ID")
 	private User user;
+
+	@Column
+	private boolean agree;
 
 	public boolean isAgree() {
 		return agree;

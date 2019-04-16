@@ -1,5 +1,6 @@
 package ch.arc.pensebet.service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -62,7 +63,7 @@ public class BetService implements IBetService {
 	@Override
 	public List<Bet> findAll(User user, State state, Pageable pageable) {
 		List<Participation> participations = participationRepository.findByUser(user, pageable);
-		List<Bet> bets = null;
+		List<Bet> bets = new ArrayList<Bet>();
 		for (int i = 0; i < participations.size(); i++) {
 			if (participations.get(i).getBet().getState().getId() == state.getId()) {
 				bets.add(participations.get(i).getBet());
@@ -74,7 +75,7 @@ public class BetService implements IBetService {
 	@Override
 	public List<Bet> findAllWaiting(User user, Pageable pageable) {
 		List<Invitation> invitations = invitationRepository.findByUser(user, pageable);
-		List<Bet> bets = null;
+		List<Bet> bets = new ArrayList<Bet>();
 		for (int i = 0; i < invitations.size(); i++) {
 			bets.add(invitations.get(i).getBet());
 		}

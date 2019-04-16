@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -46,22 +48,22 @@ public class BetService implements IBetService {
 	}
 
 	@Override
-	public List<Bet> findPersonnalActive(User user, Pageable pageable) {
+	public Page<Bet> findPersonnalActive(User user, Pageable pageable) {
 		return betRepository.findByOwnerAndState(user, stateRepository.findByName("ACTIVE"), pageable);
 	}
 
 	@Override
-	public List<Bet> findPersonnalClosed(User user, Pageable pageable) {
+	public Page<Bet> findPersonnalClosed(User user, Pageable pageable) {
 		return betRepository.findByOwnerAndState(user, stateRepository.findByName("CLOSED"), pageable);
 	}
 
 	@Override
-	public List<Bet> findPersonnalEnded(User user, Pageable pageable) {
+	public Page<Bet> findPersonnalEnded(User user, Pageable pageable) {
 		return betRepository.findByOwnerAndState(user, stateRepository.findByName("ENDED"), pageable);
 	}
 
 	@Override
-	public List<Bet> findAll(User user, State state, Pageable pageable) {
+	public Page<Bet> findAll(User user, State state, Pageable pageable) {
 		List<Participation> participations = participationRepository.findByUser(user, pageable);
 		List<Bet> bets = new ArrayList<Bet>();
 		for (int i = 0; i < participations.size(); i++) {
@@ -69,31 +71,31 @@ public class BetService implements IBetService {
 				bets.add(participations.get(i).getBet());
 			}
 		}
-		return bets;
+		return new PageImpl<>(bets);
 	}
 
 	@Override
-	public List<Bet> findAllWaiting(User user, Pageable pageable) {
+	public Page<Bet> findAllWaiting(User user, Pageable pageable) {
 		List<Invitation> invitations = invitationRepository.findByUser(user, pageable);
 		List<Bet> bets = new ArrayList<Bet>();
 		for (int i = 0; i < invitations.size(); i++) {
 			bets.add(invitations.get(i).getBet());
 		}
-		return bets;
+		return new PageImpl<>(bets);
 	}
 
 	@Override
-	public List<Bet> findAllActive(User user, Pageable pageable) {
+	public Page<Bet> findAllActive(User user, Pageable pageable) {
 		return findAll(user, stateRepository.findByName("ACTIVE"), pageable);
 	}
 
 	@Override
-	public List<Bet> findAllClosed(User user, Pageable pageable) {
+	public Page<Bet> findAllClosed(User user, Pageable pageable) {
 		return findAll(user, stateRepository.findByName("CLOSED"), pageable);
 	}
 
 	@Override
-	public List<Bet> findAllEnded(User user, Pageable pageable) {
+	public Page<Bet> findAllEnded(User user, Pageable pageable) {
 		return findAll(user, stateRepository.findByName("ENDED"), pageable);
 	}
 }

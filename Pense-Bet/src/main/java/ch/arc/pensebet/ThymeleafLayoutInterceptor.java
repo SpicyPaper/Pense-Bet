@@ -14,13 +14,17 @@ public class ThymeleafLayoutInterceptor extends HandlerInterceptorAdapter {
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
+    	
         if (modelAndView == null || !modelAndView.hasView()) {
             return;
         }
+        
         String originalViewName = modelAndView.getViewName();
+        
         if (isRedirectOrForward(originalViewName)) {
             return;
         }
+        
         String layoutName = DEFAULT_LAYOUT;
         modelAndView.setViewName(layoutName);
         modelAndView.addObject(DEFAULT_VIEW_ATTRIBUTE_NAME, originalViewName);

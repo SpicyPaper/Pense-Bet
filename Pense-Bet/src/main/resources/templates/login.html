@@ -6,50 +6,59 @@
 <body>
 	<div th:replace="fragments/header :: header"></div>
 	
-    <div class="offset-md-2 col-md-8">
-        <fieldset class="form-group">
-            <legend class="border-bottom mb-4"><h2>Login</h2></legend>
-    
-			<form th:action="@{/login}" method="POST" class="form-signin">
-			
-				<div class="form-group row">
-					<div class="input-group col-12">
-						<div class="input-group-prepend">
-							<span class="input-group-text">
-								<i class="fas fa-user"></i>
-							</span>
-						</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-12 mt-3">
+			    <div class="offset-md-2 col-md-8">
+			        <fieldset class="form-group">
+			            <legend class="border-bottom mb-4"><h2>Login</h2></legend>
+			    
+						<form th:action="@{/login}" method="POST" class="form-signin">
 						
-						<input type="text" class="form-control" name="nickname" id="nickname" th:placeholder="Nickname" required>
-					</div>
-				</div>
-					
-				<div class="form-group row">
-					<div class="input-group col-12">
-						<div class="input-group-prepend">
-							<span class="input-group-text">
-								<i class="fas fa-user"></i>
-							</span>
-						</div>
-						
-						<input type="password" class="form-control" name="password" id="password" th:placeholder="Password" required>
-					</div>
-				</div>
-				
-				<div align="center" th:if="${param.error}">
-					<p style="font-size: 20; color: #FF1C19;">Name or Password invalid, please verify.</p>
-				</div>
-				
-				<button class="btn btn-lg btn-primary btn-block" name="Submit" value="Login" type="Submit" th:text="Login"></button>
-			</form>
-        
-            <div class="border-top pt-3 my-3">
-                <small class="text-muted">
-                    Need An Account? <a class="ml-2" href="@{/register}">Register now</a>
-                </small>
-            </div>
-        </fieldset>
-    </div>
+							<div class="form-group row">
+								<div class="input-group col-12">
+									<div class="input-group-prepend">
+										<span class="input-group-text">
+											<i class="fas fa-user"></i>
+										</span>
+									</div>
+									
+									<input type="text" class="form-control" name="nickname" id="nickname" th:placeholder="Nickname" required>
+								</div>
+							</div>
+								
+							<div class="form-group row">
+								<div class="input-group col-12">
+									<div class="input-group-prepend">
+										<span class="input-group-text">
+											<i class="fas fa-key"></i>
+										</span>
+									</div>
+									
+									<input type="password" class="form-control" name="password" id="password" th:placeholder="Password" required>
+								</div>
+							</div>
+							
+							<div align="center" th:if="${param.error}">
+								<p style="font-size: 20; color: #FF1C19;">Name or Password invalid, please verify.</p>
+							</div>
+							
+							<div class="text-right">
+								<button class="btn btn-dark pb-btn-lg" name="Submit" value="Login" type="Submit" th:text="Login"></button>
+							</div>
+						</form>
+			        
+			            <div class="border-top pt-3 my-3">
+			                <small class="text-muted">
+			                    Need An Account? <a class="ml-2" th:href="@{/register}">Register now</a>
+			                </small>
+			            </div>
+			        </fieldset>
+			    </div>
+			</div>
+		</div>
+	</div>
+	
 
 	<div th:replace="fragments/endbody :: endbody"></div>
 </body>

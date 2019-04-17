@@ -1,5 +1,11 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
-<div th:fragment="content">
+<head th:replace="fragments/head :: head"></head>
+
+<body>
+	<div th:replace="fragments/header :: header"></div>
+	
 	<h1>Detail bet</h1>
 	<p th:text="${bet.subject}"></p>
 	<p th:text="${bet.endingDate}"></p>
@@ -15,4 +21,7 @@
 			<button type="submit">Register participant</button>
 		</form>
 	</div>
-</div>
+	
+	<div th:replace="fragments/endbody :: endbody"></div>
+</body>
+</html>

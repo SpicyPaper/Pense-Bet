@@ -92,7 +92,7 @@ public class DetailBetController {
 			
 			for(Invitation i : invitations)
 			{
-				if (u.getId() == i.getUser().getId())
+				if (u.getId() == i.getUser().getId() && i.getBet().getId() == bet.getId())
 				{
 					userOk = false;
 				}

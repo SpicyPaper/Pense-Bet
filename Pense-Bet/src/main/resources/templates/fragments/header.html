@@ -4,7 +4,7 @@
 	    <div class="container">
 	        <a class="navbar-brand p-0" href="/">
 				 <img th:src="@{/favicon.png}"
-				 	class="img-fluid" alt="Pense BET" style="height:30px;"/>
+				 	class="img-fluid pb-nav-logo" alt="Pense BET"/>
 	        </a>
 	
 	        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,25 +15,25 @@
 	            <!-- Left Side Of Navbar -->
 	            <ul class="navbar-nav mr-auto">
 	                <li class="nav-item">
-	                    <a class="nav-link" href="#waiting">
+	                    <a class="nav-link" th:href="@{/bet/user/waiting/1}">
 	                        <i class="far fa-hourglass mr-1"></i>
 	                        Waiting
 	                    </a>
 	                </li>
 	                <li class="nav-item">
-	                    <a class="nav-link" href="#inprogress">
+	                    <a class="nav-link" th:href="@{/bet/user/active/1}">
 	                        <i class="fas fa-hourglass-half mr-1"></i>
-	                        In progress
+	                        Active
 	                    </a>
 	                </li>
 	                <li class="nav-item">
-	                    <a class="nav-link" href="#done">
+	                    <a class="nav-link" th:href="@{/bet/user/ended/1}">
 	                        <i class="fas fa-hourglass-end mr-1"></i>
-	                        Done
+	                        Ended
 	                    </a>
 	                </li>
 	                <li class="nav-item">
-	                    <a class="nav-link" href="#closed">
+	                    <a class="nav-link" th:href="@{/bet/user/closed/1}">
 	                        <i class="fas fa-clipboard-check mr-1"></i>
 	                        Closed
 	                    </a>

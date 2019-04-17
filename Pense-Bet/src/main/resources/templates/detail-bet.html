@@ -6,20 +6,44 @@
 <body>
 	<div th:replace="fragments/header :: header"></div>
 	
-	<h1>Detail bet</h1>
-	<p th:text="${bet.subject}"></p>
-	<p th:text="${bet.endingDate}"></p>
-	<p th:text="${bet.amount}"></p>
-	<div>
-		<form th:action="@{/bet/} + ${bet.id}" th:object="${invitation}" method="post">
-			Invitation 
-			<select th:field="*{user}">
-			    <option th:each="user : ${users}"
-	                          th:value="${user.id}"
-	                          th:utext="${user.nickname}"/>
-			</select>
-			<button type="submit">Register participant</button>
-		</form>
+	<div class="container">
+		<div class="row">
+			<div class="col-12 mt-3">
+			
+			    <div class="offset-md-2 col-md-8">
+			        <fieldset class="form-group">
+			            <legend class="border-bottom mb-4"><h2>Detail bet</h2></legend>
+			    
+						<p th:text="${bet.subject}"></p>
+						<p th:text="${bet.endingDate}"></p>
+						<p th:text="${bet.amount}"></p>
+						
+						<form th:action="@{/bet/} + ${bet.id}" th:object="${invitation}" method="post">
+				            <div class="border-top pt-3 my-3">
+								<div th:if="${#lists.size(users) &gt; 0}">
+									<div class="form-row">
+										<div class="col-md-6 pr-3">
+											<select class="form-control form-control-lg" th:field="*{user}">
+											    <option th:each="user : ${users}"
+									                          th:value="${user.id}"
+									                          th:utext="${user.nickname}"/>
+											</select>
+										</div>
+										<div class="col-md-6 mt-3 mt-md-0">
+											<button type="submit" class="btn btn-dark pb-btn-lg">Add participant</button>
+										</div>
+									</div>
+								</div>
+								<div th:unless="${#lists.size(users) &gt; 0}">
+									All existing users has been added to this bet!
+								</div>
+				            </div>
+						</form>
+			        </fieldset>
+			    </div>
+			
+			</div>
+		</div>
 	</div>
 	
 	<div th:replace="fragments/endbody :: endbody"></div>

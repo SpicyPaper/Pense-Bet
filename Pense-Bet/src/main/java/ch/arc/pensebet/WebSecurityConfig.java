@@ -44,7 +44,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 				.antMatchers("/register").permitAll()
 
 				.antMatchers("/bet/create").authenticated()
-				
+
+				.antMatchers("/bet/{id}").authenticated()
 				.antMatchers("/bet/user/waiting/{page}").authenticated()
 				.antMatchers("/bet/user/active/{page}").authenticated()
 				.antMatchers("/bet/user/ended/{page}").authenticated()

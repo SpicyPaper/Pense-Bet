@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 
 import ch.arc.pensebet.model.Bet;
@@ -23,4 +24,6 @@ public interface IBetService {
 	public Page<Bet> findAllEnded(User user, Pageable pageable);
 	public Optional<Bet> findBetById(Integer id);
 	public void saveBet(Bet bet);
+	public Page<Bet> findBySubjectAndParticipant(User participant, String betSubject, PageRequest pageable);
+	public Page<Bet> findBySubjectAndParticipantAndOwner(User participant, String betSubject, User searchedOwner, PageRequest pageable);
 }

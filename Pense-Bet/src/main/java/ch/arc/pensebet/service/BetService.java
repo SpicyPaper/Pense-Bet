@@ -8,6 +8,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -100,6 +101,19 @@ public class BetService implements IBetService {
 
 	public Bet findOne(Integer id) {
 		return findBetById(id).get();
+	}
+
+	@Override
+	public Page<Bet> findBySubjectAndParticipant(User participant, String betSubject, PageRequest pageable) {
+		// TODO Auto-generated method stub
+		return new PageImpl<Bet>(new ArrayList<Bet>());
+	}
+
+	@Override
+	public Page<Bet> findBySubjectAndParticipantAndOwner(User participant, String betSubject, User searchedOwner,
+			PageRequest pageable) {
+		// TODO Auto-generated method stub
+		return new PageImpl<Bet>(new ArrayList<Bet>());
 	}
 
 }

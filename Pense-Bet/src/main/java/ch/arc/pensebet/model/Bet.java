@@ -59,7 +59,7 @@ public class Bet {
     @OneToMany(fetch=FetchType.LAZY, mappedBy="bet", cascade = CascadeType.ALL)
     private Set<Participation> participations;
     
-    @OneToMany(fetch=FetchType.LAZY, mappedBy="bet", cascade = CascadeType.ALL)
+    @OneToMany(fetch=FetchType.LAZY, mappedBy="bet", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Invitation> invitations;
 	
 	public Bet() { }
@@ -162,6 +162,8 @@ public class Bet {
 					invitation.getUser().getId() == participation.getUser().getId())
 			{
 	        	System.out.println(invitation.getBet() + " : " + invitation.getUser());
+	        	invitation.setBet(null);
+	        	invitation.setUser(null);
 				iterator.remove();
 				break;
 			}

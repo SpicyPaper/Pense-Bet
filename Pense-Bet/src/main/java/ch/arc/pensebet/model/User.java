@@ -41,7 +41,7 @@ public class User {
     @OneToMany(mappedBy="user", cascade = CascadeType.ALL)
     private List<Participation> participations;
 
-    @OneToMany(mappedBy="user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy="user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Invitation> invitations;
     
     public User() { }

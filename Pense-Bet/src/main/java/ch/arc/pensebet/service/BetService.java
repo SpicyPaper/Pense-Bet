@@ -1,9 +1,10 @@
 package ch.arc.pensebet.service;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -63,6 +64,29 @@ public class BetService implements IBetService {
 	}
 
 	@Override
+	public Page<Bet> findBySubjectAndParticipant(User participant, String betSubject, PageRequest pageable) {
+		return findBySubject(betSubject, betRepository.findByParticipant(participant.getId(), pageable));
+	}
+
+	@Override
+	public Page<Bet> findBySubjectAndParticipantAndOwner(User participant, String betSubject, User searchedOwner,
+			PageRequest pageable) {
+		return findBySubject(betSubject, betRepository.findByParticipantAndOwner(participant.getId(), searchedOwner.getId(), pageable));
+	}
+	
+	private Page<Bet> findBySubject(String betSubject, Page<Bet> bets) {
+		String[] betSubjects = betSubject.toLowerCase().split(" ");
+		return new PageImpl<>(bets.getContent().stream().parallel().filter(bet -> stringContainsItemFromList(bet.getSubject().toLowerCase(), betSubjects)).collect(Collectors.toList()));
+	}
+	
+	/**
+	 * Source: https://stackoverflow.com/a/8995988
+	 */
+	private static boolean stringContainsItemFromList(String inputStr, String[] items) {
+	    return Arrays.stream(items).parallel().allMatch(inputStr::contains);
+	}
+
+	@Override
 	public Page<Bet> findAll(User user, State state, Pageable pageable) {
 		List<Participation> participations = participationRepository.findByUser(user, pageable);
 		List<Bet> bets = new ArrayList<Bet>();
@@ -102,18 +126,4 @@ public class BetService implements IBetService {
 	public Bet findOne(Integer id) {
 		return findBetById(id).get();
 	}
-
-	@Override
-	public Page<Bet> findBySubjectAndParticipant(User participant, String betSubject, PageRequest pageable) {
-		// TODO Auto-generated method stub
-		return new PageImpl<Bet>(new ArrayList<Bet>());
-	}
-
-	@Override
-	public Page<Bet> findBySubjectAndParticipantAndOwner(User participant, String betSubject, User searchedOwner,
-			PageRequest pageable) {
-		// TODO Auto-generated method stub
-		return new PageImpl<Bet>(new ArrayList<Bet>());
-	}
-
 }

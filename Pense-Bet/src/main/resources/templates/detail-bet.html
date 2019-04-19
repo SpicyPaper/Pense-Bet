@@ -17,17 +17,17 @@
 			            <div th:if="${canAnswer != null}">
 				            <div>
 					            <form th:action="@{/bet/} + ${bet.id} + @{/participate/accept/true}" method="post">
-					            	<button type="submit" class="btn btn-dark pb-btn-lg">Oui</button>
+					            	<button type="submit" class="btn btn-dark pb-btn-lg">True</button>
 					            </form>
 				            </div>
 				            <div>
 					            <form th:action="@{/bet/} + ${bet.id} + @{/participate/accept/false}" method="post">
-					            	<button type="submit" class="btn btn-dark pb-btn-lg">Non</button>
+					            	<button type="submit" class="btn btn-dark pb-btn-lg">False</button>
 					            </form>
 				            </div>
 				            <div>
 					            <form th:action="@{/bet/} + ${bet.id} + @{/participate/refuse}" method="post">
-					            	<button type="submit" class="btn btn-dark pb-btn-lg">Refuser</button>
+					            	<button type="submit" class="btn btn-dark pb-btn-lg">Refuse</button>
 					            </form>
 				            </div>
 			            </div>
@@ -57,6 +57,12 @@
 								</div>
 				            </div>
 						</form>
+						<h2>Participants</h2>
+						<div th:each="participation : ${participations}">
+							<span th:utext="${participation.user.nickname}"></span>
+							<span>True<input type="checkbox" th:checked="${participation.agree}" disabled/></span>
+							<span>False<input type="checkbox" th:checked="${!participation.agree}" disabled/></span>
+						</div>
 			        </fieldset>
 			    </div>
 			

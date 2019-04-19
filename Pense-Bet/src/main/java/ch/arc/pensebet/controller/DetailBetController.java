@@ -47,18 +47,13 @@ public class DetailBetController {
     public String detailBet(Model model, @PathVariable("id") Integer id, Authentication authentication) {
 		Bet bet = betService.findBetById(id).get();
 		User user = userService.findUserByNickname(authentication.getName());
-		model.addAttribute("bet", bet);
-		model.addAttribute("invitation", new Invitation());
 		
 		if (invitedUserId(bet).contains(user.getId()))
 		{
 			model.addAttribute("canAnswer", true);
 		}
 		
-		if (user.getId() == bet.getOwner().getId())
-		{
-			model.addAttribute("users", getInvitableUsers(userService.findAllUsers(), bet));
-		}
+		fillBetDetail(model, user, bet);
         return "detail-bet";
     }
 	
@@ -71,16 +66,23 @@ public class DetailBetController {
     public String inviteUser(@ModelAttribute Invitation invitation, @PathVariable("id") Integer id, Model model, Authentication authentication) {
 		Bet bet = betService.findBetById(id).get();
 		bet.addInvitation(invitation);
+		User user = userService.findUserByNickname(authentication.getName());
 		betService.saveBet(bet);
-		model.addAttribute("bet", bet);
-		model.addAttribute("invitation", new Invitation());
-		
-		if (userService.findUserByNickname(authentication.getName()).getId() == bet.getOwner().getId())
-		{
-			model.addAttribute("users", getInvitableUsers(userService.findAllUsers(), bet));
-		}
+		fillBetDetail(model, user, bet);
         return "detail-bet";
     }
+	
+	private Model fillBetDetail(Model model, User user, Bet bet)
+	{
+		model.addAttribute("participations", participationService.findParticipationsByBet(bet));
+		model.addAttribute("bet", bet);
+		if (user.getId() == bet.getOwner().getId())
+		{
+			model.addAttribute("invitation", new Invitation());
+			model.addAttribute("users", getInvitableUsers(userService.findAllUsers(), bet));
+		}
+		return model;
+	}
 	
 	@PostMapping("/bet/{id}/participate/accept/{agree}")
 	public String participateBet(@PathVariable("id") Integer id, @PathVariable("agree") boolean agree, Authentication authentication)

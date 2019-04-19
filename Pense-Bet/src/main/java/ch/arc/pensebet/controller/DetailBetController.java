@@ -24,6 +24,7 @@ import ch.arc.pensebet.repository.IBetRepository;
 import ch.arc.pensebet.service.IBetService;
 import ch.arc.pensebet.service.IInvitationService;
 import ch.arc.pensebet.service.IParticipationService;
+import ch.arc.pensebet.service.IStateService;
 import ch.arc.pensebet.service.IUserService;
 
 @Controller
@@ -36,13 +37,13 @@ public class DetailBetController {
 	private IBetService betService;
 	
 	@Autowired
-	private IBetRepository betRepository;
-	
-	@Autowired
 	private IParticipationService participationService;
 	
 	@Autowired
 	private IInvitationService invitationService;
+	
+	@Autowired
+	private IStateService stateService;
 	
 	@GetMapping("/bet/{id}")
     public String detailBet(Model model, @PathVariable("id") Integer id, Authentication authentication) {
@@ -130,6 +131,7 @@ public class DetailBetController {
 		if (isBetOwner(bet, user))
 		{
 			bet.setResult(result);
+			bet.setState(stateService.findStateByName("CLOSED"));
 			betService.saveBet(bet);
 		}
 		

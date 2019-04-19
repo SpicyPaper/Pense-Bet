@@ -13,12 +13,30 @@
 			    <div class="offset-md-2 col-md-8">
 			        <fieldset class="form-group">
 			            <legend class="border-bottom mb-4"><h2>Detail bet</h2></legend>
+			            
+			            <div th:if="${canAnswer != null}">
+				            <div>
+					            <form th:action="@{/bet/} + ${bet.id} + @{/participate/accept/true}" method="post">
+					            	<button type="submit" class="btn btn-dark pb-btn-lg">Oui</button>
+					            </form>
+				            </div>
+				            <div>
+					            <form th:action="@{/bet/} + ${bet.id} + @{/participate/accept/false}" method="post">
+					            	<button type="submit" class="btn btn-dark pb-btn-lg">Non</button>
+					            </form>
+				            </div>
+				            <div>
+					            <form th:action="@{/bet/} + ${bet.id} + @{/participate/refuse}" method="post">
+					            	<button type="submit" class="btn btn-dark pb-btn-lg">Refuser</button>
+					            </form>
+				            </div>
+			            </div>
 			    
 						<p th:text="${bet.subject}"></p>
 						<p th:text="${bet.endingDate}"></p>
 						<p th:text="${bet.amount}"></p>
 						
-						<form th:action="@{/bet/} + ${bet.id}" th:object="${invitation}" method="post">
+						<form th:action="@{/bet/} + ${bet.id}" th:if="${users != null}" th:object="${invitation}" method="post">
 				            <div class="border-top pt-3 my-3">
 								<div th:if="${#lists.size(users) &gt; 0}">
 									<div class="form-row">

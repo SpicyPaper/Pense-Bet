@@ -2,6 +2,7 @@ package ch.arc.pensebet.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
 
@@ -21,6 +22,7 @@ import ch.arc.pensebet.model.User;
 import ch.arc.pensebet.repository.IBetRepository;
 import ch.arc.pensebet.service.IBetService;
 import ch.arc.pensebet.service.IInvitationService;
+import ch.arc.pensebet.service.IParticipationService;
 import ch.arc.pensebet.service.IUserService;
 
 @Controller
@@ -36,34 +38,53 @@ public class DetailBetController {
 	private IBetRepository betRepository;
 	
 	@Autowired
+	private IParticipationService participationService;
+	
+	@Autowired
 	private IInvitationService invitationService;
 	
 	@GetMapping("/bet/{id}")
-    public String detailBet(Model model, @PathVariable("id") Integer id) {
+    public String detailBet(Model model, @PathVariable("id") Integer id, Authentication authentication) {
 		Bet bet = betService.findBetById(id).get();
+		User user = userService.findUserByNickname(authentication.getName());
 		model.addAttribute("bet", bet);
-		model.addAttribute("users", getInvitableUsers(userService.findAllUsers(), bet));
 		model.addAttribute("invitation", new Invitation());
+		
+		if (invitedUserId(bet).contains(user.getId()))
+		{
+			model.addAttribute("canAnswer", true);
+		}
+		
+		if (user.getId() == bet.getOwner().getId())
+		{
+			model.addAttribute("users", getInvitableUsers(userService.findAllUsers(), bet));
+		}
         return "detail-bet";
     }
 	
+	private List<Integer> invitedUserId(Bet bet)
+	{
+		return invitationService.findAllInvitations().stream().mapToInt(i -> i.getUser().getId()).boxed().collect(Collectors.toList());
+	}
+	
 	@PostMapping("/bet/{id}")
-    public String inviteUser(@ModelAttribute Invitation invitation, @PathVariable("id") Integer id, Model model) {
-		System.out.println("INVITATION ENTER");
+    public String inviteUser(@ModelAttribute Invitation invitation, @PathVariable("id") Integer id, Model model, Authentication authentication) {
 		Bet bet = betService.findBetById(id).get();
 		bet.addInvitation(invitation);
 		betService.saveBet(bet);
 		model.addAttribute("bet", bet);
-		model.addAttribute("users", getInvitableUsers(userService.findAllUsers(), bet));
 		model.addAttribute("invitation", new Invitation());
-		System.out.println("INVITATION CREATED");
+		
+		if (userService.findUserByNickname(authentication.getName()).getId() == bet.getOwner().getId())
+		{
+			model.addAttribute("users", getInvitableUsers(userService.findAllUsers(), bet));
+		}
         return "detail-bet";
     }
 	
-	@GetMapping("/bet/{id}/participate/accept/{agree}")
+	@PostMapping("/bet/{id}/participate/accept/{agree}")
 	public String participateBet(@PathVariable("id") Integer id, @PathVariable("agree") boolean agree, Authentication authentication)
 	{
-		System.out.println("PARTICIPATION");
 		Bet bet = betService.findBetById(id).get();
 		User user = userService.findUserByNickname(authentication.getName());
 		Participation participation = new Participation();
@@ -71,11 +92,19 @@ public class DetailBetController {
 		participation.setUser(user);
 		participation.setAgree(agree);
 		bet.addParticipation(participation);
-		System.out.println("CONTROLLER TAILLE AVANT " + bet.getInvitations().size());
 		betService.saveBet(bet);
-		bet.printInvitations();
-		System.out.println("CONTROLLER TAILLE APRÈS " + bet.getInvitations().size());
-		System.out.println("PARTICIPATION ADDED");
+		
+		return "index";
+	}
+	
+	@PostMapping("/bet/{id}/participate/refuse")
+	public String refuseBet(@PathVariable("id") Integer id, Authentication authentication)
+	{
+		Bet bet = betService.findBetById(id).get();
+		User user = userService.findUserByNickname(authentication.getName());
+		
+		bet.cancelInvitation(user);
+		betService.saveBet(bet);
 		
 		return "index";
 	}
@@ -83,6 +112,7 @@ public class DetailBetController {
 	private List<User> getInvitableUsers(List<User> allUsers, Bet bet)
 	{
 		List<Invitation> invitations = invitationService.findAllInvitations();
+		List<Participation> participations = participationService.findAllParticipations();
 		List<User> invitableUser = new ArrayList<>();
 		for(User u : allUsers)
 		{
@@ -95,6 +125,15 @@ public class DetailBetController {
 				if (u.getId() == i.getUser().getId() && i.getBet().getId() == bet.getId())
 				{
 					userOk = false;
+					break;
+				}
+			}
+			for(Participation p : participations)
+			{
+				if (u.getId() == p.getUser().getId() && p.getBet().getId() == bet.getId())
+				{
+					userOk = false;
+					break;
 				}
 			}
 			if (userOk)

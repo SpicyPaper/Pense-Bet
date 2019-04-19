@@ -14,6 +14,7 @@
 			        <fieldset class="form-group">
 			            <legend class="border-bottom mb-4"><h2>Detail bet</h2></legend>
 			            
+			            <!-- ALEX ICI -->
 			            <div th:if="${canAnswer != null}">
 				            <div>
 					            <form th:action="@{/bet/} + ${bet.id} + @{/participate/accept/true}" method="post">
@@ -31,10 +32,23 @@
 					            </form>
 				            </div>
 			            </div>
+			            <!-- END ALEX -->
 			    
 						<p th:text="${bet.subject}"></p>
 						<p th:text="${bet.endingDate}"></p>
 						<p th:text="${bet.amount}"></p>
+						
+						<!-- ALEX LÀ -->
+						<div th:if="${canConfirmBet != null}">
+							<h2>Bet result :</h2>
+							<form th:action="@{/bet/} + ${bet.id} + @{/confirm/true}" method="post">
+					            	<button type="submit" class="btn btn-dark pb-btn-lg">True</button>
+				            </form>
+				            <form th:action="@{/bet/} + ${bet.id} + @{/confirm/false}" method="post">
+					            	<button type="submit" class="btn btn-dark pb-btn-lg">False</button>
+				            </form>
+						</div>
+						<!-- END ALEX -->
 						
 						<form th:action="@{/bet/} + ${bet.id}" th:if="${users != null}" th:object="${invitation}" method="post">
 				            <div class="border-top pt-3 my-3">
@@ -57,12 +71,15 @@
 								</div>
 				            </div>
 						</form>
+						
+						<!-- ALEX LÀ AUSSI-->
 						<h2>Participants</h2>
 						<div th:each="participation : ${participations}">
 							<span th:utext="${participation.user.nickname}"></span>
 							<span>True<input type="checkbox" th:checked="${participation.agree}" disabled/></span>
 							<span>False<input type="checkbox" th:checked="${!participation.agree}" disabled/></span>
 						</div>
+						<!-- END ALEX -->
 			        </fieldset>
 			    </div>
 			

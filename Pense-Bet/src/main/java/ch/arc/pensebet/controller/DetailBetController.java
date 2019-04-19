@@ -1,6 +1,7 @@
 package ch.arc.pensebet.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -76,12 +77,34 @@ public class DetailBetController {
 	{
 		model.addAttribute("participations", participationService.findParticipationsByBet(bet));
 		model.addAttribute("bet", bet);
-		if (user.getId() == bet.getOwner().getId())
+		if (canAddParticipant(user, bet))
 		{
 			model.addAttribute("invitation", new Invitation());
 			model.addAttribute("users", getInvitableUsers(userService.findAllUsers(), bet));
 		}
+		
+		if (isBetOwner(bet, user) && isBetOver(bet) && bet.getResult() == null)
+		{
+			model.addAttribute("canConfirmBet", true);
+		}
+		
 		return model;
+	}
+	
+	private boolean canAddParticipant(User user, Bet bet)
+	{
+		// Check if is owner and the bet isn't over
+		return isBetOwner(bet, user) && !isBetOver(bet);
+	}
+	
+	private boolean isBetOwner(Bet bet, User user)
+	{
+		return user.getId() == bet.getOwner().getId();
+	}
+	
+	private boolean isBetOver(Bet bet)
+	{
+		return bet.getEndingDate().compareTo(new Date()) < 0;	
 	}
 	
 	@PostMapping("/bet/{id}/participate/accept/{agree}")
@@ -95,6 +118,20 @@ public class DetailBetController {
 		participation.setAgree(agree);
 		bet.addParticipation(participation);
 		betService.saveBet(bet);
+		
+		return "index";
+	}
+	
+	@PostMapping("/bet/{id}/confirm/{result}")
+	public String confirmBet(@PathVariable("id") Integer id, @PathVariable("result") boolean result, Authentication authentication)
+	{
+		Bet bet = betService.findBetById(id).get();
+		User user = userService.findUserByNickname(authentication.getName());
+		if (isBetOwner(bet, user))
+		{
+			bet.setResult(result);
+			betService.saveBet(bet);
+		}
 		
 		return "index";
 	}

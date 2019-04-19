@@ -1,0 +1,11 @@
+.pb-nav-logo {
+	height : 30px;
+}
+
+.pb-btn-lg {
+    border-radius: 0.8em;
+    border: 0em solid rgb(54, 54, 54);
+    font-size: 1.5em;
+    box-shadow: #3a3a3a 0em 0em 0.3em;
+    font-weight: bold;
+}

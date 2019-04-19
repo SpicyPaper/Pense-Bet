@@ -1,18 +1,92 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
-<div th:fragment="content">
-	<h1>Detail bet</h1>
-	<p th:text="${bet.subject}"></p>
-	<p th:text="${bet.endingDate}"></p>
-	<p th:text="${bet.amount}"></p>
-	<div>
-		<form th:action="@{/bet/} + ${bet.id}" th:object="${invitation}" method="post">
-			Invitation 
-			<select th:field="*{user}">
-			    <option th:each="user : ${users}"
-	                          th:value="${user.id}"
-	                          th:utext="${user.nickname}"/>
-			</select>
-			<button type="submit">Register participant</button>
-		</form>
+<head th:replace="fragments/head :: head"></head>
+
+<body>
+	<div th:replace="fragments/header :: header"></div>
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-12 mt-3">
+			
+			    <div class="offset-md-2 col-md-8">
+			        <fieldset class="form-group">
+			            <legend class="border-bottom mb-4"><h2>Detail bet</h2></legend>
+			            
+			            <!-- ALEX ICI -->
+			            <div th:if="${canAnswer != null}">
+				            <div>
+					            <form th:action="@{/bet/} + ${bet.id} + @{/participate/accept/true}" method="post">
+					            	<button type="submit" class="btn btn-dark pb-btn-lg">True</button>
+					            </form>
+				            </div>
+				            <div>
+					            <form th:action="@{/bet/} + ${bet.id} + @{/participate/accept/false}" method="post">
+					            	<button type="submit" class="btn btn-dark pb-btn-lg">False</button>
+					            </form>
+				            </div>
+				            <div>
+					            <form th:action="@{/bet/} + ${bet.id} + @{/participate/refuse}" method="post">
+					            	<button type="submit" class="btn btn-dark pb-btn-lg">Refuse</button>
+					            </form>
+				            </div>
+			            </div>
+			            <!-- END ALEX -->
+			    
+						<p th:text="${bet.subject}"></p>
+						<p th:text="${bet.endingDate}"></p>
+						<p th:text="${bet.amount}"></p>
+						
+						<!-- ALEX LÀ -->
+						<div th:if="${canConfirmBet != null}">
+							<h2>Bet result :</h2>
+							<form th:action="@{/bet/} + ${bet.id} + @{/confirm/true}" method="post">
+					            	<button type="submit" class="btn btn-dark pb-btn-lg">True</button>
+				            </form>
+				            <form th:action="@{/bet/} + ${bet.id} + @{/confirm/false}" method="post">
+					            	<button type="submit" class="btn btn-dark pb-btn-lg">False</button>
+				            </form>
+						</div>
+						<!-- END ALEX -->
+						
+						<form th:action="@{/bet/} + ${bet.id}" th:if="${users != null}" th:object="${invitation}" method="post">
+				            <div class="border-top pt-3 my-3">
+								<div th:if="${#lists.size(users) &gt; 0}">
+									<div class="form-row">
+										<div class="col-md-6 pr-3">
+											<select class="form-control form-control-lg" th:field="*{user}">
+											    <option th:each="user : ${users}"
+									                          th:value="${user.id}"
+									                          th:utext="${user.nickname}"/>
+											</select>
+										</div>
+										<div class="col-md-6 mt-3 mt-md-0">
+											<button type="submit" class="btn btn-dark pb-btn-lg">Add participant</button>
+										</div>
+									</div>
+								</div>
+								<div th:unless="${#lists.size(users) &gt; 0}">
+									All existing users has been added to this bet!
+								</div>
+				            </div>
+						</form>
+						
+						<!-- ALEX LÀ AUSSI-->
+						<h2>Participants</h2>
+						<div th:each="participation : ${participations}">
+							<span th:utext="${participation.user.nickname}"></span>
+							<span>True<input type="checkbox" th:checked="${participation.agree}" disabled/></span>
+							<span>False<input type="checkbox" th:checked="${!participation.agree}" disabled/></span>
+						</div>
+						<!-- END ALEX -->
+			        </fieldset>
+			    </div>
+			
+			</div>
+		</div>
 	</div>
-</div>
+	
+	<div th:replace="fragments/endbody :: endbody"></div>
+</body>
+</html>

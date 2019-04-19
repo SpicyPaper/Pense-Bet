@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
@@ -24,12 +25,12 @@ public class Participation implements Serializable {
 
 	@Id
 	@ManyToOne
-	@PrimaryKeyJoinColumn(name = "BET_ID", referencedColumnName = "ID")
+	@JoinColumn(name = "bet_id")
 	private Bet bet;
 
 	@Id
 	@ManyToOne
-	@PrimaryKeyJoinColumn(name = "USER_ID", referencedColumnName = "ID")
+	@JoinColumn(name = "user_id")
 	private User user;
 
 	@Column

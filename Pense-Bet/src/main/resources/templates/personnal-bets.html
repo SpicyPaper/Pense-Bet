@@ -1,5 +1,11 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
-<div th:fragment="content">
+<head th:replace="fragments/head :: head"></head>
+
+<body>
+	<div th:replace="fragments/header :: header"></div>
+	
 	<h1>Bets</h1>
 	
 	<!-- Adapted from: https://dzone.com/articles/simple-pagination-example-with-spring-data-and-thy -->
@@ -51,4 +57,7 @@
 		</div>
 		<div class="col-md-2"></div>
 	</div>
-</div>
+	
+	<div th:replace="fragments/endbody :: endbody"></div>
+</body>
+</html>

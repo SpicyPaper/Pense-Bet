@@ -1,11 +1,15 @@
 package ch.arc.pensebet.model;
 
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,6 +18,10 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+import org.springframework.transaction.annotation.Transactional;
 
 @Entity
 @Table(name="bet")
@@ -48,11 +56,11 @@ public class Bet {
     @JoinColumn
     private User owner;
     
-    @OneToMany(mappedBy="bet", cascade = CascadeType.ALL)
-    private List<Participation> parti_bets;
+    @OneToMany(fetch=FetchType.LAZY, mappedBy="bet", cascade = CascadeType.ALL)
+    private Set<Participation> participations;
     
-    @OneToMany(mappedBy="bet", cascade = CascadeType.ALL)
-    private List<Invitation> invitations;
+    @OneToMany(fetch=FetchType.LAZY, mappedBy="bet", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Invitation> invitations;
 	
 	public Bet() { }
 	
@@ -111,15 +119,59 @@ public class Bet {
 	public void setState(State state) {
 		this.state = state;
 	}
-	
+		
+	public Set<Participation> getParticipations() {
+		return participations;
+	}
+
+	public void setParticipations(Set<Participation> participations) {
+		this.participations = participations;
+	}
+
+	public Set<Invitation> getInvitations() {
+		return invitations;
+	}
+
+	public void setInvitations(Set<Invitation> invitations) {
+		this.invitations = invitations;
+	}
+
 	@Override
 	public String toString() {
 		return getSubject();
 	}
 	
+	@Transactional
 	public void addInvitation(Invitation invitation)
 	{
 		invitation.setBet(this);
 		invitations.add(invitation);
 	}
+	
+	public void addParticipation(Participation participation)
+	{
+		participation.setBet(this);
+		
+		cancelInvitation(participation.getUser());
+	    
+		participations.add(participation);
+	}
+	
+	public void cancelInvitation(User user)
+	{
+		Iterator<Invitation> iterator = invitations.iterator();
+	    while(iterator.hasNext()) {
+	        Invitation invitation = iterator.next();
+	        
+	        if (invitation.getBet().getId() == getId() && 
+					invitation.getUser().getId() == user.getId())
+			{
+	        	invitation.setBet(null);
+	        	invitation.setUser(null);
+				iterator.remove();
+				break;
+			}
+	    }
+	}
+	
 }

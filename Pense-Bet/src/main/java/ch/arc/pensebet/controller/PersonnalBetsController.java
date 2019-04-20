@@ -32,7 +32,7 @@ public class PersonnalBetsController {
     public ModelAndView personnalBetsActive(@PathVariable("page") int page, Authentication authentication, Model model) {
     	ModelAndView modelAndView = new ModelAndView("personnal-bets");
     	PageRequest pageable = PageRequest.of(page - 1, 15);
-    	Page<Bet> betPage = betService.findPersonnalActive(userService.findUserByNickname(authentication.getName()), 
+    	Page<Bet> betPage = betService.findByOwnerAndStateActive(userService.findUserByNickname(authentication.getName()), 
 				  										   pageable);
     	int totalPages = betPage.getTotalPages();
         if(totalPages > 0) {
@@ -47,7 +47,7 @@ public class PersonnalBetsController {
     public ModelAndView personnalBetsEnded(@PathVariable("page") int page, Authentication authentication, Model model) {
     	ModelAndView modelAndView = new ModelAndView("personnal-bets");
     	PageRequest pageable = PageRequest.of(page - 1, 15);
-    	Page<Bet> betPage = betService.findPersonnalEnded(userService.findUserByNickname(authentication.getName()), 
+    	Page<Bet> betPage = betService.findByOwnerAndStateEnded(userService.findUserByNickname(authentication.getName()), 
 				  										  pageable);
     	int totalPages = betPage.getTotalPages();
         if(totalPages > 0) {
@@ -62,7 +62,7 @@ public class PersonnalBetsController {
     public ModelAndView personnalBetsClosed(@PathVariable("page") int page, Authentication authentication, Model model) {
     	ModelAndView modelAndView = new ModelAndView("personnal-bets");
     	PageRequest pageable = PageRequest.of(page - 1, 15);
-    	Page<Bet> betPage = betService.findPersonnalClosed(userService.findUserByNickname(authentication.getName()), 
+    	Page<Bet> betPage = betService.findByOwnerAndStateClosed(userService.findUserByNickname(authentication.getName()), 
 				  										   pageable);
     	int totalPages = betPage.getTotalPages();
         if(totalPages > 0) {

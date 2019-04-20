@@ -14,5 +14,7 @@ import ch.arc.pensebet.model.User;
 @Repository("betRepository")
 public interface IBetRepository extends JpaRepository<Bet, Integer> {
 	public Page<Bet> findByOwnerAndState(User user, State state, Pageable pageReguest);
+	public Page<Bet> findAll(Pageable pageReguest);
+	public Page<Bet> findByState(State state, Pageable pageReguest);
 	public Optional<Bet> findById(Integer id);
 }

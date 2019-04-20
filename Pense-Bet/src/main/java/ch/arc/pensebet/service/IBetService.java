@@ -13,14 +13,19 @@ import ch.arc.pensebet.model.User;
 
 @Service
 public interface IBetService {
-	public Page<Bet> findPersonnalActive(User user, Pageable pageable);
-	public Page<Bet> findPersonnalClosed(User user, Pageable pageable);
-	public Page<Bet> findPersonnalEnded(User user, Pageable pageable);
-	public Page<Bet> findAll(User user, State state, Pageable pageable);
-	public Page<Bet> findAllWaiting(User user, Pageable pageable);
-	public Page<Bet> findAllActive(User user, Pageable pageable);
-	public Page<Bet> findAllClosed(User user, Pageable pageable);
-	public Page<Bet> findAllEnded(User user, Pageable pageable);
+	public Page<Bet> findByOwnerAndStateActive(User user, Pageable pageable);
+	public Page<Bet> findByOwnerAndStateClosed(User user, Pageable pageable);
+	public Page<Bet> findByOwnerAndStateEnded(User user, Pageable pageable);
+	public Page<Bet> findByInvitationAndStateWaiting(User user, Pageable pageable);
+	public Page<Bet> findByParticipantAndState(User user, State state, Pageable pageable);
+	public Page<Bet> findByParticipantAndStateActive(User user, Pageable pageable);
+	public Page<Bet> findByParticipantAndStateClosed(User user, Pageable pageable);
+	public Page<Bet> findByParticipantAndStateEnded(User user, Pageable pageable);
+	public Page<Bet> findAll(Pageable pageable);
+	public Page<Bet> findByStateActive(Pageable pageable);
+	public Page<Bet> findByStateClosed(Pageable pageable);
+	public Page<Bet> findByStateEnded(Pageable pageable);
 	public Optional<Bet> findBetById(Integer id);
 	public void saveBet(Bet bet);
+	public void deleteBet(Bet bet);
 }

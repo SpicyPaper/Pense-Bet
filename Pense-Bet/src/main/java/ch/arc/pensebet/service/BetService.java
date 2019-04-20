@@ -1,9 +1,8 @@
 package ch.arc.pensebet.service;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -47,59 +46,76 @@ public class BetService implements IBetService {
 	}
 
 	@Override
-	public Page<Bet> findPersonnalActive(User user, Pageable pageable) {
+	public void deleteBet(Bet bet) {
+		betRepository.delete(bet);
+	}
+
+	@Override
+	public Page<Bet> findByOwnerAndStateActive(User user, Pageable pageable) {
 		return betRepository.findByOwnerAndState(user, stateRepository.findByName("ACTIVE"), pageable);
 	}
 
 	@Override
-	public Page<Bet> findPersonnalClosed(User user, Pageable pageable) {
+	public Page<Bet> findByOwnerAndStateClosed(User user, Pageable pageable) {
 		return betRepository.findByOwnerAndState(user, stateRepository.findByName("CLOSED"), pageable);
 	}
 
 	@Override
-	public Page<Bet> findPersonnalEnded(User user, Pageable pageable) {
+	public Page<Bet> findByOwnerAndStateEnded(User user, Pageable pageable) {
 		return betRepository.findByOwnerAndState(user, stateRepository.findByName("ENDED"), pageable);
 	}
 
 	@Override
-	public Page<Bet> findAll(User user, State state, Pageable pageable) {
-		List<Participation> participations = participationRepository.findByUser(user, pageable);
-		List<Bet> bets = new ArrayList<Bet>();
-		for (int i = 0; i < participations.size(); i++) {
-			if (participations.get(i).getBet().getState().getId() == state.getId()) {
-				bets.add(participations.get(i).getBet());
-			}
-		}
-		return new PageImpl<>(bets);
-	}
-
-	@Override
-	public Page<Bet> findAllWaiting(User user, Pageable pageable) {
+	public Page<Bet> findByInvitationAndStateWaiting(User user, Pageable pageable) {
 		List<Invitation> invitations = invitationRepository.findByUser(user, pageable);
-		List<Bet> bets = new ArrayList<Bet>();
-		for (int i = 0; i < invitations.size(); i++) {
-			bets.add(invitations.get(i).getBet());
-		}
-		return new PageImpl<>(bets);
+		return new PageImpl<>(invitations.stream().parallel().map(Invitation::getBet).collect(Collectors.toList()));
 	}
 
 	@Override
-	public Page<Bet> findAllActive(User user, Pageable pageable) {
-		return findAll(user, stateRepository.findByName("ACTIVE"), pageable);
+	public Page<Bet> findByParticipantAndState(User user, State state, Pageable pageable) {
+		List<Participation> participations = participationRepository.findByUser(user, pageable);
+		return new PageImpl<>(participations.stream().parallel()
+				.filter(participation -> participation.getBet().getState().getId() == state.getId())
+				.map(Participation::getBet).collect(Collectors.toList()));
 	}
 
 	@Override
-	public Page<Bet> findAllClosed(User user, Pageable pageable) {
-		return findAll(user, stateRepository.findByName("CLOSED"), pageable);
+	public Page<Bet> findByParticipantAndStateActive(User user, Pageable pageable) {
+		return findByParticipantAndState(user, stateRepository.findByName("ACTIVE"), pageable);
 	}
 
 	@Override
-	public Page<Bet> findAllEnded(User user, Pageable pageable) {
-		return findAll(user, stateRepository.findByName("ENDED"), pageable);
+	public Page<Bet> findByParticipantAndStateClosed(User user, Pageable pageable) {
+		return findByParticipantAndState(user, stateRepository.findByName("CLOSED"), pageable);
+	}
+
+	@Override
+	public Page<Bet> findByParticipantAndStateEnded(User user, Pageable pageable) {
+		return findByParticipantAndState(user, stateRepository.findByName("ENDED"), pageable);
 	}
 
 	public Bet findOne(Integer id) {
 		return findBetById(id).get();
+	}
+
+	@Override
+	public Page<Bet> findAll(Pageable pageable) {
+		return betRepository.findAll(pageable);
+	}
+
+	@Override
+	public Page<Bet> findByStateActive(Pageable pageable) {
+		return betRepository.findByState(stateRepository.findByName("ACTIVE"), pageable);
+	}
+
+	@Override
+	public Page<Bet> findByStateClosed(Pageable pageable) {
+		return betRepository.findByState(stateRepository.findByName("CLOSED"), pageable);
+	}
+
+	@Override
+	public Page<Bet> findByStateEnded(Pageable pageable) {
+		return betRepository.findByState(stateRepository.findByName("ENDED"), pageable);
 	}
 
 }

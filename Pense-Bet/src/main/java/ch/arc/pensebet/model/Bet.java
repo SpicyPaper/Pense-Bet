@@ -147,34 +147,26 @@ public class Bet {
 	{
 		participation.setBet(this);
 		
-		System.out.println("TAILE AVANT : " + invitations.size());
-		
+		cancelInvitation(participation.getUser());
+	    
+		participations.add(participation);
+	}
+	
+	public void cancelInvitation(User user)
+	{
 		Iterator<Invitation> iterator = invitations.iterator();
 	    while(iterator.hasNext()) {
 	        Invitation invitation = iterator.next();
 	        
-	        if (invitation.getBet().getId() == participation.getBet().getId() && 
-					invitation.getUser().getId() == participation.getUser().getId())
+	        if (invitation.getBet().getId() == getId() && 
+					invitation.getUser().getId() == user.getId())
 			{
-	        	System.out.println(invitation.getBet() + " : " + invitation.getUser());
 	        	invitation.setBet(null);
 	        	invitation.setUser(null);
 				iterator.remove();
 				break;
 			}
 	    }
-	    
-	    System.out.println("TAILE APRÈS : " + invitations.size());
-		participations.add(participation);
 	}
 	
-	public void printInvitations()
-	{
-		Iterator<Invitation> iterator = invitations.iterator();
-	    while(iterator.hasNext()) {
-	        Invitation invitation = iterator.next();
-	        
-	        System.out.println(invitation.getUser() + " : " + invitation.getBet());
-	    }
-	}
 }

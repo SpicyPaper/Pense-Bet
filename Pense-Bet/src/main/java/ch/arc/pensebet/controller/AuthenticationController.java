@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ch.arc.pensebet.model.User;
@@ -35,7 +36,7 @@ public class AuthenticationController {
     }
     
     @PostMapping("register")
-    public ModelAndView createNewUser(@Valid User user, BindingResult bindingResult) {
+    public ModelAndView createNewUser(@RequestParam(value = "passwordConfirmation", required = true) String passwordConfirmation, @Valid User user, BindingResult bindingResult) {
     	ModelAndView modelAndView = new ModelAndView();
     	User userExists = userService.findUserByNickname(user.getNickname());
     	
@@ -43,7 +44,7 @@ public class AuthenticationController {
             bindingResult
                     .rejectValue("email", "error.user", "There is already a user registered with this nickname");
         }
-        if (bindingResult.hasErrors()) {
+        if (bindingResult.hasErrors() || user.getPassword() != passwordConfirmation) {
             modelAndView.setViewName("register");
         } else {
         	userService.saveUser(user);

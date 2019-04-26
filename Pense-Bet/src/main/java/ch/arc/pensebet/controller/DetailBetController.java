@@ -61,7 +61,7 @@ public class DetailBetController {
 	
 	private List<Integer> invitedUserId(Bet bet)
 	{
-		return invitationService.findAllInvitations().stream().mapToInt(i -> i.getUser().getId()).boxed().collect(Collectors.toList());
+		return invitationService.findAllInvitations().stream().filter(i -> i.getBet().getId() == bet.getId()).mapToInt(i -> i.getUser().getId()).boxed().collect(Collectors.toList());
 	}
 	
 	@PostMapping("/bet/{id}")

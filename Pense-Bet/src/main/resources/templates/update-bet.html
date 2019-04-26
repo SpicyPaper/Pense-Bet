@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/head :: head"></head>
+
+<body>
+	<div th:replace="fragments/header :: header"></div>
+	
+	<form th:action="@{/bet/} + ${bet.id} + @{/update}" th:object="${bet}" method="post">
+		<div>
+			<label>Bet subject</label> <input type="text" placeholder="Subject" th:field="*{subject}" />
+		</div>
+		
+		<div>
+			<label>Ending date</label> <input type="date" th:field="*{endingDate}" />
+		</div>
+		
+		<div>
+			<label>Amount</label> <input type="number" th:field="*{amount}" />
+		</div>
+		
+		<button type="submit">Update</button>
+	</form>
+	
+	<div th:replace="fragments/endbody :: endbody"></div>
+</body>
+</html>

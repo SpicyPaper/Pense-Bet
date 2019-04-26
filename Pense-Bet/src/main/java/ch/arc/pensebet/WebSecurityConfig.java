@@ -54,10 +54,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 				.antMatchers("/bet/user/created/ended/{page}").authenticated()
 				.antMatchers("/bet/user/created/closed/{page}").authenticated()
 				
-				.antMatchers("/bet/admin/all/{page}").hasRole("ADMIN")
-				.antMatchers("/bet/{id}/delete").hasRole("ADMIN")
-				.antMatchers("/bet/moderator/all/{page}").hasAnyRole("ADMIN", "MOD")
-				.antMatchers("/bet/{id}/update").hasAnyRole("ADMIN", "MOD")
+//				.antMatchers("/bet/admin/all/{page}").hasRole("ADMIN")
+//				.antMatchers("/bet/{id}/delete").hasRole("ADMIN")
+//				.antMatchers("/bet/moderator/all/{page}").hasAnyRole("ADMIN", "MOD")
+//				.antMatchers("/bet/{id}/update").hasAnyRole("ADMIN", "MOD")
 				
 				.antMatchers("/admin").authenticated().and().formLogin()
 				.loginPage("/login").failureUrl("/login?error=true")

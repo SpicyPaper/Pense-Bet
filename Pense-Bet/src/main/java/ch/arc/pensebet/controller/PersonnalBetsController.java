@@ -30,7 +30,7 @@ public class PersonnalBetsController {
 
     @GetMapping("/bet/user/created/active/{page}")
     public ModelAndView personnalBetsActive(@PathVariable("page") int page, Authentication authentication, Model model) {
-    	ModelAndView modelAndView = new ModelAndView("personnal-bets");
+    	ModelAndView modelAndView = new ModelAndView("bets/personnal-bets");
     	PageRequest pageable = PageRequest.of(page - 1, 15);
     	Page<Bet> betPage = betService.findByOwnerAndStateActive(userService.findUserByNickname(authentication.getName()), 
 				  										   pageable);
@@ -45,7 +45,7 @@ public class PersonnalBetsController {
 
     @GetMapping("/bet/user/created/ended/{page}")
     public ModelAndView personnalBetsEnded(@PathVariable("page") int page, Authentication authentication, Model model) {
-    	ModelAndView modelAndView = new ModelAndView("personnal-bets");
+    	ModelAndView modelAndView = new ModelAndView("bets/personnal-bets");
     	PageRequest pageable = PageRequest.of(page - 1, 15);
     	Page<Bet> betPage = betService.findByOwnerAndStateEnded(userService.findUserByNickname(authentication.getName()), 
 				  										  pageable);
@@ -60,7 +60,7 @@ public class PersonnalBetsController {
 
     @GetMapping("/bet/user/created/closed/{page}")
     public ModelAndView personnalBetsClosed(@PathVariable("page") int page, Authentication authentication, Model model) {
-    	ModelAndView modelAndView = new ModelAndView("personnal-bets");
+    	ModelAndView modelAndView = new ModelAndView("bets/personnal-bets");
     	PageRequest pageable = PageRequest.of(page - 1, 15);
     	Page<Bet> betPage = betService.findByOwnerAndStateClosed(userService.findUserByNickname(authentication.getName()), 
 				  										   pageable);

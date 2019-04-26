@@ -1,5 +1,7 @@
 package ch.arc.pensebet.service;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -7,6 +9,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -69,6 +72,32 @@ public class BetService implements IBetService {
 	public Page<Bet> findByInvitationAndStateWaiting(User user, Pageable pageable) {
 		List<Invitation> invitations = invitationRepository.findByUser(user, pageable);
 		return new PageImpl<>(invitations.stream().parallel().map(Invitation::getBet).collect(Collectors.toList()));
+	}
+
+	@Override
+	public Page<Bet> findBySubjectAndParticipant(User participant, String betSubject, PageRequest pageable) {
+		return findBySubject(betSubject, betRepository.findByParticipant(participant.getId(), pageable));
+	}
+
+	@Override
+	public Page<Bet> findBySubjectAndParticipantAndOwner(User participant, String betSubject, User searchedOwner,
+			PageRequest pageable) {
+		return findBySubject(betSubject, betRepository.findByParticipantAndOwner(participant.getId(), searchedOwner.getId(), pageable));
+	}
+	
+	private Page<Bet> findBySubject(String betSubject, Page<Bet> bets) {
+		String[] betSubjects = betSubject.toLowerCase().split(" ");
+		System.out.println("ICI");
+		for (Bet b : bets.getContent())
+			System.out.println(b);
+		return new PageImpl<>(bets.getContent().stream().parallel().filter(bet -> stringContainsItemFromList(bet.getSubject().toLowerCase(), betSubjects)).collect(Collectors.toList()));
+	}
+	
+	/**
+	 * Source: https://stackoverflow.com/a/8995988
+	 */
+	private static boolean stringContainsItemFromList(String inputStr, String[] items) {
+	    return Arrays.stream(items).parallel().allMatch(inputStr::contains);
 	}
 
 	@Override

@@ -87,9 +87,6 @@ public class BetService implements IBetService {
 	
 	private Page<Bet> findBySubject(String betSubject, Page<Bet> bets) {
 		String[] betSubjects = betSubject.toLowerCase().split(" ");
-		System.out.println("ICI");
-		for (Bet b : bets.getContent())
-			System.out.println(b);
 		return new PageImpl<>(bets.getContent().stream().parallel().filter(bet -> stringContainsItemFromList(bet.getSubject().toLowerCase(), betSubjects)).collect(Collectors.toList()));
 	}
 	

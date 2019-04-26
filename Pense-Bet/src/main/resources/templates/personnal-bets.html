@@ -37,7 +37,20 @@
 						<td th:text="${{bet.subject}}"></td>
 						<td th:text="${{bet.owner.nickname}}"></td>
 						<td th:text="${{bet.state.name}}"></td>
-						<td><a th:href="@{/bet/{betId}(betId=${bet.id})}">Detail</a></td>
+						<td>
+							<form th:action="@{/bet/} + ${bet.id}" method="get">
+				            	<button type="submit">Detail</button>
+				            </form>
+						<td th:if="${canModify != null}">
+							<form th:action="@{/bet/} + ${bet.id} + @{/update}" method="get">
+				            	<button type="submit">Modify</button>
+				            </form>
+						</td>
+						<td th:if="${canModify != null}">
+							<form th:action="@{/bet/} + ${bet.id} + @{/delete}" method="post">
+				            	<button type="submit">Delete</button>
+				            </form>
+						</td>
 					</tr>
 				</tbody>
 			</table>

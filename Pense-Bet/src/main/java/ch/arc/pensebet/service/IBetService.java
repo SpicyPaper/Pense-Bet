@@ -31,4 +31,5 @@ public interface IBetService {
 	public Page<Bet> findBySubjectAndParticipant(User participant, String betSubject, PageRequest pageable);
 	public Page<Bet> findBySubjectAndParticipantAndOwner(User participant, String betSubject, User searchedOwner, PageRequest pageable);
 	public void deleteBet(Bet bet);
+	public Page<Bet> detectEnded(Page<Bet> bets);
 }

@@ -2,6 +2,7 @@ package ch.arc.pensebet.service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -55,7 +56,7 @@ public class BetService implements IBetService {
 
 	@Override
 	public Page<Bet> findByOwnerAndStateActive(User user, Pageable pageable) {
-		return betRepository.findByOwnerAndState(user, stateRepository.findByName("ACTIVE"), pageable);
+		return detectEnded(betRepository.findByOwnerAndState(user, stateRepository.findByName("ACTIVE"), pageable));
 	}
 
 	@Override
@@ -110,7 +111,7 @@ public class BetService implements IBetService {
 
 	@Override
 	public Page<Bet> findByParticipantAndStateActive(User user, Pageable pageable) {
-		return findByParticipantAndState(user, stateRepository.findByName("ACTIVE"), pageable);
+		return detectEnded(findByParticipantAndState(user, stateRepository.findByName("ACTIVE"), pageable));
 	}
 
 	@Override
@@ -134,7 +135,7 @@ public class BetService implements IBetService {
 
 	@Override
 	public Page<Bet> findByStateActive(Pageable pageable) {
-		return betRepository.findByState(stateRepository.findByName("ACTIVE"), pageable);
+		return detectEnded(betRepository.findByState(stateRepository.findByName("ACTIVE"), pageable));
 	}
 
 	@Override
@@ -145,6 +146,30 @@ public class BetService implements IBetService {
 	@Override
 	public Page<Bet> findByStateEnded(Pageable pageable) {
 		return betRepository.findByState(stateRepository.findByName("ENDED"), pageable);
+	}
+	
+	@Override
+	public Page<Bet> detectEnded(Page<Bet> bets) {
+		List<Bet> betsNotEnded = new ArrayList<>();
+		
+		for (int i = bets.getContent().size() - 1; i >= 0; i--)
+		{
+			Bet bet = bets.getContent().get(i);
+			System.out.println(bet.getEndingDate() + " ---- " + new Date());
+			if (bet.getEndingDate().compareTo(new Date()) < 0)
+			{
+				System.out.println("INSIDE IF");
+				bet.setState(stateRepository.findByName("ENDED"));
+				betRepository.save(bet);
+			}
+			else
+			{
+				System.out.println("INSIDE ELSE");
+				betsNotEnded.add(bet);
+			}
+		}
+		
+		return new PageImpl<>(betsNotEnded);
 	}
 
 }

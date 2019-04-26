@@ -54,13 +54,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 				.antMatchers("/bet/user/created/active/{page}").authenticated()
 				.antMatchers("/bet/user/created/ended/{page}").authenticated()
 				.antMatchers("/bet/user/created/closed/{page}").authenticated()
-				
-//				.antMatchers("/bet/admin/all/{page}").hasRole("ADMIN")
-//				.antMatchers("/bet/{id}/delete").hasRole("ADMIN")
-//				.antMatchers("/bet/moderator/all/{page}").hasAnyRole("ADMIN", "MOD")
-//				.antMatchers("/bet/{id}/update").hasAnyRole("ADMIN", "MOD")
-				
-				.antMatchers("/admin").authenticated().and().formLogin()
+
+				.antMatchers("/bet/admin/all/{page}").hasAuthority("ADMIN")
+				.antMatchers("/bet/{id}/delete").hasAuthority("ADMIN")
+				.antMatchers("/bet/moderator/all/{page}").hasAnyAuthority("ADMIN", "MOD")
+				.antMatchers("/bet/{id}/update").hasAnyAuthority("ADMIN", "MOD")
+				.and().formLogin()
 				.loginPage("/login").failureUrl("/login?error=true")
 				.defaultSuccessUrl("/",true)
 				.usernameParameter("nickname")

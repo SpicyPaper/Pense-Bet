@@ -43,10 +43,12 @@
 	            <!-- Right Side Of Navbar -->
 	            <ul class="navbar-nav ml-auto">
 	            
-				    <form th:action="@{/search/1}" method="post" class="form-inline my-2 my-lg-0">
-				    	<label>Bet's subject</label> <input class="form-control mr-sm-2" type="text" name="betSubject" />
-				     	<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-				    </form>
+	            	<div class="d-lg-inline-block d-none">
+					    <form th:action="@{/search/1}" method="post" class="form-inline">
+					    	<input class="pb-search-bar form-control mr-sm-2" type="text" name="betSubject" />
+					     	<button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+					    </form>
+	            	</div>
 	            
 	                <li class="nav-item dropdown">
 	                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -69,6 +71,11 @@
 	                        <a class="dropdown-item" href="#">
 	                            <i class="fas fa-plus-circle"></i>
 	                            Create new bet
+	                        </a>
+	                        
+	                        <a class="dropdown-item d-inline-block d-lg-none" th:href="@{/search/1}">
+	                            <i class="fas fa-search"></i>
+	                            Search bets
 	                        </a>
 	
 	                        <a class="dropdown-item" href="#">

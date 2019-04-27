@@ -119,6 +119,8 @@ public class DetailBetController {
 		participation.setAgree(agree);
 		bet.addParticipation(participation);
 		betService.saveBet(bet);
+		user.addMoney(-bet.getAmount());
+		userService.saveUser(user);
 		
 		return "index";
 	}
@@ -130,13 +132,31 @@ public class DetailBetController {
 		User user = userService.findUserByNickname(authentication.getName());
 		if (isBetOwner(bet, user))
 		{
-			bet.setResult(result);
-			bet.setState(stateService.findStateByName("CLOSED"));
-			betService.saveBet(bet);
+			closeBet(bet, result);
 		}
 		
 		return "index";
 	}
+	
+	private void closeBet(Bet bet, boolean betResult)
+	{
+		bet.setResult(betResult);
+		bet.setState(stateService.findStateByName("CLOSED"));
+		betService.saveBet(bet);
+		
+		int numberParticipant = bet.getParticipations().size();
+		if (numberParticipant > 0)
+		{
+			float totalAmount = bet.getAmount() * numberParticipant;
+			int numberCorrectAnswer = (int) bet.getParticipations().stream().filter(p -> p.isAgree() == betResult).count();
+			float moneyPerWinner = totalAmount / numberCorrectAnswer;
+			bet.getParticipations().stream().filter(p -> p.isAgree() == betResult).forEach(p -> {
+				p.getUser().addMoney(moneyPerWinner);
+				userService.saveUser(p.getUser());
+			});
+		}
+	}
+	
 	
 	@PostMapping("/bet/{id}/participate/refuse")
 	public String refuseBet(@PathVariable("id") Integer id, Authentication authentication)

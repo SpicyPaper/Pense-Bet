@@ -38,6 +38,8 @@ public class User {
     @JoinColumn
     private Role role;
     
+    private float money;
+    
     @OneToMany(mappedBy="user", cascade = CascadeType.ALL)
     private List<Participation> participations;
 
@@ -78,6 +80,18 @@ public class User {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public float getMoney() {
+		return money;
+	}
+
+	public void setMoney(float money) {
+		this.money = money;
+	}
+	
+	public void addMoney(float money) {
+		this.money += money;
 	}
 
 	@Override

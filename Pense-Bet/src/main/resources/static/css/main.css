@@ -9,3 +9,50 @@
     box-shadow: #3a3a3a 0em 0em 0.3em;
     font-weight: bold;
 }
+
+.pb-search-bar {
+	width: 200px !important;
+}
+
+.pb-agree {
+	background-color: darkgreen !important;
+	color: white;
+	border: 4px solid black;
+	border-radius: 20px;
+}
+
+.pb-disagree {
+	background-color: darkred !important;
+	color: white;
+	border: 4px solid black;
+	border-radius: 20px;
+}
+
+.pb-agree-user {
+	font-size: 1.2em;
+	border: 4px solid darkgreen;
+}
+
+.pb-disagree-user {
+	border: 4px solid darkred;
+}
+
+/* Extra large devices (large desktops, 1200px and down) */
+@media (max-width: 1200px) {
+	
+}
+
+/* Large devices (desktops, 992px and down) */
+@media (max-width: 992px) {
+    
+}
+
+/* Medium devices (tablets, 768px and down) */
+@media (max-width: 768px) {
+    
+}
+
+/* Small devices (landscape phones, 576px and down) */
+@media (max-width: 576px) {
+	
+}

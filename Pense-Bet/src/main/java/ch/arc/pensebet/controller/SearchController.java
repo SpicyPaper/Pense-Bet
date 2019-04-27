@@ -34,7 +34,7 @@ public class SearchController {
 	@GetMapping("/search/{page}")
 	public ModelAndView simpleSearch(@RequestParam(value = "betSubject", required = false) String betSubject,
 			@PathVariable("page") int page, Authentication authentication) {
-		ModelAndView modelAndView = new ModelAndView("search");
+		ModelAndView modelAndView = new ModelAndView("bets/search");
 		PageRequest pageable = PageRequest.of(page - 1, 15);
 
 		User participant = userService.findUserByNickname(authentication.getName());
@@ -62,7 +62,7 @@ public class SearchController {
 	public ModelAndView advancedSearch(@RequestParam("betSubject") String betSubject,
 			@RequestParam(value = "searchedOwner", required = false) User searchedOwner, @PathVariable("page") int page,
 			Authentication authentication) {
-		ModelAndView modelAndView = new ModelAndView("search");
+		ModelAndView modelAndView = new ModelAndView("bets/search");
 		PageRequest pageable = PageRequest.of(page - 1, 15);
 
 		User participant = userService.findUserByNickname(authentication.getName());

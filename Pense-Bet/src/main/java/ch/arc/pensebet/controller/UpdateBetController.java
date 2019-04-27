@@ -41,7 +41,7 @@ public class UpdateBetController {
 	
 	@GetMapping("/bet/admin/all/{page}")
     public ModelAndView adminAllBets(@PathVariable("page") int page, Authentication authentication, Model model) {
-		ModelAndView modelAndView = new ModelAndView("personnal-bets");
+		ModelAndView modelAndView = new ModelAndView("bets/personnal-bets");
     	PageRequest pageable = PageRequest.of(page - 1, 15);
     	Page<Bet> betPage = betService.findAll(pageable);
     	int totalPages = betPage.getTotalPages();
@@ -66,7 +66,7 @@ public class UpdateBetController {
 	
 	@GetMapping("/bet/moderator/all/{page}")
     public ModelAndView moderatorAllBets(@PathVariable("page") int page, Authentication authentication, Model model) {
-		ModelAndView modelAndView = new ModelAndView("personnal-bets");
+		ModelAndView modelAndView = new ModelAndView("bets/personnal-bets");
     	PageRequest pageable = PageRequest.of(page - 1, 15);
     	Page<Bet> betPage = betService.findAll(pageable);
     	int totalPages = betPage.getTotalPages();
@@ -84,7 +84,7 @@ public class UpdateBetController {
     public ModelAndView showUpdateBet(@PathVariable("id") Integer id, Authentication authentication) {
 		Bet bet = betService.findBetById(id).get();
 		
-		ModelAndView modelAndView = new ModelAndView("update-bet");
+		ModelAndView modelAndView = new ModelAndView("bets/update-bet");
 		modelAndView.addObject("bet", bet);
         return modelAndView;
     }

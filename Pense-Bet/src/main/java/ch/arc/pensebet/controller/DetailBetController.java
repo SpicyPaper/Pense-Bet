@@ -56,7 +56,7 @@ public class DetailBetController {
 		}
 		
 		fillBetDetail(model, user, bet);
-        return "detail-bet";
+        return "bets/detail-bet";
     }
 	
 	private List<Integer> invitedUserId(Bet bet)
@@ -71,7 +71,7 @@ public class DetailBetController {
 		User user = userService.findUserByNickname(authentication.getName());
 		betService.saveBet(bet);
 		fillBetDetail(model, user, bet);
-        return "detail-bet";
+        return "bets/detail-bet";
     }
 	
 	private Model fillBetDetail(Model model, User user, Bet bet)

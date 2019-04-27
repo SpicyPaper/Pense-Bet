@@ -12,7 +12,19 @@
 			
 			    <div class="offset-md-2 col-md-8">
 			        <fieldset class="form-group">
-			            <legend class="border-bottom mb-4"><h2>Detail bet</h2></legend>
+			            <legend class="border-bottom mb-4"><h2 th:text="${bet.subject}"></h2></legend>
+			    
+			    		<div class="row">
+				    		<div class="form-group col-lg-6">
+					    		<label class="font-weight-bold">Ending Date</label>
+					    		<input class="form-control font-weight-bold" type="text" th:value="${#dates.format(bet.endingDate, 'dd MMMMM yyyy')}" disabled>
+				    		</div>
+				    		
+				    		<div class="form-group col-lg-6">
+					    		<label class="font-weight-bold">Bet Amount</label>
+					    		<input class="form-control font-weight-bold" type="text" th:value="${bet.amount}" disabled>
+				    		</div>
+			    		</div>
 			            
 			            <!-- ALEX ICI -->
 			            <div th:if="${canAnswer != null}">
@@ -33,10 +45,6 @@
 				            </div>
 			            </div>
 			            <!-- END ALEX -->
-			    
-						<p th:text="${bet.subject}"></p>
-						<p th:text="${bet.endingDate}"></p>
-						<p th:text="${bet.amount}"></p>
 						
 						<!-- ALEX LÀ -->
 						<div th:if="${canConfirmBet != null}">
@@ -75,9 +83,20 @@
 						<!-- ALEX LÀ AUSSI-->
 						<h2>Participants</h2>
 						<div th:each="participation : ${participations}">
-							<span th:utext="${participation.user.nickname}"></span>
-							<span>True<input type="checkbox" th:checked="${participation.agree}" disabled/></span>
-							<span>False<input type="checkbox" th:checked="${!participation.agree}" disabled/></span>
+							<div class="row mb-3">
+								<div class="col-6 col-lg-3">
+					    			<input class="form-control font-weight-bold pb-agree text-center" type="text" th:value="Agree" disabled>
+								</div>
+								<div class="col-6 col-lg-3">
+					    			<input class="form-control font-weight-bold pb-disagree text-center" type="text" th:value="Disagree" disabled>
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-lg-6">
+					    			<input class="form-control font-weight-bold text-center" type="text" th:classappend="${participation.agree} ? pb-agree-user : pb-disagree-user" th:value=${participation.user.nickname} disabled>
+								</div>
+							</div>
 						</div>
 						<!-- END ALEX -->
 			        </fieldset>

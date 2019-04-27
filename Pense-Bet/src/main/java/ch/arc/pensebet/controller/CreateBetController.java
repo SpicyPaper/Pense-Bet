@@ -45,7 +45,7 @@ public class CreateBetController {
 	@GetMapping("/bet/create")
 	public String betCreation(Model model) {
 		model.addAttribute("bet", new Bet());
-		return "create-bet";
+		return "bets/create-bet";
 	}
 
 	@PostMapping("/bet/create")
@@ -54,7 +54,7 @@ public class CreateBetController {
 		bet.setState(stateService.findStateByName("ACTIVE"));
 		bet.setCreationDate(new Date());
 		betService.saveBet(bet);
-		return "index.html";
+		return "index";
 	}
 
 }

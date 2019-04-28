@@ -80,9 +80,8 @@
 				            </div>
 						</form>
 						
-						<!-- ALEX LÀ AUSSI-->
 						<h2>Participants</h2>
-						<div th:each="participation : ${participations}">
+						<div th:if="${#lists.size(participations) &gt; 0}">
 							<div class="row mb-3">
 								<div class="col-6 col-lg-3">
 					    			<input class="form-control font-weight-bold pb-agree text-center" type="text" th:value="Agree" disabled>
@@ -93,12 +92,14 @@
 							</div>
 							
 							<div class="row">
-								<div class="col-lg-6">
+								<div th:each="participation : ${participations}" class="col-lg-6 mb-3">
 					    			<input class="form-control font-weight-bold text-center" type="text" th:classappend="${participation.agree} ? pb-agree-user : pb-disagree-user" th:value=${participation.user.nickname} disabled>
 								</div>
 							</div>
 						</div>
-						<!-- END ALEX -->
+						<div th:unless="${#lists.size(participations) &gt; 0}">
+							No user is yet participating to this bet!
+						</div>
 			        </fieldset>
 			    </div>
 			

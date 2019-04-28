@@ -1,6 +1,7 @@
 package ch.arc.pensebet.model;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -42,6 +43,9 @@ public class Bet {
 	
 	@Column
 	private Boolean result = null;
+	
+	@Column
+	private Float moneyPerWinner;
 
     @ManyToOne
     @JoinColumn
@@ -131,6 +135,14 @@ public class Bet {
 		this.invitations = invitations;
 	}
 
+	public Float getMoneyPerWinner() {
+		return moneyPerWinner;
+	}
+
+	public void setMoneyPerWinner(Float moneyPerWinner2) {
+		this.moneyPerWinner = moneyPerWinner2;
+	}
+
 	@Override
 	public String toString() {
 		return getSubject();
@@ -140,6 +152,8 @@ public class Bet {
 	public void addInvitation(Invitation invitation)
 	{
 		invitation.setBet(this);
+		if (invitations == null)
+			invitations = new HashSet<Invitation>();
 		invitations.add(invitation);
 	}
 	

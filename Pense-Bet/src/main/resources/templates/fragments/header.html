@@ -61,18 +61,23 @@
 		                    </a>
 		
 		                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-		
-		                        <a class="dropdown-item" href="#">
-		                            <i class="fas fa-user-edit"></i>
-		                            Profile
+		                        
+		                        <a class="dropdown-item" th:href="@{/bet/user/created/active/1}">
+			                        <i class="fas fa-hourglass-half mr-1"></i>
+			                        Active
 		                        </a>
 		                        
-		                        <a class="dropdown-item" href="#">
-		                            <i class="fas fa-folder-open"></i>
-		                            My bets
+		                        <a class="dropdown-item" th:href="@{/bet/user/created/ended/1}">
+			                        <i class="fas fa-hourglass-end mr-1"></i>
+			                        Ended
 		                        </a>
 		                        
-		                        <a class="dropdown-item" href="#">
+		                        <a class="dropdown-item" th:href="@{/bet/user/created/closed/1}">
+			                        <i class="fas fa-clipboard-check mr-1"></i>
+			                        Closed
+		                        </a>
+		                        
+		                        <a class="dropdown-item" th:href="@{/bet/create}">
 		                            <i class="fas fa-plus-circle"></i>
 		                            Create new bet
 		                        </a>
@@ -82,7 +87,7 @@
 		                            Search bets
 		                        </a>
 		
-		                        <a class="dropdown-item" href="#">
+		                        <a class="dropdown-item" th:href="@{/logout}">
 		                            <i class="fas fa-sign-out-alt"></i>
 		                            Logout
 		                        </a>

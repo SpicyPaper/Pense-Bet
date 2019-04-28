@@ -13,7 +13,7 @@ public class GlobalControllerAdvice {
 	@Autowired
 	private IUserService userService;
 	
-    @ModelAttribute("user")
+    @ModelAttribute("loggedUser")
     public User populateUser() {
 
     	Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();

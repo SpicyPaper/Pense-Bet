@@ -41,7 +41,7 @@
 	            </ul>
 	
 	            <!-- Right Side Of Navbar -->
-	            <ul class="navbar-nav ml-auto" th:if="${user != null}">
+	            <ul class="navbar-nav ml-auto" th:if="${loggedUser != null}">
 	            
 	            	<div class="d-lg-inline-block d-none">
 					    <form th:action="@{/search/1}" method="post" class="form-inline">
@@ -51,12 +51,12 @@
 	            	</div>
 	            	
 		            	<div class="d-lg-inline-block d-none">
-						    <span style="color:white" th:text="${user.money}"></span>
+						    <span style="color:white" th:text="${loggedUser.money}"></span>
 		            	</div>
 		            	
 		                <li class="nav-item dropdown">
 		                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-		                        <span th:text="${user.nickname}"></span> <span class="caret"></span>
+		                        <span th:text="${loggedUser.nickname}"></span> <span class="caret"></span>
 		                        <i class="fas fa-user ml-1"></i>
 		                    </a>
 		

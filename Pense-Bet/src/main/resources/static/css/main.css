@@ -10,6 +10,30 @@
     font-weight: bold;
 }
 
+.pb-btn-agree-lg {
+    border-radius: 0.8em;
+    border: 0em solid rgb(54, 54, 54);
+    font-size: 1.5em;
+    box-shadow: darkgreen 0em 0em 0.3em;
+    font-weight: bold;
+}
+
+.pb-btn-agree-lg:hover {
+	background-color: green;
+}
+
+.pb-btn-disagree-lg {
+    border-radius: 0.8em;
+    border: 0em solid rgb(54, 54, 54);
+    font-size: 1.5em;
+    box-shadow: darkred 0em 0em 0.3em;
+    font-weight: bold;
+}
+
+.pb-btn-disagree-lg:hover {
+	background-color: red;
+}
+
 .pb-search-bar {
 	width: 200px !important;
 }

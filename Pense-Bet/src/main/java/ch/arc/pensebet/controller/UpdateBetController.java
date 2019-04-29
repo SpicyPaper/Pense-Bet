@@ -52,6 +52,7 @@ public class UpdateBetController {
         modelAndView.addObject("betList", betPage.getContent());
         modelAndView.addObject("user", userService.findUserByNickname(authentication.getName()));
         modelAndView.addObject("canModify", true);
+        modelAndView.addObject("canDelete", true);
         return modelAndView;
     }
 	

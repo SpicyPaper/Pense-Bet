@@ -26,24 +26,31 @@
 				    		</div>
 			    		</div>
 			    		
+			            <!-- User answer -->
 			            <div class="mb-5" th:if="${canAnswer != null}">
-				            <div>
-					            <form th:action="@{/bet/} + ${bet.id} + @{/participate/accept/true}" method="post">
-					            	<button type="submit" class="btn btn-dark pb-btn-lg">Agree</button>
+						
+							<h2 class="">Answer to the bet</h2>
+							
+							<p>
+								Chose what you want to do with this bet.
+							</p>
+							
+							<div class="btn-group">
+					            <form class="mr-3" th:action="@{/bet/} + ${bet.id} + @{/participate/accept/true}" method="post">
+					            	<button type="submit" class="btn btn-outline-dark pb-btn-agree-lg">Agree</button>
 					            </form>
-				            </div>
-				            <div>
-					            <form th:action="@{/bet/} + ${bet.id} + @{/participate/accept/false}" method="post">
-					            	<button type="submit" class="btn btn-dark pb-btn-lg">Disagree</button>
+					            
+					            <form class="mr-3" th:action="@{/bet/} + ${bet.id} + @{/participate/accept/false}" method="post">
+					            	<button type="submit" class="btn btn-outline-dark pb-btn-disagree-lg">Disagree</button>
 					            </form>
-				            </div>
-				            <div>
+					            
 					            <form th:action="@{/bet/} + ${bet.id} + @{/participate/refuse}" method="post">
-					            	<button type="submit" class="btn btn-dark pb-btn-lg">Ignore bet</button>
+					            	<button type="submit" class="btn btn-outline-dark pb-btn-neutral-lg">Ignore bet</button>
 					            </form>
 				            </div>
 			            </div>
 			            
+			            <!-- Confirmation -->
 						<div class="mb-5" th:if="${canConfirmBet != null}">
 						
 							<h2 class="">Bet result</h2>
@@ -54,16 +61,17 @@
 							
 							<div class="btn-group">
 								<form class="mr-3" th:action="@{/bet/} + ${bet.id} + @{/confirm/true}" method="post">
-						            	<button type="submit" class="btn btn-outline-dark pb-btn-agree-lg">True</button>
+					            	<button type="submit" class="btn btn-outline-dark pb-btn-agree-lg">True</button>
 					            </form>
 					            
-					            <form class="" th:action="@{/bet/} + ${bet.id} + @{/confirm/false}" method="post">
-						            	<button type="submit" class="btn btn-outline-dark pb-btn-disagree-lg">False</button>
+					            <form th:action="@{/bet/} + ${bet.id} + @{/confirm/false}" method="post">
+					            	<button type="submit" class="btn btn-outline-dark pb-btn-disagree-lg">False</button>
 					            </form>
 							</div>
 						</div>
 						
-						<form th:action="@{/bet/} + ${bet.id}" th:if="${users != null}" th:object="${invitation}" method="post">
+			            <!-- Invitation -->
+						<form th:if="${users != null}" th:action="@{/bet/} + ${bet.id}" th:object="${invitation}" method="post">
 				            <div class="border-top pt-3 my-3">
 								<div th:if="${#lists.size(users) &gt; 0}">
 									<div class="form-row">
@@ -85,22 +93,9 @@
 				            </div>
 						</form>
 						
+			            <!-- Participant -->
 						<h2>Participants</h2>
 						<div th:if="${#lists.size(participations) &gt; 0}">
-							<!--<div class="row mb-3">
-								<div class="col-6 col-lg-3">
-					    			<input class="form-control font-weight-bold pb-agree text-center" type="text" th:value="Agree" disabled>
-								</div>
-								<div class="col-6 col-lg-3">
-					    			<input class="form-control font-weight-bold pb-disagree text-center" type="text" th:value="Disagree" disabled>
-								</div>
-							</div>
-							
-							<div class="row">
-								<div th:each="participation : ${participations}" class="col-lg-6 mb-3">
-					    			<input class="form-control font-weight-bold text-center" type="text" th:classappend="${participation.agree} ? pb-agree-user : pb-disagree-user" th:value=${participation.user.nickname} disabled>
-								</div>
-							</div>  -->
 							<div class="row mb-3" th:each="participation : ${participations}">
 								<div class="col-7 col-lg-9">
 					    			<input class="form-control font-weight-bold text-center" type="text" th:value=${participation.user.nickname} disabled>

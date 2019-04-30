@@ -34,6 +34,18 @@
 	background-color: red;
 }
 
+.pb-btn-neutral-lg {
+    border-radius: 0.8em;
+    border: 0em solid rgb(54, 54, 54);
+    font-size: 1.5em;
+    box-shadow: gray 0em 0em 0.3em;
+    font-weight: bold;
+}
+
+.pb-btn-neutral-lg:hover {
+	background-color: gray;
+}
+
 .pb-search-bar {
 	width: 200px !important;
 }

@@ -52,7 +52,7 @@
 		            	
 	                <li class="nav-item dropdown">
 	                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-	                        <span th:text="${user.nickname}"></span> <span class="caret"></span>
+	                        <span th:text="${loggedUser.nickname}"></span> <span class="caret"></span>
 	                        <i class="fas fa-user ml-1"></i>
 	                    </a>
 	
@@ -60,7 +60,7 @@
 	                        
 	                        <a class="dropdown-item" th:href="@{/bet/user/created/closed/1}">
 		                        <i class="fas fa-wallet mr-1"></i>
-		                        <span th:text="${user.money}"></span>
+		                        <span th:text="${loggedUser.money}"></span>
 	                        </a>
 	                        
 	                        <a class="dropdown-item" th:href="@{/bet/create}">

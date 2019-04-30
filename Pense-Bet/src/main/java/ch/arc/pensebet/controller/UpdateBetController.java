@@ -42,7 +42,7 @@ public class UpdateBetController {
 	@GetMapping("/bet/admin/all/{page}")
     public ModelAndView adminAllBets(@PathVariable("page") int page, Authentication authentication, Model model) {
 		ModelAndView modelAndView = new ModelAndView("bets/personnal-bets");
-    	PageRequest pageable = PageRequest.of(page - 1, 15);
+    	PageRequest pageable = PageRequest.of(page - 1, 3);
     	Page<Bet> betPage = betService.findAll(pageable);
     	int totalPages = betPage.getTotalPages();
         if(totalPages > 0) {
@@ -53,6 +53,7 @@ public class UpdateBetController {
         modelAndView.addObject("user", userService.findUserByNickname(authentication.getName()));
         modelAndView.addObject("canModify", true);
         modelAndView.addObject("canDelete", true);
+        modelAndView.addObject("pagePagination", "admin");
         return modelAndView;
     }
 	
@@ -68,7 +69,7 @@ public class UpdateBetController {
 	@GetMapping("/bet/moderator/all/{page}")
     public ModelAndView moderatorAllBets(@PathVariable("page") int page, Authentication authentication, Model model) {
 		ModelAndView modelAndView = new ModelAndView("bets/personnal-bets");
-    	PageRequest pageable = PageRequest.of(page - 1, 15);
+    	PageRequest pageable = PageRequest.of(page - 1, 3);
     	Page<Bet> betPage = betService.findAll(pageable);
     	int totalPages = betPage.getTotalPages();
         if(totalPages > 0) {
@@ -78,6 +79,7 @@ public class UpdateBetController {
         modelAndView.addObject("betList", betPage.getContent());
         modelAndView.addObject("user", userService.findUserByNickname(authentication.getName()));
         modelAndView.addObject("canModify", true);
+        modelAndView.addObject("pagePagination", "modo");
         return modelAndView;
     }
 	

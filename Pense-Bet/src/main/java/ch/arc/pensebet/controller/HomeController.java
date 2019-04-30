@@ -36,60 +36,60 @@ public class HomeController {
     @GetMapping("/bet/user/waiting/{page}")
     public ModelAndView allBetsWaiting(@PathVariable("page") int page, Authentication authentication, Model model) {
     	ModelAndView modelAndView = new ModelAndView("bets/personnal-bets");
-    	PageRequest pageable = PageRequest.of(page - 1, 15);
-    	Page<Bet> betPage = betService.findByInvitationAndStateWaiting(userService.findUserByNickname(authentication.getName()), 
-				  									  pageable);
+    	PageRequest pageable = PageRequest.of(page - 1, 3);
+    	Page<Bet> betPage = betService.findByInvitationAndStateWaiting(userService.findUserByNickname(authentication.getName()), pageable);
     	int totalPages = betPage.getTotalPages();
         if(totalPages > 0) {
             List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages).boxed().collect(Collectors.toList());
             modelAndView.addObject("pageNumbers", pageNumbers);
         }
         modelAndView.addObject("betList", betPage.getContent());
+        modelAndView.addObject("pagePagination", "normal");
         return modelAndView;
     }
 
     @GetMapping("/bet/user/active/{page}")
     public ModelAndView allBetsActive(@PathVariable("page") int page, Authentication authentication, Model model) {
     	ModelAndView modelAndView = new ModelAndView("bets/personnal-bets");
-    	PageRequest pageable = PageRequest.of(page - 1, 15);
-    	Page<Bet> betPage = betService.findByParticipantAndStateActive(userService.findUserByNickname(authentication.getName()), 
-				  									 pageable);
+    	PageRequest pageable = PageRequest.of(page - 1, 3);
+    	Page<Bet> betPage = betService.findByParticipantAndStateActive(userService.findUserByNickname(authentication.getName()), pageable);
     	int totalPages = betPage.getTotalPages();
         if(totalPages > 0) {
             List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages).boxed().collect(Collectors.toList());
             modelAndView.addObject("pageNumbers", pageNumbers);
         }
         modelAndView.addObject("betList", betPage.getContent());
+        modelAndView.addObject("pagePagination", "normal");
         return modelAndView;
     }
 
     @GetMapping("/bet/user/ended/{page}")
     public ModelAndView allBetsEnded(@PathVariable("page") int page, Authentication authentication, Model model) {
     	ModelAndView modelAndView = new ModelAndView("bets/personnal-bets");
-    	PageRequest pageable = PageRequest.of(page - 1, 15);
-    	Page<Bet> betPage = betService.findByParticipantAndStateEnded(userService.findUserByNickname(authentication.getName()), 
-				  									pageable);
+    	PageRequest pageable = PageRequest.of(page - 1, 3);
+    	Page<Bet> betPage = betService.findByParticipantAndStateEnded(userService.findUserByNickname(authentication.getName()), pageable);
     	int totalPages = betPage.getTotalPages();
         if(totalPages > 0) {
             List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages).boxed().collect(Collectors.toList());
             modelAndView.addObject("pageNumbers", pageNumbers);
         }
         modelAndView.addObject("betList", betPage.getContent());
+        modelAndView.addObject("pagePagination", "normal");
         return modelAndView;
     }
 
     @GetMapping("/bet/user/closed/{page}")
     public ModelAndView allBetsClosed(@PathVariable("page") int page, Authentication authentication, Model model) {
     	ModelAndView modelAndView = new ModelAndView("bets/personnal-bets");
-    	PageRequest pageable = PageRequest.of(page - 1, 15);
-    	Page<Bet> betPage = betService.findByParticipantAndStateClosed(userService.findUserByNickname(authentication.getName()), 
-				  									 pageable);
+    	PageRequest pageable = PageRequest.of(page - 1, 3);
+    	Page<Bet> betPage = betService.findByParticipantAndStateClosed(userService.findUserByNickname(authentication.getName()), pageable);
     	int totalPages = betPage.getTotalPages();
         if(totalPages > 0) {
             List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages).boxed().collect(Collectors.toList());
             modelAndView.addObject("pageNumbers", pageNumbers);
         }
         modelAndView.addObject("betList", betPage.getContent());
+        modelAndView.addObject("pagePagination", "normal");
         return modelAndView;
     }
 }

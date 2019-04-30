@@ -11,7 +11,6 @@
 			<div class="col-12 mt-3">
 			
 				<div class="row">
-					<!-- TODO : A voir si c'est utile --\> th:if="${betList != null && !betList.isEmpty()}" -->
 					<div class="col-12 col-sm-6 col-lg-4 mb-5" th:each="bet : ${betList}">
 						<div class="card bg-light">
 							<div class="card-header"><h2 th:text="${bet.subject}"></h2></div>
@@ -65,8 +64,11 @@
 			<div class="col-12">
 				<nav aria-label="Pagination">
 					<ul class="pagination justify-content-center">
-						<li class="page-item" th:each="pageNumber : ${pageNumbers}">
-							<a class="page-link" th:href="@{|/bet/user/created/active/${pageNumber}|}" th:text="${pageNumber}"></a>
+						<li class="page-item" th:each="pageNumber : ${pageNumbers}" th:switch="${pagePagination}">
+							<a th:case="created" class="page-link" th:href="@{|/bet/user/created/active/${pageNumber}|}" th:text="${pageNumber}"></a>
+							<a th:case="normal" class="page-link" th:href="@{|/bet/user/waiting/${pageNumber}|}" th:text="${pageNumber}"></a>
+							<a th:case="search" class="page-link" th:href="@{|/search/${pageNumber}|}" th:text="${pageNumber}"></a>
+							<a th:case="admin" class="page-link" th:href="@{|/bet/admin/all/${pageNumber}|}" th:text="${pageNumber}"></a>
 						</li>
 					</ul>
 				</nav>

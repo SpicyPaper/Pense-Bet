@@ -35,7 +35,7 @@ public class SearchController {
 	public ModelAndView simpleSearch(@RequestParam(value = "betSubject", required = false) String betSubject,
 			@PathVariable("page") int page, Authentication authentication) {
 		ModelAndView modelAndView = new ModelAndView("bets/search");
-		PageRequest pageable = PageRequest.of(page - 1, 15);
+		PageRequest pageable = PageRequest.of(page - 1, 3);
 
 		User participant = userService.findUserByNickname(authentication.getName());
 
@@ -54,6 +54,7 @@ public class SearchController {
 		List<User> allUsers = userService.findAllUsers();
 		allUsers.remove(participant);
 		modelAndView.addObject("users", allUsers);
+        modelAndView.addObject("pagePagination", "search");
 
 		return modelAndView;
 	}
@@ -63,7 +64,7 @@ public class SearchController {
 			@RequestParam(value = "searchedOwner", required = false) User searchedOwner, @PathVariable("page") int page,
 			Authentication authentication) {
 		ModelAndView modelAndView = new ModelAndView("bets/search");
-		PageRequest pageable = PageRequest.of(page - 1, 15);
+		PageRequest pageable = PageRequest.of(page - 1, 3);
 
 		User participant = userService.findUserByNickname(authentication.getName());
 
@@ -81,6 +82,7 @@ public class SearchController {
 		List<User> allUsers = userService.findAllUsers();
 		allUsers.remove(participant);
 		modelAndView.addObject("users", allUsers);
+        modelAndView.addObject("pagePagination", "search");
 
 		return modelAndView;
 	}

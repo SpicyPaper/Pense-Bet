@@ -7,6 +7,7 @@ import java.util.stream.IntStream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,6 +40,7 @@ public class PersonnalBetsController {
             modelAndView.addObject("pageNumbers", pageNumbers);
         }
         modelAndView.addObject("betList", betPage.getContent());
+        modelAndView.addObject("pagePagination", "created");
         return modelAndView;
     }
 
@@ -53,6 +55,7 @@ public class PersonnalBetsController {
             modelAndView.addObject("pageNumbers", pageNumbers);
         }
         modelAndView.addObject("betList", betPage.getContent());
+        modelAndView.addObject("pagePagination", "created");
         return modelAndView;
     }
 
@@ -67,6 +70,7 @@ public class PersonnalBetsController {
             modelAndView.addObject("pageNumbers", pageNumbers);
         }
         modelAndView.addObject("betList", betPage.getContent());
+        modelAndView.addObject("pagePagination", "created");
         return modelAndView;
     }
 }

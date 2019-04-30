@@ -27,7 +27,7 @@
 									</div>
 									
 									<input type="text" th:field="*{email}" placeholder="Email" class="form-control" required />
-									<label th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="validation-message"></label>
+									<label th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="pb-error-msg col-12"></label>
 								</div>
 							</div>
 								
@@ -40,7 +40,7 @@
 									</div>
 									
 									<input type="text" th:field="*{nickname}" placeholder="Nickname" class="form-control" required />
-									<label th:if="${#fields.hasErrors('nickname')}" th:errors="*{nickname}" class="validation-message"></label>
+									<label th:if="${#fields.hasErrors('nickname')}" th:errors="*{nickname}" class="pb-error-msg col-12"></label>
 								</div>
 							</div>
 
@@ -53,7 +53,7 @@
 									</div>
 									
 									<input type="password" th:field="*{password}" placeholder="Password" class="form-control" required />
-									<label th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="validation-message"></label>
+									<label th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="pb-error-msg col-12"></label>
 								</div>
 							</div>
 
@@ -65,7 +65,7 @@
 										</span>
 									</div>
 									
-									<input type="password" placeholder="Confirmation" class="form-control" name="passwordConfirmation" />
+									<input type="password" placeholder="Confirmation" class="form-control" name="passwordConfirmation" required />
 								</div>
 							</div>
 							
@@ -73,7 +73,8 @@
 								<button class="btn btn-dark pb-btn-lg" name="Submit" value="Register" type="Submit">Register</button>
 							</div>
 				
-							<span th:utext="${successMessage}"></span>
+							<span class="pb-success-msg" th:utext="${successMessage}"></span>
+							<span class="pb-error-msg" th:utext="${errorMessage}"></span>
 							
 						</form>
 			        

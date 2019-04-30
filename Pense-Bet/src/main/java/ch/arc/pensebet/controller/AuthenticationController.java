@@ -1,5 +1,8 @@
 package ch.arc.pensebet.controller;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,20 +43,32 @@ public class AuthenticationController {
     	ModelAndView modelAndView = new ModelAndView();
     	User userExists = userService.findUserByNickname(user.getNickname());
     	
+    	String emailRegex = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\\\.[A-Z]{2,6}$";
+    	 
+    	Pattern pattern = Pattern.compile(emailRegex);
+	    Matcher matcher = pattern.matcher(user.getEmail());
+	    
     	if (userExists != null) {
-            bindingResult
-                    .rejectValue("email", "error.user", "There is already a user registered with this nickname");
+            bindingResult.rejectValue("nickname", "error.user", "There is already a user registered with this nickname");
         }
-        if (bindingResult.hasErrors() || !user.getPassword().equals(passwordConfirmation)) {  
-        	modelAndView.addObject("successMessage", "The password doesn't correspond to the confirmation field");
-            modelAndView.setViewName("register");
-        } else {
+
+        modelAndView.setViewName("register");
+        System.out.println(matcher.matches());
+        if (!matcher.matches()) {
+            bindingResult.rejectValue("email", "error.user", "The email is not valid");
+        }
+    	else if (!user.getPassword().equals(passwordConfirmation)) {
+            bindingResult.rejectValue("password", "error.user", "The password and it's confirmation doesn't match, retry");
+            
+        } else if (bindingResult.hasErrors()) {
+    		modelAndView.addObject("errorMessage", "An error occured, check you fields!");
+    		
+    	} else {
         	userService.saveUser(user);
             modelAndView.addObject("successMessage", "User has been registered successfully");
             modelAndView.addObject("user", new User());
-            modelAndView.setViewName("register");
-
         }
+    	
         return modelAndView;
     }
 }

@@ -21,7 +21,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import ch.arc.pensebet.model.Bet;
+import ch.arc.pensebet.model.Invitation;
 import ch.arc.pensebet.service.IBetService;
+import ch.arc.pensebet.service.IInvitationService;
 import ch.arc.pensebet.service.IStateService;
 import ch.arc.pensebet.service.IUserService;
 
@@ -37,6 +39,7 @@ public class CreateBetController {
 	@Autowired
 	private IStateService stateService;
 	
+	
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(new SimpleDateFormat("yyy-MM-dd"), true, 10));
@@ -49,12 +52,19 @@ public class CreateBetController {
 	}
 
 	@PostMapping("/bet/create")
-	public String createBet(@ModelAttribute Bet bet, Authentication authentication) {
+	public ModelAndView createBet(@ModelAttribute Bet bet, Authentication authentication) {
 		bet.setOwner(userService.findUserByNickname(authentication.getName()));
 		bet.setState(stateService.findStateByName("ACTIVE"));
 		bet.setCreationDate(new Date());
 		betService.saveBet(bet);
-		return "index";
+		
+		Invitation invitation = new Invitation();
+		invitation.setUser(userService.findOne(bet.getOwner().getId()));
+		bet.addInvitation(invitation);
+		betService.saveBet(bet);
+		
+		ModelAndView modelAndView = new ModelAndView("redirect:/bet/" + bet.getId());
+        return modelAndView;
 	}
 
 }

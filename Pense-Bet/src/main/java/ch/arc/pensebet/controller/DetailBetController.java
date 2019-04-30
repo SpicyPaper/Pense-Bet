@@ -154,6 +154,8 @@ public class DetailBetController {
 				p.getUser().addMoney(moneyPerWinner);
 				userService.saveUser(p.getUser());
 			});
+			bet.setMoneyPerWinner(moneyPerWinner);
+			betService.saveBet(bet);
 		}
 	}
 	

@@ -44,7 +44,8 @@ public class AuthenticationController {
             bindingResult
                     .rejectValue("email", "error.user", "There is already a user registered with this nickname");
         }
-        if (bindingResult.hasErrors() || user.getPassword() != passwordConfirmation) {
+        if (bindingResult.hasErrors() || !user.getPassword().equals(passwordConfirmation)) {  
+        	modelAndView.addObject("successMessage", "The password doesn't correspond to the confirmation field");
             modelAndView.setViewName("register");
         } else {
         	userService.saveUser(user);

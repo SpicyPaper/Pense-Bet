@@ -41,7 +41,7 @@
 	            </ul>
 	
 	            <!-- Right Side Of Navbar -->
-	            <ul class="navbar-nav ml-auto" th:if="${user != null}">
+	            <ul class="navbar-nav ml-auto" th:if="${loggedUser != null}">
 	            
 	            	<div class="d-lg-inline-block d-none">
 					    <form th:action="@{/search/1}" method="post" class="form-inline">

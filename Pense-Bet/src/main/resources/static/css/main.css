@@ -2,6 +2,18 @@
 	height : 30px;
 }
 
+.pb-icon {
+    width: 20px;
+}
+
+.pb-icon-md {
+    font-size: 40px;
+}
+
+.pb-icon-xl {
+    font-size: 80px;
+}
+
 .pb-btn-lg {
     border-radius: 0.8em;
     border: 0em solid rgb(54, 54, 54);

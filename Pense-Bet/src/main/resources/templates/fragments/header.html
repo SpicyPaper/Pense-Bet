@@ -41,6 +41,7 @@
 	            </ul>
 	
 	            <!-- Right Side Of Navbar -->
+	            <!-- Check if user is logged -->
 	            <ul class="navbar-nav ml-auto" th:if="${loggedUser != null}">
 	            
 	            	<div class="d-lg-inline-block d-none">
@@ -60,7 +61,7 @@
 	                        
 	                        <a class="dropdown-item" th:href="@{/bet/user/created/closed/1}">
 		                        <i class="fas fa-wallet mr-1"></i>
-		                        <span th:text="${loggedUser.money}"></span>
+		                        <span th:text="${loggedUser.money}"></span> CHF
 	                        </a>
 	                        
 	                        <a class="dropdown-item" th:href="@{/bet/create}">
@@ -80,6 +81,8 @@
 	                        
 	                        <hr>
 	                        
+	                        <hr>
+	                        
 	                        <a class="dropdown-item" th:href="@{/bet/user/created/active/1}">
 		                        <i class="fas fa-hourglass-half mr-2"></i>
 		                        Active
@@ -96,7 +99,22 @@
 	                        </a>
 	                    </div>
 	                </li>
-	            	
+	            </ul>
+	            <!-- If user is not logged -->
+	            <ul class="navbar-nav ml-auto" th:unless="${loggedUser != null}">
+	            
+	                <li class="nav-item">
+	                    <a class="nav-link" th:href="@{/login}">
+	                    	<i class="fas fa-sign-in-alt mr-1"></i>
+	                        Login
+	                    </a>
+	                </li>
+	                <li class="nav-item">
+	                    <a class="nav-link" th:href="@{/register}">
+	                    	<i class="fas fa-user-plus mr-1"></i>
+	                        Register
+	                    </a>
+	                </li>
 	            </ul>
 	        </div>
 	    </div>

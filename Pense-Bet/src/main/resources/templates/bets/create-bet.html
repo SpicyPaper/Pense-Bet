@@ -20,6 +20,8 @@
 		</div>
 		
 		<button type="submit">Register Bet</button>
+		
+		<span class="pb-error-msg" th:utext="${errorMessage}"></span>
 	</form>
 	
 	<div th:replace="fragments/endbody :: endbody"></div>

@@ -1,0 +1,5 @@
+Suite/Test/Step Name,Browser,Description,Start time,End time,Duration,Status
+Pense-Bet,,,2019-05-01 09:49:09,2019-05-01 09:49:10,0.878s,FAILED
+,,,,,,
+Test Cases/UserCreation,,Création d'un utilisateur n'existant pas encore,2019-05-01 09:49:09,2019-05-01 09:49:09,0.596s,FAILED
+"setText(findTestObject(""Object Repository/Page_Pense Bet/input_Register_nickname""), ""katalon"")",,,2019-05-01 09:49:09,2019-05-01 09:49:09,0.331s,FAILED

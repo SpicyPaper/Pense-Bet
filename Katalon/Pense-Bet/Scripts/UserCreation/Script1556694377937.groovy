@@ -21,5 +21,5 @@ WebUI.setEncryptedText(findTestObject('Object Repository/Page_Pense Bet/input_Re
 
 WebUI.click(findTestObject('Object Repository/Page_Pense Bet/button_Register'))
 
-WebUI.click(findTestObject('Object Repository/Page_Pense Bet/span_User has been registered successfully'))
+WebUI.verifyElementPresent(findTestObject('Page_Pense Bet/span_User has been registered successfully'), 0)
 

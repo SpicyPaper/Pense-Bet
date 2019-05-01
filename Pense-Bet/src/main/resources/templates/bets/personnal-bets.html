@@ -15,24 +15,10 @@
 						<div class="card bg-light">
 							<div class="card-header"><h2 th:text="${bet.subject}"></h2></div>
 						    <div class="card-body">
+
 					    		<div class="form-group">
 						    		<label class="font-weight-bold">Ending Date</label>
 						    		<input class="form-control font-weight-bold" type="text" th:value="${#dates.format(bet.endingDate, 'dd MMMMM yyyy')}" disabled>
-					    		</div>
-					    		
-					    		<div class="form-group">
-						    		<label class="font-weight-bold">Creation Date</label>
-						    		<input class="form-control font-weight-bold" type="text" th:value="${#dates.format(bet.creationDate, 'dd MMMMM yyyy')}" disabled>
-					    		</div>
-					    		
-					    		<div class="form-group">
-						    		<label class="font-weight-bold">Bet Amount</label>
-						    		<input class="form-control font-weight-bold" type="text" th:value="${bet.amount}" disabled>
-					    		</div>
-					    		
-					    		<div class="form-group">
-						    		<label class="font-weight-bold">Bet Result</label>
-						    		<input class="form-control font-weight-bold" type="text" th:value="${bet.result}" disabled>
 					    		</div>
 					    		
 					    		<div class="form-group">

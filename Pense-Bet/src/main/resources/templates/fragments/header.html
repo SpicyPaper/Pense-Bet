@@ -42,7 +42,7 @@
 	
 	            <!-- Right Side Of Navbar -->
 	            <!-- Check if user is logged -->
-	            <ul class="navbar-nav ml-auto" th:if="${loggedUser != null}">
+	            <ul class="navbar-nav ml-auto" sec:authorize="isAuthenticated()">
 	            
 	            	<div class="d-lg-inline-block d-none">
 					    <form th:action="@{/search/1}" method="post" class="form-inline">
@@ -74,6 +74,11 @@
 	                            Search bets
 	                        </a>
 	
+	                        <a class="dropdown-item" sec:authorize="hasAuthority('ADMIN')" th:href="@{/bet/admin/all/1}">
+	                            <i class="fas fa-user-lock mr-1"></i>
+	                            Admin
+	                        </a>
+	
 	                        <a class="dropdown-item" th:href="@{/logout}">
 	                            <i class="fas fa-sign-out-alt mr-1"></i>
 	                            Logout
@@ -103,8 +108,9 @@
 	                    </div>
 	                </li>
 	            </ul>
+	            
 	            <!-- If user is not logged -->
-	            <ul class="navbar-nav ml-auto" th:unless="${loggedUser != null}">
+	            <ul class="navbar-nav ml-auto" sec:authorize="isAnonymous()">
 	            
 	                <li class="nav-item">
 	                    <a class="nav-link" th:href="@{/login}">

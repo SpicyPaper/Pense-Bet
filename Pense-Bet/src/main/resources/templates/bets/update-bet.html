@@ -6,21 +6,40 @@
 <body>
 	<div th:replace="fragments/header :: header"></div>
 	
-	<form th:action="@{/bet/} + ${bet.id} + @{/update}" th:object="${bet}" method="post">
-		<div>
-			<label>Bet subject</label> <input type="text" placeholder="Subject" th:field="*{subject}" />
-		</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-12 mt-3">
+			
+			    <div class="offset-md-2 col-md-8">
+			        <fieldset class="form-group">
+			            <legend class="border-bottom mb-4"><h2>Update bet</h2></legend>
+	
+						<form class="row" th:action="@{/bet/} + ${bet.id} + @{/update}" th:object="${bet}" method="post">
 		
-		<div>
-			<label>Ending date</label> <input type="date" th:field="*{endingDate}" />
+				    		<div class="form-group col-12">
+					    		<label class="font-weight-bold">Subject</label>
+					    		<input class="form-control font-weight-bold" type="text" th:field="*{subject}">
+				    		</div>
+				    		
+				    		<div class="form-group col-12">
+					    		<label class="font-weight-bold">Ending Date</label>
+					    		<input class="form-control font-weight-bold" type="date" th:field="*{endingDate}">
+				    		</div>
+				    		
+				    		<div class="form-group col-12">
+					    		<label class="font-weight-bold">Amount</label>
+					    		<input class="form-control font-weight-bold" type="number" th:field="*{amount}">
+				    		</div>
+							
+							<div class="text-right col-12">
+								<button class="btn btn-dark pb-btn-lg" name="Submit" value="Update" type="Submit">Update</button>
+							</div>
+						</form>
+					</fieldset>
+				</div>
+			</div>
 		</div>
-		
-		<div>
-			<label>Amount</label> <input type="number" th:field="*{amount}" />
-		</div>
-		
-		<button type="submit">Update</button>
-	</form>
+	</div>
 	
 	<div th:replace="fragments/endbody :: endbody"></div>
 </body>

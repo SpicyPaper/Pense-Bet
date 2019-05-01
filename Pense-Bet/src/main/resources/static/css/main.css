@@ -70,6 +70,20 @@
 	width: 200px !important;
 }
 
+.pb-agree-result {
+	background-color: darkgreen !important;
+	color: white;
+	border: 4px solid black;
+	border-radius: 20px;
+}
+
+.pb-disagree-result {
+	background-color: darkred !important;
+	color: white;
+	border: 4px solid black;
+	border-radius: 20px;
+}
+
 .pb-agree {
 	background-color: darkgreen !important;
 	color: white;

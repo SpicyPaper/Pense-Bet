@@ -15,14 +15,30 @@
 			            <legend class="border-bottom mb-4"><h2 th:text="${bet.subject}"></h2></legend>
 			    
 			    		<div class="row mb-5">
-				    		<div class="form-group col-lg-6 mb-3 mb-lg-0">
+				    		
+				    		<div class="form-inline col-12 mb-3 text-center" th:if="${bet.result != null}">
+				    			<label class="font-weight-bold mb-1 offset-lg-5 col-lg-2">Bet Result</label>
+				    			<input class="form-control font-weight-bold text-center offset-lg-4 col-lg-4" th:classappend="${bet.result} ? pb-agree-result : pb-disagree-result" type="text" th:value="${bet.result} ? True : False" disabled>
+				    		</div>
+				    		
+				    		<div class="form-group col-lg-6 mb-3">
+					    		<label class="font-weight-bold">Bet Amount</label>
+					    		<input class="form-control font-weight-bold" type="text" th:value="${bet.amount}" disabled>
+				    		</div>
+					    		
+				    		<div class="form-group col-lg-6 mb-3">
+					    		<label class="font-weight-bold">Bet's owner</label>
+					    		<input class="form-control font-weight-bold" type="text" th:value="${bet.owner.nickname}" disabled>
+				    		</div>
+				    		
+				    		<div class="form-group col-lg-6 mb-3">
 					    		<label class="font-weight-bold">Ending Date</label>
 					    		<input class="form-control font-weight-bold" type="text" th:value="${#dates.format(bet.endingDate, 'dd MMMMM yyyy')}" disabled>
 				    		</div>
-				    		
+					    		
 				    		<div class="form-group col-lg-6 mb-0">
-					    		<label class="font-weight-bold">Bet Amount</label>
-					    		<input class="form-control font-weight-bold" type="text" th:value="${bet.amount}" disabled>
+					    		<label class="font-weight-bold">Creation Date</label>
+					    		<input class="form-control font-weight-bold" type="text" th:value="${#dates.format(bet.creationDate, 'dd MMMMM yyyy')}" disabled>
 				    		</div>
 			    		</div>
 			    		
@@ -72,7 +88,7 @@
 						
 			            <!-- Invitation -->
 						<form th:if="${users != null}" th:action="@{/bet/} + ${bet.id}" th:object="${invitation}" method="post">
-				            <div class="border-top pt-3 my-3">
+				            <div class="mb-5">
 								<div th:if="${#lists.size(users) &gt; 0}">
 									<div class="form-row">
 										<div class="col-12">

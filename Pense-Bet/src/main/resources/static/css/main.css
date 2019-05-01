@@ -66,6 +66,54 @@
 	background-color: gray;
 }
 
+.pb-btn-neutral-md {
+    border-radius: 0.8em;
+    border: 0em solid rgb(54, 54, 54);
+    font-size: 1em;
+    box-shadow: gray 0em 0em 0.3em;
+    font-weight: bold;
+}
+
+.pb-btn-neutral-md:hover {
+	background-color: gray;
+}
+
+.pb-btn-neutral-2-md {
+    border-radius: 0.8em;
+    border: 0em solid rgb(54, 54, 54);
+    font-size: 1em;
+    box-shadow: darkblue 0em 0em 0.3em;
+    font-weight: bold;
+}
+
+.pb-btn-neutral-2-md:hover {
+	background-color: blue;
+}
+
+.pb-btn-success-md {
+    border-radius: 0.8em;
+    border: 0em solid rgb(54, 54, 54);
+    font-size: 1em;
+    box-shadow: darkgreen 0em 0em 0.3em;
+    font-weight: bold;
+}
+
+.pb-btn-success-md:hover {
+	background-color: green;
+}
+
+.pb-btn-danger-md {
+    border-radius: 0.8em;
+    border: 0em solid rgb(54, 54, 54);
+    font-size: 1em;
+    box-shadow: darkred 0em 0em 0.3em;
+    font-weight: bold;
+}
+
+.pb-btn-danger-md:hover {
+	background-color: red;
+}
+
 .pb-search-bar {
 	width: 200px !important;
 }

@@ -59,7 +59,6 @@ public class UpdateBetController {
 	
 	@PostMapping("/bet/{id}/delete")
     public ModelAndView deleteBet(@PathVariable("id") Integer id, Authentication authentication, Model model) {
-		System.out.println("BET ID : " + id);
 		Bet bet = betService.findBetById(id).get();
 		betService.deleteBet(bet);
 		ModelAndView modelAndView = new ModelAndView("redirect:/bet/admin/all/1");

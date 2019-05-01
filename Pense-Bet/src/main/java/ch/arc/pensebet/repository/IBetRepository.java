@@ -1,5 +1,6 @@
 package ch.arc.pensebet.repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.domain.Page;
@@ -24,17 +25,15 @@ public interface IBetRepository extends JpaRepository<Bet, Integer> {
 			+ "p.user_id = :participantId "
 			+ "AND b.id = p.bet_id", 
            nativeQuery = true)
-	public Page<Bet> findByParticipant(
-			@Param("participantId") Integer participantId, 
-			Pageable pageReguest);
+	public List<Bet> findByParticipant(
+			@Param("participantId") Integer participantId);
 	
 	@Query(value = "SELECT b.* FROM bet b, participation p WHERE "
 			+ "p.user_id = :participantId "
 			+ "AND b.owner_id = :ownerId "
 			+ "AND b.id = p.bet_id", 
            nativeQuery = true)
-	public Page<Bet> findByParticipantAndOwner(
+	public List<Bet> findByParticipantAndOwner(
 			@Param("participantId") Integer participantId, 
-			@Param("ownerId") Integer ownerId, 
-			Pageable pageReguest);
+			@Param("ownerId") Integer ownerId);
 }

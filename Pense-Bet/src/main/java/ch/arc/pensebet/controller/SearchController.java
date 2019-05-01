@@ -35,26 +35,21 @@ public class SearchController {
 	public ModelAndView simpleSearch(@RequestParam(value = "betSubject", required = false) String betSubject,
 			@PathVariable("page") int page, Authentication authentication) {
 		ModelAndView modelAndView = new ModelAndView("bets/search");
-		PageRequest pageable = PageRequest.of(page - 1, 3);
 
 		User participant = userService.findUserByNickname(authentication.getName());
 
 		if (betSubject != null && betSubject.length() > 0) {
-			Page<Bet> searchPage = betService.findBySubjectAndParticipant(participant, betSubject, pageable);
+			List<Bet> searchPage = betService.findBySubjectAndParticipant(participant, betSubject);
 
-			int totalPages = searchPage.getTotalPages();
-			if (totalPages > 0) {
-				List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages).boxed().collect(Collectors.toList());
-				modelAndView.addObject("pageNumbers", pageNumbers);
-			}
-			modelAndView.addObject("searchList", searchPage.getContent());
-		} else
-			modelAndView.addObject("searchList", new PageImpl<Bet>(new ArrayList<Bet>()));
+			
+			modelAndView.addObject("searchList", searchPage);
+		} else {
+			modelAndView.addObject("searchList", new ArrayList<Bet>());
+			System.out.println("ok");
+		}
 
 		List<User> allUsers = userService.findAllUsers();
-		allUsers.remove(participant);
 		modelAndView.addObject("users", allUsers);
-        modelAndView.addObject("pagePagination", "search");
 
 		return modelAndView;
 	}
@@ -64,25 +59,18 @@ public class SearchController {
 			@RequestParam(value = "searchedOwner", required = false) User searchedOwner, @PathVariable("page") int page,
 			Authentication authentication) {
 		ModelAndView modelAndView = new ModelAndView("bets/search");
-		PageRequest pageable = PageRequest.of(page - 1, 3);
+		System.out.println("ok3");
 
 		User participant = userService.findUserByNickname(authentication.getName());
 
-		Page<Bet> searchPage = searchedOwner != null
-				? betService.findBySubjectAndParticipantAndOwner(participant, betSubject, searchedOwner, pageable)
-				: betService.findBySubjectAndParticipant(participant, betSubject, pageable);
+		List<Bet> searchPage = searchedOwner != null
+				? betService.findBySubjectAndParticipantAndOwner(participant, betSubject, searchedOwner)
+				: betService.findBySubjectAndParticipant(participant, betSubject);
 
-		int totalPages = searchPage.getTotalPages();
-		if (totalPages > 0) {
-			List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages).boxed().collect(Collectors.toList());
-			modelAndView.addObject("pageNumbers", pageNumbers);
-		}
-		modelAndView.addObject("searchList", searchPage.getContent());
+		modelAndView.addObject("searchList", searchPage);
 
 		List<User> allUsers = userService.findAllUsers();
-		allUsers.remove(participant);
 		modelAndView.addObject("users", allUsers);
-        modelAndView.addObject("pagePagination", "search");
 
 		return modelAndView;
 	}

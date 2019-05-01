@@ -34,6 +34,7 @@ public class PersonnalBetsController {
     	ModelAndView modelAndView = new ModelAndView("bets/personnal-bets");
     	PageRequest pageable = PageRequest.of(page - 1, 3);
     	Page<Bet> betPage = betService.findByOwnerAndStateActive(userService.findUserByNickname(authentication.getName()), pageable);
+    	
     	int totalPages = betPage.getTotalPages();
         if(totalPages > 0) {
             List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages).boxed().collect(Collectors.toList());

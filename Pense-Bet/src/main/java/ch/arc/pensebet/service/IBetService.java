@@ -1,11 +1,11 @@
 package ch.arc.pensebet.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 
 import ch.arc.pensebet.model.Bet;
@@ -28,8 +28,8 @@ public interface IBetService {
 	public Page<Bet> findByStateEnded(Pageable pageable);
 	public Optional<Bet> findBetById(Integer id);
 	public void saveBet(Bet bet);
-	public Page<Bet> findBySubjectAndParticipant(User participant, String betSubject, PageRequest pageable);
-	public Page<Bet> findBySubjectAndParticipantAndOwner(User participant, String betSubject, User searchedOwner, PageRequest pageable);
+	public List<Bet> findBySubjectAndParticipant(User participant, String betSubject);
+	public List<Bet> findBySubjectAndParticipantAndOwner(User participant, String betSubject, User searchedOwner);
 	public void deleteBet(Bet bet);
-	public Page<Bet> detectEnded(Page<Bet> bets);
+	public Page<Bet> detectEnded(Page<Bet> bets, Pageable pageable);
 }

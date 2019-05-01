@@ -10,7 +10,6 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -56,7 +55,7 @@ public class BetService implements IBetService {
 
 	@Override
 	public Page<Bet> findByOwnerAndStateActive(User user, Pageable pageable) {
-		return detectEnded(betRepository.findByOwnerAndState(user, stateRepository.findByName("ACTIVE"), pageable));
+		return detectEnded(betRepository.findByOwnerAndState(user, stateRepository.findByName("ACTIVE"), pageable), pageable);
 	}
 
 	@Override
@@ -71,24 +70,25 @@ public class BetService implements IBetService {
 
 	@Override
 	public Page<Bet> findByInvitationAndStateWaiting(User user, Pageable pageable) {
-		List<Invitation> invitations = invitationRepository.findByUser(user, pageable);
-		return new PageImpl<>(invitations.stream().parallel().map(Invitation::getBet).collect(Collectors.toList()));
+		Page<Invitation> invitations = invitationRepository.findByUser(user, pageable);
+		return new PageImpl<>(invitations.getContent().stream().parallel().map(Invitation::getBet).collect(Collectors.toList()), pageable, invitations.getTotalElements());
 	}
 
 	@Override
-	public Page<Bet> findBySubjectAndParticipant(User participant, String betSubject, PageRequest pageable) {
-		return findBySubject(betSubject, betRepository.findByParticipant(participant.getId(), pageable));
+	public List<Bet> findBySubjectAndParticipant(User participant, String betSubject) {
+		System.out.println("okok");
+		return findBySubject(betSubject, betRepository.findByParticipant(participant.getId()));
 	}
 
 	@Override
-	public Page<Bet> findBySubjectAndParticipantAndOwner(User participant, String betSubject, User searchedOwner,
-			PageRequest pageable) {
-		return findBySubject(betSubject, betRepository.findByParticipantAndOwner(participant.getId(), searchedOwner.getId(), pageable));
+	public List<Bet> findBySubjectAndParticipantAndOwner(User participant, String betSubject, User searchedOwner) {
+		return findBySubject(betSubject, betRepository.findByParticipantAndOwner(participant.getId(), searchedOwner.getId()));
 	}
 	
-	private Page<Bet> findBySubject(String betSubject, Page<Bet> bets) {
+	private List<Bet> findBySubject(String betSubject, List<Bet> bets) {
 		String[] betSubjects = betSubject.toLowerCase().split(" ");
-		return new PageImpl<>(bets.getContent().stream().parallel().filter(bet -> stringContainsItemFromList(bet.getSubject().toLowerCase(), betSubjects)).collect(Collectors.toList()));
+		System.out.println("okokok");
+		return bets.stream().parallel().filter(bet -> stringContainsItemFromList(bet.getSubject().toLowerCase(), betSubjects)).collect(Collectors.toList());
 	}
 	
 	/**
@@ -100,15 +100,15 @@ public class BetService implements IBetService {
 
 	@Override
 	public Page<Bet> findByParticipantAndState(User user, State state, Pageable pageable) {
-		List<Participation> participations = participationRepository.findByUser(user, pageable);
-		return new PageImpl<>(participations.stream().parallel()
+		Page<Participation> participations = participationRepository.findByUser(user, pageable);
+		return new PageImpl<>(participations.getContent().stream().parallel()
 				.filter(participation -> participation.getBet().getState().getId() == state.getId())
-				.map(Participation::getBet).collect(Collectors.toList()));
+				.map(Participation::getBet).collect(Collectors.toList()), pageable, participations.getTotalElements());
 	}
 
 	@Override
 	public Page<Bet> findByParticipantAndStateActive(User user, Pageable pageable) {
-		return detectEnded(findByParticipantAndState(user, stateRepository.findByName("ACTIVE"), pageable));
+		return detectEnded(findByParticipantAndState(user, stateRepository.findByName("ACTIVE"), pageable), pageable);
 	}
 
 	@Override
@@ -132,7 +132,7 @@ public class BetService implements IBetService {
 
 	@Override
 	public Page<Bet> findByStateActive(Pageable pageable) {
-		return detectEnded(betRepository.findByState(stateRepository.findByName("ACTIVE"), pageable));
+		return detectEnded(betRepository.findByState(stateRepository.findByName("ACTIVE"), pageable), pageable);
 	}
 
 	@Override
@@ -146,27 +146,23 @@ public class BetService implements IBetService {
 	}
 	
 	@Override
-	public Page<Bet> detectEnded(Page<Bet> bets) {
+	public Page<Bet> detectEnded(Page<Bet> bets, Pageable pageable) {		
 		List<Bet> betsNotEnded = new ArrayList<>();
 		
 		for (int i = bets.getContent().size() - 1; i >= 0; i--)
 		{
 			Bet bet = bets.getContent().get(i);
-			System.out.println(bet.getEndingDate() + " ---- " + new Date());
 			if (bet.getEndingDate().compareTo(new Date()) < 0)
 			{
-				System.out.println("INSIDE IF");
 				bet.setState(stateRepository.findByName("ENDED"));
 				betRepository.save(bet);
 			}
 			else
 			{
-				System.out.println("INSIDE ELSE");
 				betsNotEnded.add(bet);
 			}
 		}
-		
-		return new PageImpl<>(betsNotEnded);
+		return new PageImpl<>(betsNotEnded, pageable, bets.getTotalElements());
 	}
 
 }

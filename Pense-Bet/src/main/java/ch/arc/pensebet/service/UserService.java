@@ -37,7 +37,7 @@ public class UserService implements IUserService {
 	@Override
 	public void saveUser(User user) {
 		user.setPassword(pwdEncoder.encode(user.getPassword()));
-		Role role = roleRepository.findByName("ADMIN");
+		Role role = roleRepository.findByName("USER");
 		user.setRole(role);
 		userRepository.save(user);
 	}

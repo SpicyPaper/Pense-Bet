@@ -42,6 +42,7 @@ public class PersonnalBetsController {
         }
         modelAndView.addObject("betList", betPage.getContent());
         modelAndView.addObject("pagePagination", "created");
+        modelAndView.addObject("pageState", "active");
         return modelAndView;
     }
 
@@ -57,6 +58,7 @@ public class PersonnalBetsController {
         }
         modelAndView.addObject("betList", betPage.getContent());
         modelAndView.addObject("pagePagination", "created");
+        modelAndView.addObject("pageState", "ended");
         return modelAndView;
     }
 
@@ -72,6 +74,7 @@ public class PersonnalBetsController {
         }
         modelAndView.addObject("betList", betPage.getContent());
         modelAndView.addObject("pagePagination", "created");
+        modelAndView.addObject("pageState", "closed");
         return modelAndView;
     }
 }

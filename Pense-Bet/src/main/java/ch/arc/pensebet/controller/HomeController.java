@@ -45,6 +45,7 @@ public class HomeController {
         }
         modelAndView.addObject("betList", betPage.getContent());
         modelAndView.addObject("pagePagination", "normal");
+        modelAndView.addObject("pageState", "waiting");
         return modelAndView;
     }
 
@@ -60,6 +61,7 @@ public class HomeController {
         }
         modelAndView.addObject("betList", betPage.getContent());
         modelAndView.addObject("pagePagination", "normal");
+        modelAndView.addObject("pageState", "active");
         return modelAndView;
     }
 
@@ -75,6 +77,7 @@ public class HomeController {
         }
         modelAndView.addObject("betList", betPage.getContent());
         modelAndView.addObject("pagePagination", "normal");
+        modelAndView.addObject("pageState", "ended");
         return modelAndView;
     }
 
@@ -90,6 +93,7 @@ public class HomeController {
         }
         modelAndView.addObject("betList", betPage.getContent());
         modelAndView.addObject("pagePagination", "normal");
+        modelAndView.addObject("pageState", "closed");
         return modelAndView;
     }
 }

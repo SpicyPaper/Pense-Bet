@@ -48,13 +48,30 @@
 	
 		<div th:if="${betList != null && !betList.isEmpty()}" class="row">
 			<div class="col-12">
-				<nav aria-label="Pagination">
-					<ul class="pagination justify-content-center">
-						<li class="page-item" th:each="pageNumber : ${pageNumbers}" th:switch="${pagePagination}">
-							<a th:case="created" class="page-link" th:href="@{|/bet/user/created/active/${pageNumber}|}" th:text="${pageNumber}"></a>
-							<a th:case="normal" class="page-link" th:href="@{|/bet/user/waiting/${pageNumber}|}" th:text="${pageNumber}"></a>
-							<a th:case="search" class="page-link" th:href="@{|/search/${pageNumber}|}" th:text="${pageNumber}"></a>
-							<a th:case="admin" class="page-link" th:href="@{|/bet/admin/all/${pageNumber}|}" th:text="${pageNumber}"></a>
+				<nav aria-label="Pagination" th:switch="${pagePagination}">
+					<ul th:case="normal" class="pagination justify-content-center">
+						<li class="page-item" th:each="pageNumber : ${pageNumbers}" th:switch="${pageState}">
+							<a th:case="waiting" class="page-link" th:href="@{|/bet/user/waiting/${pageNumber}|}" th:text="${pageNumber}"></a>
+							<a th:case="active" class="page-link" th:href="@{|/bet/user/active/${pageNumber}|}" th:text="${pageNumber}"></a>
+							<a th:case="ended" class="page-link" th:href="@{|/bet/user/ended/${pageNumber}|}" th:text="${pageNumber}"></a>
+							<a th:case="closed" class="page-link" th:href="@{|/bet/user/closed/${pageNumber}|}" th:text="${pageNumber}"></a>
+						</li>
+					</ul>
+					<ul th:case="created" class="pagination justify-content-center">
+						<li class="page-item" th:each="pageNumber : ${pageNumbers}" th:switch="${pageState}">
+							<a th:case="active" class="page-link" th:href="@{|/bet/user/created/active/${pageNumber}|}" th:text="${pageNumber}"></a>
+							<a th:case="ended" class="page-link" th:href="@{|/bet/user/created/ended/${pageNumber}|}" th:text="${pageNumber}"></a>
+							<a th:case="closed" class="page-link" th:href="@{|/bet/user/created/closed/${pageNumber}|}" th:text="${pageNumber}"></a>
+						</li>
+					</ul>
+					<ul th:case="admin" class="pagination justify-content-center">
+						<li class="page-item" th:each="pageNumber : ${pageNumbers}">
+							<a class="page-link" th:href="@{|/bet/admin/all/${pageNumber}|}" th:text="${pageNumber}"></a>
+						</li>
+					</ul>
+					<ul th:case="modo" class="pagination justify-content-center">
+						<li class="page-item" th:each="pageNumber : ${pageNumbers}">
+							<a class="page-link" th:href="@{|/bet/moderator/all/${pageNumber}|}" th:text="${pageNumber}"></a>
 						</li>
 					</ul>
 				</nav>

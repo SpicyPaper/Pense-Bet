@@ -43,9 +43,9 @@ public class AuthenticationController {
     	ModelAndView modelAndView = new ModelAndView();
     	User userExists = userService.findUserByNickname(user.getNickname());
     	
-    	String emailRegex = ".*";
+    	String emailRegex = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$";
     	 
-    	Pattern pattern = Pattern.compile(emailRegex);
+    	Pattern pattern = Pattern.compile(emailRegex, Pattern.CASE_INSENSITIVE);
 	    Matcher matcher = pattern.matcher(user.getEmail());
 	    
     	if (userExists != null) {

@@ -12,6 +12,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -52,18 +53,33 @@ public class CreateBetController {
 	}
 
 	@PostMapping("/bet/create")
-	public ModelAndView createBet(@ModelAttribute Bet bet, Authentication authentication) {
-		bet.setOwner(userService.findUserByNickname(authentication.getName()));
-		bet.setState(stateService.findStateByName("ACTIVE"));
-		bet.setCreationDate(new Date());
-		betService.saveBet(bet);
+	public ModelAndView createBet(@ModelAttribute Bet bet, Authentication authentication, BindingResult bindingResult) {
+
+		ModelAndView modelAndView = new ModelAndView("/bets/create-bet");
+		if (bet.getSubject().isEmpty())
+		{
+    		modelAndView.addObject("errorMessage", "The subject cannot be empty");
+		} 
+		else if (bet.getEndingDate() == null)
+		{
+    		modelAndView.addObject("errorMessage", "The ending date cannot be empty");
+		}
+		else
+		{
+			bet.setOwner(userService.findUserByNickname(authentication.getName()));
+			bet.setState(stateService.findStateByName("ACTIVE"));
+			bet.setCreationDate(new Date());
+			betService.saveBet(bet);
+			
+			Invitation invitation = new Invitation();
+			invitation.setUser(userService.findOne(bet.getOwner().getId()));
+			bet.addInvitation(invitation);
+			betService.saveBet(bet);
+			
+			modelAndView.setViewName("redirect:/bet/" + bet.getId());
+		}
 		
-		Invitation invitation = new Invitation();
-		invitation.setUser(userService.findOne(bet.getOwner().getId()));
-		bet.addInvitation(invitation);
-		betService.saveBet(bet);
 		
-		ModelAndView modelAndView = new ModelAndView("redirect:/bet/" + bet.getId());
         return modelAndView;
 	}
 

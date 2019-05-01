@@ -12,6 +12,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
@@ -64,7 +65,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 				.defaultSuccessUrl("/",true)
 				.usernameParameter("nickname")
 				.passwordParameter("password")
-				.and().logout();
+				.and().logout()
+		
+				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+		        .logoutSuccessUrl("/").and().exceptionHandling()
+		        .accessDeniedPage("/access-denied");
 	}
     
     @Bean

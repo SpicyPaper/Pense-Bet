@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import ch.arc.pensebet.model.Bet;
 import ch.arc.pensebet.model.Invitation;
@@ -109,8 +110,9 @@ public class DetailBetController {
 	}
 	
 	@PostMapping("/bet/{id}/participate/accept/{agree}")
-	public String participateBet(@PathVariable("id") Integer id, @PathVariable("agree") boolean agree, Authentication authentication)
+	public ModelAndView participateBet(@PathVariable("id") Integer id, @PathVariable("agree") boolean agree, Authentication authentication)
 	{
+		ModelAndView modelAndView = new ModelAndView("redirect:/");
 		Bet bet = betService.findBetById(id).get();
 		User user = userService.findUserByNickname(authentication.getName());
 		Participation participation = new Participation();
@@ -122,12 +124,13 @@ public class DetailBetController {
 		user.addMoney(-bet.getAmount());
 		userService.saveUser(user);
 		
-		return "index";
+		return modelAndView;
 	}
 	
 	@PostMapping("/bet/{id}/confirm/{result}")
-	public String confirmBet(@PathVariable("id") Integer id, @PathVariable("result") boolean result, Authentication authentication)
+	public ModelAndView confirmBet(@PathVariable("id") Integer id, @PathVariable("result") boolean result, Authentication authentication)
 	{
+		ModelAndView modelAndView = new ModelAndView("redirect:/");
 		Bet bet = betService.findBetById(id).get();
 		User user = userService.findUserByNickname(authentication.getName());
 		if (isBetOwner(bet, user))
@@ -135,7 +138,7 @@ public class DetailBetController {
 			closeBet(bet, result);
 		}
 		
-		return "index";
+		return modelAndView;
 	}
 	
 	private void closeBet(Bet bet, boolean betResult)

@@ -23,8 +23,6 @@ WebUI.setEncryptedText(findTestObject('Object Repository/Page_Pense Bet/input_Lo
 
 WebUI.click(findTestObject('Object Repository/Page_Pense Bet/button_Login (4)'))
 
-WebUI.click(findTestObject('Object Repository/Page_Pense Bet/html_Pense Betkatalonfont-familymonospacefont-size13pxbackground-colorrgba(000.7)positionfixedtop0left0right0displayblockz-index999999999line-height normal katalon divpadding0margin0colorfff katalon kbddisplayinline-bloc'))
-
 WebUI.click(findTestObject('Object Repository/Page_Pense Bet/a_Active'))
 
 WebUI.click(findTestObject('Object Repository/Page_Pense Bet/a_Waiting'))

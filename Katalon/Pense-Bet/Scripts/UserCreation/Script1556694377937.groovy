@@ -13,13 +13,19 @@ import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable as GlobalVariable
 
-WebUI.setText(findTestObject('Object Repository/Page_Pense Bet/input_Register_nickname'), 'katalon')
+WebUI.openBrowser('')
 
-WebUI.setEncryptedText(findTestObject('Object Repository/Page_Pense Bet/input_Register_password'), 'o+tS4OuGt32s9ezZj287yw==')
+WebUI.navigateToUrl('http://localhost:8080/register')
 
-WebUI.setEncryptedText(findTestObject('Object Repository/Page_Pense Bet/input_Register_passwordConfirmation'), 'o+tS4OuGt32s9ezZj287yw==')
+WebUI.setText(findTestObject('Page_Pense Bet/input_Register_email'), 'katalon@test.ch')
 
-WebUI.click(findTestObject('Object Repository/Page_Pense Bet/button_Register'))
+WebUI.setText(findTestObject('Page_Pense Bet/input_Register_nickname'), 'katalon')
 
-WebUI.verifyElementPresent(findTestObject('Page_Pense Bet/span_User has been registered successfully'), 0)
+WebUI.setEncryptedText(findTestObject('Page_Pense Bet/input_Register_password'), 'o+tS4OuGt32s9ezZj287yw==')
+
+WebUI.setEncryptedText(findTestObject('Page_Pense Bet/input_Register_passwordConfirmation'), 'o+tS4OuGt32s9ezZj287yw==')
+
+WebUI.click(findTestObject('Page_Pense Bet/button_Register'))
+
+WebUI.closeBrowser()
 

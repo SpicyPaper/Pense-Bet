@@ -1,0 +1,32 @@
+Suite/Test/Step Name,Browser,Description,Start time,End time,Duration,Status
+Pense-Bet,,,2019-05-02 16:34:01,2019-05-02 16:34:04,2.427s,FAILED
+,,,,,,
+Test Cases/UserCreation,,Création d'un utilisateur n'existant pas encore,2019-05-02 16:34:02,2019-05-02 16:34:02,0.583s,FAILED
+"setText(findTestObject(""Object Repository/Page_Pense Bet/input_Register_nickname""), ""katalon"")",,,2019-05-02 16:34:02,2019-05-02 16:34:02,0.297s,FAILED
+,,,,,,
+Test Cases/UserCreationFailPassword,,,2019-05-02 16:34:02,2019-05-02 16:34:02,0.238s,FAILED
+"openBrowser("""")",,,2019-05-02 16:34:02,2019-05-02 16:34:02,0.022s,FAILED
+,,,,,,
+Test Cases/UserCreationFailEmail,,,2019-05-02 16:34:02,2019-05-02 16:34:03,0.151s,FAILED
+"openBrowser("""")",,,2019-05-02 16:34:03,2019-05-02 16:34:03,0.006s,FAILED
+,,,,,,
+Test Cases/UserCanConnect,,,2019-05-02 16:34:03,2019-05-02 16:34:03,0.146s,FAILED
+"openBrowser("""")",,,2019-05-02 16:34:03,2019-05-02 16:34:03,0.007s,FAILED
+,,,,,,
+Test Cases/UserCannotConnect,,,2019-05-02 16:34:03,2019-05-02 16:34:03,0.151s,FAILED
+"openBrowser("""")",,,2019-05-02 16:34:03,2019-05-02 16:34:03,0.005s,FAILED
+,,,,,,
+Test Cases/UserCanCreateBet,,,2019-05-02 16:34:03,2019-05-02 16:34:03,0.136s,FAILED
+"openBrowser("""")",,,2019-05-02 16:34:03,2019-05-02 16:34:03,0.005s,FAILED
+,,,,,,
+Test Cases/UserCreateBetFailSubject,,,2019-05-02 16:34:03,2019-05-02 16:34:03,0.136s,FAILED
+"openBrowser("""")",,,2019-05-02 16:34:03,2019-05-02 16:34:03,0.005s,FAILED
+,,,,,,
+Test Cases/UserCanIgnoreBet,,,2019-05-02 16:34:03,2019-05-02 16:34:03,0.127s,FAILED
+"openBrowser("""")",,,2019-05-02 16:34:03,2019-05-02 16:34:03,0.006s,FAILED
+,,,,,,
+Test Cases/UserCanParticipateBet,,,2019-05-02 16:34:03,2019-05-02 16:34:03,0.128s,FAILED
+"openBrowser("""")",,,2019-05-02 16:34:03,2019-05-02 16:34:03,0.005s,FAILED
+,,,,,,
+Test Cases/UserCreateBetFailDate,,,2019-05-02 16:34:03,2019-05-02 16:34:04,0.189s,FAILED
+"openBrowser("""")",,,2019-05-02 16:34:04,2019-05-02 16:34:04,0.007s,FAILED

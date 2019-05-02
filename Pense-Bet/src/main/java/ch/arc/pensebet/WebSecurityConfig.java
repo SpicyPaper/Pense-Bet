@@ -40,6 +40,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 			.authorizeRequests()		
+				.antMatchers("/console/**").permitAll()
 				.antMatchers("/").permitAll()
 				.antMatchers("/login").permitAll()
 				.antMatchers("/register").permitAll()
@@ -70,6 +71,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 		        .logoutSuccessUrl("/").and().exceptionHandling()
 		        .accessDeniedPage("/access-denied");
+		
+		http.csrf().disable();
+		http.headers().frameOptions().disable();
 	}
     
     @Bean

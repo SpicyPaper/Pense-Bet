@@ -10,6 +10,10 @@
     border: 1px solid black;
 }
 
+.pb-text-lg {
+    font-size: 40px;
+}
+
 .pb-text-md {
     font-size: 20px;
 }
@@ -20,6 +24,10 @@
 
 .pb-text-link:hover {
 	color: black;
+}
+
+.pb-icon-sm {
+    font-size: 30px;
 }
 
 .pb-icon-md {
@@ -134,6 +142,18 @@
 	width: 200px !important;
 }
 
+.pb-agree-result-title {
+	background-color: #9fcffb !important;
+	color: black;
+	border: 3px solid black;
+}
+
+.pb-disagree-result-title {
+	background-color: #efa5f5 !important;
+	color: black;
+	border: 3px solid black;
+}
+
 .pb-agree-result {
 	background-color: darkgreen !important;
 	color: white;
@@ -149,15 +169,15 @@
 }
 
 .pb-agree {
-	background-color: darkgreen !important;
-	color: white;
+	background-color: #9fcffb !important;
+	color: black;
 	border: 4px solid black;
 	border-radius: 20px;
 }
 
 .pb-disagree {
-	background-color: darkred !important;
-	color: white;
+	background-color: #efa5f5 !important;
+	color: black;
 	border: 4px solid black;
 	border-radius: 20px;
 }

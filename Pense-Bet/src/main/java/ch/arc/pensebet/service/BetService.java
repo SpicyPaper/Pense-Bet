@@ -41,11 +41,18 @@ public class BetService implements IBetService {
 	@Override
 	public Optional<Bet> findBetById(Integer id) {
 		Optional<Bet> elisaBet = betRepository.findById(id);
-		if (elisaBet.get().getEndingDate().compareTo(new Date()) < 0)
+
+		if (elisaBet.get().getResult() != null)
+		{
+			elisaBet.get().setState(stateRepository.findByName("CLOSED"));
+			betRepository.save(elisaBet.get());
+		}
+		else if (elisaBet.get().getEndingDate().compareTo(new Date()) < 0)
 		{
 			elisaBet.get().setState(stateRepository.findByName("ENDED"));
 			betRepository.save(elisaBet.get());
 		}
+		
 		return elisaBet;
 	}
 
@@ -77,7 +84,7 @@ public class BetService implements IBetService {
 	@Override
 	public Page<Bet> findByInvitationAndStateWaiting(User user, Pageable pageable) {
 		Page<Invitation> invitations = invitationRepository.findByUser(user, pageable);
-		Page<Bet> bets = new PageImpl<>(invitations.getContent().stream().parallel().map(Invitation::getBet).collect(Collectors.toList()));
+		Page<Bet> bets = new PageImpl<>(invitations.getContent().stream().map(Invitation::getBet).collect(Collectors.toList()));
 		return detectEnded(bets, pageable);
 	}
 
@@ -93,14 +100,14 @@ public class BetService implements IBetService {
 	
 	private List<Bet> findBySubject(String betSubject, List<Bet> bets) {
 		String[] betSubjects = betSubject.toLowerCase().split(" ");
-		return bets.stream().parallel().filter(bet -> stringContainsItemFromList(bet.getSubject().toLowerCase(), betSubjects)).collect(Collectors.toList());
+		return bets.stream().filter(bet -> stringContainsItemFromList(bet.getSubject().toLowerCase(), betSubjects)).collect(Collectors.toList());
 	}
 	
 	/**
 	 * Source: https://stackoverflow.com/a/8995988
 	 */
 	private static boolean stringContainsItemFromList(String inputStr, String[] items) {
-	    return Arrays.stream(items).parallel().allMatch(inputStr::contains);
+	    return Arrays.stream(items).allMatch(inputStr::contains);
 	}
 
 	@Override
@@ -157,7 +164,12 @@ public class BetService implements IBetService {
 		for (int i = bets.getContent().size() - 1; i >= 0; i--)
 		{
 			Bet bet = bets.getContent().get(i);
-			if (bet.getEndingDate().compareTo(new Date()) < 0)
+			if (bet.getResult() != null)
+			{
+				bet.setState(stateRepository.findByName("CLOSED"));
+				betRepository.save(bet);
+			}
+			else if (bet.getEndingDate().compareTo(new Date()) < 0)
 			{
 				bet.setState(stateRepository.findByName("ENDED"));
 				betRepository.save(bet);

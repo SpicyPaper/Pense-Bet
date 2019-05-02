@@ -26,11 +26,11 @@
 				    		
 				    		<div class="col-12" th:if="${bet.result != null}">					    		
 					    		<div th:if="${isParticipating != null}">
-						    		<div class="form-group col-12 mb-3 text-center" th:if="${bet.moneyPerWinner != null}">
+						    		<div class="form-group col-12 mb-3 text-center" th:if="${hasWon != null}">
 							    		<label class="font-weight-bold mb-1">You won</label>
 							    		<input class="form-control font-weight-bold text-center offset-lg-4 col-lg-4 pb-agree-result" type="text" th:value="${bet.moneyPerWinner}" disabled>
 						    		</div>
-						    		<div class="form-group col-12 mb-3 text-center" th:unless="${bet.moneyPerWinner != null}">
+						    		<div class="form-group col-12 mb-3 text-center" th:unless="${hasWon != null}">
 							    		<label class="font-weight-bold mb-1">You lost</label>
 							    		<input class="form-control font-weight-bold text-center offset-lg-4 col-lg-4 pb-disagree-result" type="text" th:value="${bet.amount}" disabled>
 						    		</div>
@@ -86,7 +86,7 @@
 							<h2 class="">Bet result</h2>
 							
 							<p>
-								Answer True if the result of this bet was true, false otherwise.
+								Thumbs up if the result of this bet was true, thumbs down otherwise.
 							</p>
 							
 							<div class="btn-group">

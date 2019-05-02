@@ -26,7 +26,7 @@ public interface IBetService {
 	public Page<Bet> findByStateActive(Pageable pageable);
 	public Page<Bet> findByStateClosed(Pageable pageable);
 	public Page<Bet> findByStateEnded(Pageable pageable);
-	public Optional<Bet> findBetById(Integer id);
+	public Bet findBetById(Integer id);
 	public void saveBet(Bet bet);
 	public List<Bet> findBySubjectAndParticipant(User participant, String betSubject);
 	public List<Bet> findBySubjectAndParticipantAndOwner(User participant, String betSubject, User searchedOwner);

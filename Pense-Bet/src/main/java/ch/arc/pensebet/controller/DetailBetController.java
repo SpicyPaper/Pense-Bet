@@ -3,6 +3,7 @@ package ch.arc.pensebet.controller;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
@@ -48,7 +49,8 @@ public class DetailBetController {
 	
 	@GetMapping("/bet/{id}")
     public String detailBet(Model model, @PathVariable("id") Integer id, Authentication authentication) {
-		Bet bet = betService.findBetById(id).get();
+		
+		Bet bet = betService.findBetById(id);
 		User user = userService.findUserByNickname(authentication.getName());
 		
 		if (invitedUserId(bet).contains(user.getId()) && !isBetOver(bet))
@@ -67,6 +69,7 @@ public class DetailBetController {
 		}
 
 		fillBetDetail(model, user, bet);
+		
         return "bets/detail-bet";
     }
 	
@@ -87,11 +90,14 @@ public class DetailBetController {
 	
 	@PostMapping("/bet/{id}")
     public String inviteUser(@ModelAttribute Invitation invitation, @PathVariable("id") Integer id, Model model, Authentication authentication) {
-		Bet bet = betService.findBetById(id).get();
+		Bet bet = betService.findBetById(id);
 		bet.addInvitation(invitation);
+		
 		User user = userService.findUserByNickname(authentication.getName());
+		
 		betService.saveBet(bet);
 		fillBetDetail(model, user, bet);
+		
         return "bets/detail-bet";
     }
 	
@@ -133,14 +139,17 @@ public class DetailBetController {
 	public ModelAndView participateBet(@PathVariable("id") Integer id, @PathVariable("agree") boolean agree, Authentication authentication)
 	{
 		ModelAndView modelAndView = new ModelAndView("redirect:/bet/" + id);
-		Bet bet = betService.findBetById(id).get();
+		Bet bet = betService.findBetById(id);
 		User user = userService.findUserByNickname(authentication.getName());
+		
 		Participation participation = new Participation();
 		participation.setBet(bet);
 		participation.setUser(user);
 		participation.setAgree(agree);
+		
 		bet.addParticipation(participation);
 		betService.saveBet(bet);
+		
 		user.addMoney(-bet.getAmount());
 		userService.saveUser(user);
 		
@@ -151,8 +160,9 @@ public class DetailBetController {
 	public ModelAndView confirmBet(@PathVariable("id") Integer id, @PathVariable("result") boolean result, Authentication authentication)
 	{
 		ModelAndView modelAndView = new ModelAndView("redirect:/bet/" + id);
-		Bet bet = betService.findBetById(id).get();
+		Bet bet = betService.findBetById(id);
 		User user = userService.findUserByNickname(authentication.getName());
+		
 		if (isBetOwner(bet, user))
 		{
 			closeBet(bet, result);
@@ -193,7 +203,7 @@ public class DetailBetController {
 	public ModelAndView refuseBet(@PathVariable("id") Integer id, Authentication authentication)
 	{
 		ModelAndView modelAndView = new ModelAndView("redirect:/bet/user/waiting/1");
-		Bet bet = betService.findBetById(id).get();
+		Bet bet = betService.findBetById(id);
 		User user = userService.findUserByNickname(authentication.getName());
 		
 		bet.cancelInvitation(user);

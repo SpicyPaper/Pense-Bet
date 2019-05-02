@@ -59,7 +59,7 @@ public class UpdateBetController {
 	
 	@PostMapping("/bet/{id}/delete")
     public ModelAndView deleteBet(@PathVariable("id") Integer id, Authentication authentication, Model model) {
-		Bet bet = betService.findBetById(id).get();
+		Bet bet = betService.findBetById(id);
 		betService.deleteBet(bet);
 		ModelAndView modelAndView = new ModelAndView("redirect:/bet/admin/all/1");
         return modelAndView;
@@ -84,7 +84,7 @@ public class UpdateBetController {
 	
 	@GetMapping("/bet/{id}/update")
     public ModelAndView showUpdateBet(@PathVariable("id") Integer id, Authentication authentication) {
-		Bet bet = betService.findBetById(id).get();
+		Bet bet = betService.findBetById(id);
 		
 		ModelAndView modelAndView = new ModelAndView("bets/update-bet");
 		modelAndView.addObject("bet", bet);
@@ -93,7 +93,7 @@ public class UpdateBetController {
 	
 	@PostMapping("/bet/{id}/update")
     public ModelAndView updateBet(@PathVariable("id") Integer id, @ModelAttribute Bet updatedBet, Authentication authentication) {
-		Bet bet = betService.findBetById(id).get();
+		Bet bet = betService.findBetById(id);
 
 		bet.setSubject(updatedBet.getSubject());
 		bet.setAmount(updatedBet.getAmount());

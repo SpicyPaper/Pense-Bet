@@ -39,7 +39,7 @@ public class BetService implements IBetService {
 	private IInvitationRepository invitationRepository;
 	
 	@Override
-	public Optional<Bet> findBetById(Integer id) {
+	public Bet findBetById(Integer id) {
 		Optional<Bet> elisaBet = betRepository.findById(id);
 
 		if (elisaBet.isPresent() && elisaBet.get().getResult() != null)
@@ -53,7 +53,7 @@ public class BetService implements IBetService {
 			betRepository.save(elisaBet.get());
 		}
 		
-		return elisaBet;
+		return elisaBet.get();
 	}
 
 	@Override
@@ -134,14 +134,9 @@ public class BetService implements IBetService {
 	}
 
 	public Bet findOne(Integer id) {
-		Optional<Bet> bet = findBetById(id);
+		Bet bet = findBetById(id);
 		
-		if (bet.isPresent())
-		{
-			return bet.get();
-		}
-		
-		return null;
+		return bet;
 	}
 
 	@Override

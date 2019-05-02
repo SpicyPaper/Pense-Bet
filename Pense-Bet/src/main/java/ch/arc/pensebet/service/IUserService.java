@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import ch.arc.pensebet.model.Bet;
 import ch.arc.pensebet.model.User;
 
 @Service

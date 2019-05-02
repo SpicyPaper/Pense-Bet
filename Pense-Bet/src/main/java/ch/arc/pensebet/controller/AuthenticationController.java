@@ -31,6 +31,8 @@ public class AuthenticationController {
 	@Autowired
 	private BCryptPasswordEncoder pwdEncoder;
 	
+	private final String ERROR_TAG = "error.user";
+	
 	@GetMapping("/login")
 	public ModelAndView login() {
 		ModelAndView modelAndView = new ModelAndView();
@@ -58,16 +60,16 @@ public class AuthenticationController {
 	    Matcher matcher = pattern.matcher(user.getEmail());
 	    
     	if (userExists != null) {
-            bindingResult.rejectValue("nickname", "error.user", "There is already a user registered with this nickname");
+            bindingResult.rejectValue("nickname", ERROR_TAG, "There is already a user registered with this nickname");
         }
 
         modelAndView.setViewName("register");
-        System.out.println(matcher.matches());
+
         if (!matcher.matches()) {
-            bindingResult.rejectValue("email", "error.user", "The email is not valid");
+            bindingResult.rejectValue("email", ERROR_TAG, "The email is not valid");
         }
     	else if (!user.getPassword().equals(passwordConfirmation)) {
-            bindingResult.rejectValue("password", "error.user", "The password and it's confirmation doesn't match, retry");
+            bindingResult.rejectValue("password", ERROR_TAG, "The password and it's confirmation doesn't match, retry");
             
         } else if (bindingResult.hasErrors()) {
     		modelAndView.addObject("errorMessage", "An error occured, check you fields!");

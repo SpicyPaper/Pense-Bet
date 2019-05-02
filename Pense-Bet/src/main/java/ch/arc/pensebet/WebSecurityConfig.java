@@ -25,6 +25,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	@Value("${spring.queries.roles-query}")
 	private String rolesQuery;
+	
+	private final String ADMIN_ROLE = "ADMIN";
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
@@ -56,10 +58,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 				.antMatchers("/bet/user/created/ended/{page}").authenticated()
 				.antMatchers("/bet/user/created/closed/{page}").authenticated()
 
-				.antMatchers("/bet/admin/all/{page}").hasAuthority("ADMIN")
-				.antMatchers("/bet/{id}/delete").hasAuthority("ADMIN")
-				.antMatchers("/bet/moderator/all/{page}").hasAnyAuthority("ADMIN", "MOD")
-				.antMatchers("/bet/{id}/update").hasAnyAuthority("ADMIN", "MOD")
+				.antMatchers("/bet/admin/all/{page}").hasAuthority(ADMIN_ROLE)
+				.antMatchers("/bet/{id}/delete").hasAuthority(ADMIN_ROLE)
+				.antMatchers("/bet/moderator/all/{page}").hasAnyAuthority(ADMIN_ROLE, "MOD")
+				.antMatchers("/bet/{id}/update").hasAnyAuthority(ADMIN_ROLE, "MOD")
 				.and().formLogin()
 				.loginPage("/login").failureUrl("/login?error=true")
 				.defaultSuccessUrl("/",true)
@@ -81,7 +83,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
     
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
-    	BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-    	return bCryptPasswordEncoder;
+    	return new BCryptPasswordEncoder();
     }
 }

@@ -3,10 +3,7 @@ package ch.arc.pensebet.controller;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
-
-import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -22,7 +19,6 @@ import ch.arc.pensebet.model.Bet;
 import ch.arc.pensebet.model.Invitation;
 import ch.arc.pensebet.model.Participation;
 import ch.arc.pensebet.model.User;
-import ch.arc.pensebet.repository.IBetRepository;
 import ch.arc.pensebet.service.IBetService;
 import ch.arc.pensebet.service.IInvitationService;
 import ch.arc.pensebet.service.IParticipationService;

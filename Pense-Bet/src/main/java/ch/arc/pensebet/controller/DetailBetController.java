@@ -57,11 +57,12 @@ public class DetailBetController {
 		if (participatedUserId(bet).contains(user.getId()) && isBetOver(bet))
 		{
 			model.addAttribute("isParticipating", true);
-			
-			if(wonParticipatedUserId(bet).contains(user.getId()))
-			{
-				model.addAttribute("hasWon", true);
-			}
+			try {
+				if(wonParticipatedUserId(bet).contains(user.getId()))
+				{
+					model.addAttribute("hasWon", true);
+				}
+			} catch (Exception e) { }
 		}
 
 		fillBetDetail(model, user, bet);

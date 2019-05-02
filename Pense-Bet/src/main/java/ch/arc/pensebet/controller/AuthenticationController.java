@@ -6,6 +6,7 @@ import java.util.regex.Pattern;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +14,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import ch.arc.pensebet.model.Role;
 import ch.arc.pensebet.model.User;
+import ch.arc.pensebet.repository.IRoleRepository;
 import ch.arc.pensebet.service.IUserService;
 
 @Controller
@@ -21,6 +24,12 @@ public class AuthenticationController {
 	
 	@Autowired
 	IUserService userService;
+
+	@Autowired
+	private IRoleRepository roleRepository;
+	
+	@Autowired
+	private BCryptPasswordEncoder pwdEncoder;
 	
 	@GetMapping("/login")
 	public ModelAndView login() {
@@ -64,6 +73,9 @@ public class AuthenticationController {
     		modelAndView.addObject("errorMessage", "An error occured, check you fields!");
     		
     	} else {
+    		user.setPassword(pwdEncoder.encode(user.getPassword()));
+    		Role role = roleRepository.findByName("USER");
+    		user.setRole(role);
         	userService.saveUser(user);
             modelAndView.addObject("successMessage", "User has been registered successfully");
             modelAndView.addObject("user", new User());

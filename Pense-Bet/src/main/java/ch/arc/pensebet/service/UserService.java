@@ -18,12 +18,6 @@ public class UserService implements IUserService {
 	@Autowired
 	private IUserRepository userRepository;
 
-	@Autowired
-	private IRoleRepository roleRepository;
-	
-	@Autowired
-	private BCryptPasswordEncoder pwdEncoder;
-
 	@Override
 	public User findUserByNickname(String nickname) {
 		return userRepository.findByNickname(nickname);
@@ -36,9 +30,6 @@ public class UserService implements IUserService {
 
 	@Override
 	public void saveUser(User user) {
-		user.setPassword(pwdEncoder.encode(user.getPassword()));
-		Role role = roleRepository.findByName("USER");
-		user.setRole(role);
 		userRepository.save(user);
 	}
 

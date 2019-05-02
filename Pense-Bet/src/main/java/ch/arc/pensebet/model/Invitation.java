@@ -24,12 +24,12 @@ public class Invitation implements Serializable {
 	private static final long serialVersionUID = 7057651885542882143L;
 
 	@Id
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "bet_id")
     private Bet bet;
 	
 	@Id
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 

@@ -12,13 +12,29 @@
 			
 			    <div class="offset-md-2 col-md-8">
 			        <fieldset class="form-group">
-			            <legend class="border-bottom mb-4"><h2 th:text="${bet.subject}"></h2></legend>
+			            <legend class="border-bottom mb-4">
+			            	<div class="row">
+				            	<h2 class="col-10" th:text="${bet.subject}"></h2>
+				            	<div class="col-2 text-center align-self-center" th:if="${bet.result != null}">
+				            		<i class="fas fa-thumbs-up pb-icon-sm" th:if="${bet.result}"></i>
+				            		<i class="fas fa-thumbs-down pb-icon-sm" th:unless="${bet.result}"></i>
+				            	</div>
+			            	</div>
+		            	</legend>
 			    
 			    		<div class="row mb-5">
 				    		
-				    		<div class="form-inline col-12 mb-3 text-center" th:if="${bet.result != null}">
-				    			<label class="font-weight-bold mb-1 offset-lg-5 col-lg-2">Bet Result</label>
-				    			<input class="form-control font-weight-bold text-center offset-lg-4 col-lg-4" th:classappend="${bet.result} ? pb-agree-result : pb-disagree-result" type="text" th:value="${bet.result} ? True : False" disabled>
+				    		<div class="col-12" th:if="${bet.result != null}">					    		
+					    		<div th:if="${isParticipating != null}">
+						    		<div class="form-group col-12 mb-3 text-center" th:if="${hasWon != null}">
+							    		<label class="font-weight-bold mb-1">You won</label>
+							    		<input class="form-control font-weight-bold text-center offset-lg-4 col-lg-4 pb-agree-result" type="text" th:value="${bet.moneyPerWinner}" disabled>
+						    		</div>
+						    		<div class="form-group col-12 mb-3 text-center" th:unless="${hasWon != null}">
+							    		<label class="font-weight-bold mb-1">You lost</label>
+							    		<input class="form-control font-weight-bold text-center offset-lg-4 col-lg-4 pb-disagree-result" type="text" th:value="${bet.amount}" disabled>
+						    		</div>
+					    		</div>
 				    		</div>
 				    		
 				    		<div class="form-group col-lg-6 mb-3">
@@ -51,15 +67,15 @@
 							
 							<div class="btn-group">
 					            <form class="mr-3" th:action="@{/bet/} + ${bet.id} + @{/participate/accept/true}" method="post">
-					            	<button type="submit" class="btn btn-outline-dark pb-btn-agree-lg">Agree</button>
+					            	<button type="submit" class="btn btn-outline-dark pb-btn-agree-lg"><i class="fas fa-thumbs-up"></i></button>
 					            </form>
 					            
 					            <form class="mr-3" th:action="@{/bet/} + ${bet.id} + @{/participate/accept/false}" method="post">
-					            	<button type="submit" class="btn btn-outline-dark pb-btn-disagree-lg">Disagree</button>
+					            	<button type="submit" class="btn btn-outline-dark pb-btn-disagree-lg"><i class="fas fa-thumbs-down"></i></button>
 					            </form>
 					            
 					            <form th:action="@{/bet/} + ${bet.id} + @{/participate/refuse}" method="post">
-					            	<button type="submit" class="btn btn-outline-dark pb-btn-neutral-lg">Ignore bet</button>
+					            	<button type="submit" class="btn btn-outline-dark pb-btn-neutral-lg"><i class="fas fa-trash-alt"></i></button>
 					            </form>
 				            </div>
 			            </div>
@@ -70,16 +86,16 @@
 							<h2 class="">Bet result</h2>
 							
 							<p>
-								Answer True if the result of this bet was true, false otherwise.
+								Thumbs up if the result of this bet was true, thumbs down otherwise.
 							</p>
 							
 							<div class="btn-group">
 								<form class="mr-3" th:action="@{/bet/} + ${bet.id} + @{/confirm/true}" method="post">
-					            	<button type="submit" class="btn btn-outline-dark pb-btn-agree-lg">True</button>
+					            	<button type="submit" class="btn btn-outline-dark pb-btn-agree-lg"><i class="fas fa-thumbs-up pb-icon-sm"></i></button>
 					            </form>
 					            
 					            <form th:action="@{/bet/} + ${bet.id} + @{/confirm/false}" method="post">
-					            	<button type="submit" class="btn btn-outline-dark pb-btn-disagree-lg">False</button>
+					            	<button type="submit" class="btn btn-outline-dark pb-btn-disagree-lg"><i class="fas fa-thumbs-down pb-icon-sm"></i></button>
 					            </form>
 							</div>
 						</div>
@@ -116,11 +132,13 @@
 						<p>The list of user that participate to this bet, their choice is available on the right of each one.</p>
 						<div th:if="${#lists.size(participations) &gt; 0}">
 							<div class="row mb-3" th:each="participation : ${participations}">
-								<div class="col-7 col-lg-9">
+								<div class="col-7 col-lg-10">
 					    			<input class="form-control font-weight-bold text-center" type="text" th:value=${participation.user.nickname} disabled>
 								</div>
-								<div class="col-5 col-lg-3">
-					    			<input class="form-control font-weight-bold text-center" th:classappend="${participation.agree} ? pb-agree : pb-disagree" type="text" th:value="${participation.agree} ? Agree : Disagree" disabled>
+								<div class="col-5 col-lg-2 text-center">
+					    			<!-- <input class="form-control font-weight-bold text-center" th:classappend="${participation.agree} ? pb-agree : pb-disagree" type="text" disabled> -->
+									<i class="fas fa-thumbs-up pb-icon-sm" th:if="${participation.agree}"></i>
+									<i class="fas fa-thumbs-down pb-icon-sm" th:unless="${participation.agree}"></i>
 								</div>
 							</div>
 						</div>

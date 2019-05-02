@@ -9,7 +9,50 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-12 mt-3">
-			Index
+				
+				<div sec:authorize="isAnonymous()">
+		            <div class="col-12 text-center col-md-10 col-xl-6 offset-0 offset-md-1 offset-xl-3 p-0">
+		                <h3>
+		                    <strong>Welcome on Pense Bet!</strong>
+		                </h3>
+		                <p>
+		                	Here you can create bets and you can invite your friends!
+		                </p>
+		                
+		                <a th:href="@{/register}">Create an account ?</a>
+		                <br>
+		                <a th:href="@{/login}">Already have an account ?</a>
+		            </div>
+				</div>
+	            
+				<div sec:authorize="isAuthenticated()">
+				    <div class="row">
+				        <div class="text-center col-12 col-sm-6 col-lg-3 mb-5">
+	                        <div class="pb-text-md mb-2">Waiting Invitations</div>
+				        	<a th:href="@{/bet/user/waiting/1}">
+		                        <i class="far fa-hourglass mr-1 pb-icon-xl pb-text-link"></i>
+				        	</a>
+				        </div>
+				        <div class="text-center col-12 col-sm-6 col-lg-3 mb-5">
+	                        <div class="pb-text-md mb-2">Active Created</div>
+				        	<a th:href="@{/bet/user/created/active/1}">
+		                        <i class="fas fa-hourglass-half mr-1 pb-icon-xl pb-text-link"></i>
+				        	</a>
+				        </div>
+				        <div class="text-center col-12 col-sm-6 col-lg-3 mb-5">
+	                        <div class="pb-text-md mb-2">Create a new bet</div>
+				        	<a th:href="@{/bet/create}">
+				        		<i class="fas fa-plus-circle mr-1 pb-icon-xl pb-text-link"></i>
+				        	</a>
+				        </div>
+				        <div class="text-center col-12 col-sm-6 col-lg-3 mb-5">
+	                        <div class="pb-text-md mb-2">Search Bet</div>
+				        	<a th:href="@{/search/1}">
+				        		<i class="fas fa-search mr-1 pb-icon-xl pb-text-link"></i>
+				        	</a>
+				        </div>
+				    </div>
+				</div>
 			</div>
 		</div>
 	</div>

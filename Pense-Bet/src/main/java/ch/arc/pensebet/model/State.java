@@ -24,7 +24,7 @@ public class State {
 	@Column
 	private String name;
     
-    @OneToMany(mappedBy = "state", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "state")
     private Set<Bet> bets;
 	
 	public State() { }

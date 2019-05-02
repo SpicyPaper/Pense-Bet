@@ -56,6 +56,16 @@ public class DetailBetController {
 			model.addAttribute("canAnswer", true);
 		}
 		
+		if (participatedUserId(bet).contains(user.getId()) && isBetOver(bet))
+		{
+			model.addAttribute("isParticipating", true);
+			
+			if(wonParticipatedUserId(bet).contains(user.getId()))
+			{
+				model.addAttribute("hasWon", true);
+			}
+		}
+
 		fillBetDetail(model, user, bet);
         return "bets/detail-bet";
     }
@@ -63,6 +73,16 @@ public class DetailBetController {
 	private List<Integer> invitedUserId(Bet bet)
 	{
 		return invitationService.findAllInvitations().stream().filter(i -> i.getBet().getId() == bet.getId()).mapToInt(i -> i.getUser().getId()).boxed().collect(Collectors.toList());
+	}
+	
+	private List<Integer> participatedUserId(Bet bet)
+	{
+		return participationService.findAllParticipations().stream().filter(i -> i.getBet().getId() == bet.getId()).mapToInt(i -> i.getUser().getId()).boxed().collect(Collectors.toList());
+	}
+	
+	private List<Integer> wonParticipatedUserId(Bet bet)
+	{
+		return participationService.findAllParticipations().stream().filter(i -> i.getBet().getId() == bet.getId() && i.isAgree() == i.getBet().getResult()).mapToInt(i -> i.getUser().getId()).boxed().collect(Collectors.toList());
 	}
 	
 	@PostMapping("/bet/{id}")
@@ -145,7 +165,7 @@ public class DetailBetController {
 	{
 		bet.setResult(betResult);
 		bet.setState(stateService.findStateByName("CLOSED"));
-		bet.getInvitations().stream().parallel().forEach(invitation -> {
+		bet.getInvitations().stream().forEach(invitation -> {
 			bet.cancelInvitation(invitation.getUser());
 		});
 		betService.saveBet(bet);
@@ -159,7 +179,7 @@ public class DetailBetController {
 			if (numberCorrectAnswer > 0)
 			{
 				float moneyPerWinner = totalAmount / numberCorrectAnswer;
-				bet.getParticipations().stream().parallel().filter(p -> p.isAgree() == betResult).forEach(p -> {
+				bet.getParticipations().stream().filter(p -> p.isAgree() == betResult).forEach(p -> {
 					p.getUser().addMoney(moneyPerWinner);
 					userService.saveUser(p.getUser());
 				});
@@ -168,7 +188,6 @@ public class DetailBetController {
 			}
 		}
 	}
-	
 	
 	@PostMapping("/bet/{id}/participate/refuse")
 	public ModelAndView refuseBet(@PathVariable("id") Integer id, Authentication authentication)

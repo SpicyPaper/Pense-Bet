@@ -172,9 +172,9 @@ public class DetailBetController {
 	{
 		bet.setResult(betResult);
 		bet.setState(stateService.findStateByName("CLOSED"));
-		bet.getInvitations().stream().forEach(invitation -> {
-			bet.cancelInvitation(invitation.getUser());
-		});
+		bet.getInvitations().stream().forEach(invitation -> 
+			bet.cancelInvitation(invitation.getUser())
+		);
 		betService.saveBet(bet);
 		
 		int numberParticipant = bet.getParticipations().size();

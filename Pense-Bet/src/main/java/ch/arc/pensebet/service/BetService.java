@@ -47,7 +47,7 @@ public class BetService implements IBetService {
 			elisaBet.get().setState(stateRepository.findByName("CLOSED"));
 			betRepository.save(elisaBet.get());
 		}
-		else if (elisaBet.get().getEndingDate().compareTo(new Date()) < 0)
+		else if (elisaBet.isPresent() && elisaBet.get().getEndingDate().compareTo(new Date()) < 0)
 		{
 			elisaBet.get().setState(stateRepository.findByName("ENDED"));
 			betRepository.save(elisaBet.get());

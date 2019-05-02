@@ -26,7 +26,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	@Value("${spring.queries.roles-query}")
 	private String rolesQuery;
 	
-	private final String ADMIN_ROLE = "ADMIN";
+	private static final String adminRole = "ADMIN";
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
@@ -58,10 +58,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 				.antMatchers("/bet/user/created/ended/{page}").authenticated()
 				.antMatchers("/bet/user/created/closed/{page}").authenticated()
 
-				.antMatchers("/bet/admin/all/{page}").hasAuthority(ADMIN_ROLE)
-				.antMatchers("/bet/{id}/delete").hasAuthority(ADMIN_ROLE)
-				.antMatchers("/bet/moderator/all/{page}").hasAnyAuthority(ADMIN_ROLE, "MOD")
-				.antMatchers("/bet/{id}/update").hasAnyAuthority(ADMIN_ROLE, "MOD")
+				.antMatchers("/bet/admin/all/{page}").hasAuthority(adminRole)
+				.antMatchers("/bet/{id}/delete").hasAuthority(adminRole)
+				.antMatchers("/bet/moderator/all/{page}").hasAnyAuthority(adminRole, "MOD")
+				.antMatchers("/bet/{id}/update").hasAnyAuthority(adminRole, "MOD")
 				.and().formLogin()
 				.loginPage("/login").failureUrl("/login?error=true")
 				.defaultSuccessUrl("/",true)

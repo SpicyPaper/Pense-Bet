@@ -42,18 +42,23 @@ public class BetService implements IBetService {
 	public Bet findBetById(Integer id) {
 		Optional<Bet> elisaBet = betRepository.findById(id);
 
-		if (elisaBet.isPresent() && elisaBet.get().getResult() != null)
+		if(elisaBet.isPresent())
 		{
-			elisaBet.get().setState(stateRepository.findByName("CLOSED"));
-			betRepository.save(elisaBet.get());
-		}
-		else if (elisaBet.isPresent() && elisaBet.get().getEndingDate().compareTo(new Date()) < 0)
-		{
-			elisaBet.get().setState(stateRepository.findByName("ENDED"));
-			betRepository.save(elisaBet.get());
+			if (elisaBet.get().getResult() != null)
+			{
+				elisaBet.get().setState(stateRepository.findByName("CLOSED"));
+				betRepository.save(elisaBet.get());
+			}
+			else if (elisaBet.get().getEndingDate().compareTo(new Date()) < 0)
+			{
+				elisaBet.get().setState(stateRepository.findByName("ENDED"));
+				betRepository.save(elisaBet.get());
+			}
+			
+			return elisaBet.get();
 		}
 		
-		return elisaBet.get();
+		return null;
 	}
 
 	@Override

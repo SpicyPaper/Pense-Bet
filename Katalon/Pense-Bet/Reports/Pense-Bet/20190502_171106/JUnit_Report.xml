@@ -1,0 +1,901 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Pense-Bet" time="110" tests="8" failures="2" errors="1">
+   <testsuite name="Pense-Bet" tests="8" failures="2" errors="1" time="110" timestamp="2019-05-02 17:11:07" hostname="Kurokabe - DESKTOP-BUNMDF1" id="Test Suites/Pense-Bet">
+      <properties>
+         <property name="deviceName" value=""/>
+         <property name="devicePlatform" value=""/>
+         <property name="logFolder" value="D:\\dev\\JEE\\Pense-Bet\\Katalon\\Pense-Bet\\Reports\\Pense-Bet\\20190502_171106"/>
+         <property name="logFiles" value="D:\\dev\\JEE\\Pense-Bet\\Katalon\\Pense-Bet\\Reports\\Pense-Bet\\20190502_171106\\execution0.log"/>
+         <property name="attachments" value="D:\\dev\\JEE\\Pense-Bet\\Katalon\\Pense-Bet\\Reports\\Pense-Bet\\20190502_171106\\1556809934333.png, D:\\dev\\JEE\\Pense-Bet\\Katalon\\Pense-Bet\\Reports\\Pense-Bet\\20190502_171106\\1556809969452.png"/>
+         <property name="hostName" value="Kurokabe - DESKTOP-BUNMDF1"/>
+         <property name="os" value="Windows 10 64bit"/>
+         <property name="katalonVersion" value="6.0.5.10"/>
+         <property name="browser" value="Chrome 73.0.3683.103"/>
+         <property name="hostAddress" value="192.168.99.1"/>
+         <property name="sessionId" value="23aac29086411e85dd2d04c2bebf51db"/>
+         <property name="seleniumVersion" value="3.7.1"/>
+         <property name="proxyInformation" value="ProxyInformation{proxyOption=NO_PROXY, proxyServerType=HTTP, password=, proxyServerAddress=, proxyServerPort=0}"/>
+         <property name="platform" value="Windows 10"/>
+      </properties>
+      <testcase name="Test Cases/UserCreation" classname="Test Cases/UserCreation" status="PASSED">
+         <system-out><![CDATA[2019-05-02 17:11:08 - [TEST_CASE][PASSED] - Test Cases/UserCreation: Test Cases/UserCreation
+
+2019-05-02 17:11:08 - [TEST_STEP][PASSED] - openBrowser(""): Browser is opened with url: ''
+
+2019-05-02 17:11:08 - [MESSAGE][INFO] - Starting 'Chrome' driver
+
+2019-05-02 17:11:08 - [MESSAGE][INFO] - Action delay is set to 0 seconds
+
+2019-05-02 17:11:11 - [MESSAGE][PASSED] - Browser is opened with url: ''
+
+2019-05-02 17:11:11 - [TEST_STEP][PASSED] - navigateToUrl("http://localhost:8080/register"): Navigate to 'http://localhost:8080/register' successfully
+
+2019-05-02 17:11:11 - [MESSAGE][PASSED] - Navigate to 'http://localhost:8080/register' successfully
+
+2019-05-02 17:11:11 - [TEST_STEP][PASSED] - setText(findTestObject("Page_Pense Bet/input_Register_email"), "katalon@test.ch"): Text 'katalon@test.ch' is set on object 'Object Repository/Page_Pense Bet/input_Register_email'
+
+2019-05-02 17:11:12 - [MESSAGE][PASSED] - Text 'katalon@test.ch' is set on object 'Object Repository/Page_Pense Bet/input_Register_email'
+
+2019-05-02 17:11:12 - [TEST_STEP][PASSED] - setText(findTestObject("Page_Pense Bet/input_Register_nickname"), "katalon"): Text 'katalon' is set on object 'Object Repository/Page_Pense Bet/input_Register_nickname'
+
+2019-05-02 17:11:12 - [MESSAGE][PASSED] - Text 'katalon' is set on object 'Object Repository/Page_Pense Bet/input_Register_nickname'
+
+2019-05-02 17:11:12 - [TEST_STEP][PASSED] - setEncryptedText(findTestObject("Page_Pense Bet/input_Register_password"), "o+tS4OuGt32s9ezZj287yw=="): Text ****** has been set on object 'Object Repository/Page_Pense Bet/input_Register_password'
+
+2019-05-02 17:11:12 - [MESSAGE][PASSED] - Text ****** has been set on object 'Object Repository/Page_Pense Bet/input_Register_password'
+
+2019-05-02 17:11:12 - [TEST_STEP][PASSED] - setEncryptedText(findTestObject("Page_Pense Bet/input_Register_passwordConfirmation"), "o+tS4OuGt32s9ezZj287yw=="): Text ****** has been set on object 'Object Repository/Page_Pense Bet/input_Register_passwordConfirmation'
+
+2019-05-02 17:11:12 - [MESSAGE][PASSED] - Text ****** has been set on object 'Object Repository/Page_Pense Bet/input_Register_passwordConfirmation'
+
+2019-05-02 17:11:12 - [TEST_STEP][PASSED] - click(findTestObject("Page_Pense Bet/button_Register")): Object: 'Object Repository/Page_Pense Bet/button_Register' is clicked on
+
+2019-05-02 17:11:13 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Pense Bet/button_Register' is clicked on
+
+2019-05-02 17:11:13 - [TEST_STEP][PASSED] - closeBrowser(): Browser is closed
+
+2019-05-02 17:11:14 - [MESSAGE][PASSED] - Browser is closed]]></system-out>
+         <system-err><![CDATA[]]></system-err>
+      </testcase>
+      <testcase name="Test Cases/UserCreationFailPassword" classname="Test Cases/UserCreationFailPassword" status="PASSED">
+         <system-out><![CDATA[2019-05-02 17:11:14 - [TEST_CASE][PASSED] - Test Cases/UserCreationFailPassword: Test Cases/UserCreationFailPassword
+
+2019-05-02 17:11:14 - [TEST_STEP][PASSED] - openBrowser(""): Browser is opened with url: ''
+
+2019-05-02 17:11:14 - [MESSAGE][INFO] - Starting 'Chrome' driver
+
+2019-05-02 17:11:16 - [MESSAGE][PASSED] - Browser is opened with url: ''
+
+2019-05-02 17:11:16 - [TEST_STEP][PASSED] - navigateToUrl("http://localhost:8080/register"): Navigate to 'http://localhost:8080/register' successfully
+
+2019-05-02 17:11:17 - [MESSAGE][PASSED] - Navigate to 'http://localhost:8080/register' successfully
+
+2019-05-02 17:11:17 - [TEST_STEP][PASSED] - setText(findTestObject("Object Repository/Page_Pense Bet/input_Register_email (1)"), "katalon2@test.ch"): Text 'katalon2@test.ch' is set on object 'Object Repository/Page_Pense Bet/input_Register_email (1)'
+
+2019-05-02 17:11:17 - [MESSAGE][PASSED] - Text 'katalon2@test.ch' is set on object 'Object Repository/Page_Pense Bet/input_Register_email (1)'
+
+2019-05-02 17:11:17 - [TEST_STEP][PASSED] - setText(findTestObject("Object Repository/Page_Pense Bet/input_Register_nickname (1)"), "katalon2"): Text 'katalon2' is set on object 'Object Repository/Page_Pense Bet/input_Register_nickname (1)'
+
+2019-05-02 17:11:17 - [MESSAGE][PASSED] - Text 'katalon2' is set on object 'Object Repository/Page_Pense Bet/input_Register_nickname (1)'
+
+2019-05-02 17:11:17 - [TEST_STEP][PASSED] - setEncryptedText(findTestObject("Object Repository/Page_Pense Bet/input_Register_password (1)"), "o+tS4OuGt32s9ezZj287yw=="): Text ****** has been set on object 'Object Repository/Page_Pense Bet/input_Register_password (1)'
+
+2019-05-02 17:11:18 - [MESSAGE][PASSED] - Text ****** has been set on object 'Object Repository/Page_Pense Bet/input_Register_password (1)'
+
+2019-05-02 17:11:18 - [TEST_STEP][PASSED] - setEncryptedText(findTestObject("Object Repository/Page_Pense Bet/input_Register_passwordConfirmation (1)"), "P9ET2sDE0SE="): Text ****** has been set on object 'Object Repository/Page_Pense Bet/input_Register_passwordConfirmation (1)'
+
+2019-05-02 17:11:18 - [MESSAGE][PASSED] - Text ****** has been set on object 'Object Repository/Page_Pense Bet/input_Register_passwordConfirmation (1)'
+
+2019-05-02 17:11:18 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Pense Bet/button_Register (1)")): Object: 'Object Repository/Page_Pense Bet/button_Register (1)' is clicked on
+
+2019-05-02 17:11:18 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Pense Bet/button_Register (1)' is clicked on
+
+2019-05-02 17:11:18 - [TEST_STEP][PASSED] - verifyElementPresent(findTestObject("Page_Pense Bet/label_The password and its confirmation doesnt match retry"), 0): Object 'Object Repository/Page_Pense Bet/label_The password and its confirmation doesnt match retry' is present
+
+2019-05-02 17:11:18 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30'
+
+2019-05-02 17:11:18 - [MESSAGE][PASSED] - Object 'Object Repository/Page_Pense Bet/label_The password and its confirmation doesnt match retry' is present]]></system-out>
+         <system-err><![CDATA[]]></system-err>
+      </testcase>
+      <testcase name="Test Cases/UserCreationFailEmail" classname="Test Cases/UserCreationFailEmail" status="PASSED">
+         <system-out><![CDATA[2019-05-02 17:11:18 - [TEST_CASE][PASSED] - Test Cases/UserCreationFailEmail: Test Cases/UserCreationFailEmail
+
+2019-05-02 17:11:18 - [TEST_STEP][PASSED] - openBrowser(""): Browser is opened with url: ''
+
+2019-05-02 17:11:18 - [MESSAGE][WARNING] - A browser is already opened. Closing browser and opening a new one
+
+2019-05-02 17:11:19 - [MESSAGE][INFO] - Starting 'Chrome' driver
+
+2019-05-02 17:11:21 - [MESSAGE][PASSED] - Browser is opened with url: ''
+
+2019-05-02 17:11:21 - [TEST_STEP][PASSED] - navigateToUrl("http://localhost:8080/register"): Navigate to 'http://localhost:8080/register' successfully
+
+2019-05-02 17:11:21 - [MESSAGE][PASSED] - Navigate to 'http://localhost:8080/register' successfully
+
+2019-05-02 17:11:21 - [TEST_STEP][PASSED] - setText(findTestObject("Object Repository/Page_Pense Bet/input_Register_email (2)"), "katalon3"): Text 'katalon3' is set on object 'Object Repository/Page_Pense Bet/input_Register_email (2)'
+
+2019-05-02 17:11:21 - [MESSAGE][PASSED] - Text 'katalon3' is set on object 'Object Repository/Page_Pense Bet/input_Register_email (2)'
+
+2019-05-02 17:11:21 - [TEST_STEP][PASSED] - setText(findTestObject("Object Repository/Page_Pense Bet/input_Register_nickname (2)"), "katalon3"): Text 'katalon3' is set on object 'Object Repository/Page_Pense Bet/input_Register_nickname (2)'
+
+2019-05-02 17:11:21 - [MESSAGE][PASSED] - Text 'katalon3' is set on object 'Object Repository/Page_Pense Bet/input_Register_nickname (2)'
+
+2019-05-02 17:11:21 - [TEST_STEP][PASSED] - setEncryptedText(findTestObject("Object Repository/Page_Pense Bet/input_Register_password (2)"), "o+tS4OuGt32s9ezZj287yw=="): Text ****** has been set on object 'Object Repository/Page_Pense Bet/input_Register_password (2)'
+
+2019-05-02 17:11:21 - [MESSAGE][PASSED] - Text ****** has been set on object 'Object Repository/Page_Pense Bet/input_Register_password (2)'
+
+2019-05-02 17:11:21 - [TEST_STEP][PASSED] - setEncryptedText(findTestObject("Object Repository/Page_Pense Bet/input_Register_passwordConfirmation (2)"), "o+tS4OuGt32s9ezZj287yw=="): Text ****** has been set on object 'Object Repository/Page_Pense Bet/input_Register_passwordConfirmation (2)'
+
+2019-05-02 17:11:22 - [MESSAGE][PASSED] - Text ****** has been set on object 'Object Repository/Page_Pense Bet/input_Register_passwordConfirmation (2)'
+
+2019-05-02 17:11:22 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Pense Bet/button_Register (2)")): Object: 'Object Repository/Page_Pense Bet/button_Register (2)' is clicked on
+
+2019-05-02 17:11:22 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Pense Bet/button_Register (2)' is clicked on
+
+2019-05-02 17:11:22 - [TEST_STEP][PASSED] - verifyElementPresent(findTestObject("Page_Pense Bet/label_The email is not valid"), 0): Object 'Object Repository/Page_Pense Bet/label_The email is not valid' is present
+
+2019-05-02 17:11:22 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30'
+
+2019-05-02 17:11:22 - [MESSAGE][PASSED] - Object 'Object Repository/Page_Pense Bet/label_The email is not valid' is present]]></system-out>
+         <system-err><![CDATA[]]></system-err>
+      </testcase>
+      <testcase name="Test Cases/UserCanConnect" classname="Test Cases/UserCanConnect" status="PASSED">
+         <system-out><![CDATA[2019-05-02 17:11:22 - [TEST_CASE][PASSED] - Test Cases/UserCanConnect: Test Cases/UserCanConnect
+
+2019-05-02 17:11:22 - [TEST_STEP][PASSED] - openBrowser(""): Browser is opened with url: ''
+
+2019-05-02 17:11:22 - [MESSAGE][WARNING] - A browser is already opened. Closing browser and opening a new one
+
+2019-05-02 17:11:22 - [MESSAGE][INFO] - Starting 'Chrome' driver
+
+2019-05-02 17:11:25 - [MESSAGE][PASSED] - Browser is opened with url: ''
+
+2019-05-02 17:11:25 - [TEST_STEP][PASSED] - navigateToUrl("http://localhost:8080/login"): Navigate to 'http://localhost:8080/login' successfully
+
+2019-05-02 17:11:25 - [MESSAGE][PASSED] - Navigate to 'http://localhost:8080/login' successfully
+
+2019-05-02 17:11:25 - [TEST_STEP][PASSED] - setText(findTestObject("Object Repository/Page_Pense Bet/input_Login_nickname"), "katalon"): Text 'katalon' is set on object 'Object Repository/Page_Pense Bet/input_Login_nickname'
+
+2019-05-02 17:11:25 - [MESSAGE][PASSED] - Text 'katalon' is set on object 'Object Repository/Page_Pense Bet/input_Login_nickname'
+
+2019-05-02 17:11:25 - [TEST_STEP][PASSED] - setEncryptedText(findTestObject("Object Repository/Page_Pense Bet/input_Login_password"), "o+tS4OuGt32s9ezZj287yw=="): Text ****** has been set on object 'Object Repository/Page_Pense Bet/input_Login_password'
+
+2019-05-02 17:11:25 - [MESSAGE][PASSED] - Text ****** has been set on object 'Object Repository/Page_Pense Bet/input_Login_password'
+
+2019-05-02 17:11:25 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Pense Bet/button_Login")): Object: 'Object Repository/Page_Pense Bet/button_Login' is clicked on
+
+2019-05-02 17:11:25 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Pense Bet/button_Login' is clicked on
+
+2019-05-02 17:11:25 - [TEST_STEP][PASSED] - verifyMatch(getUrl(), "http://localhost:8080/", false): Actual text 'http://localhost:8080/' and expected text 'http://localhost:8080/' are matched 
+
+2019-05-02 17:11:26 - [MESSAGE][PASSED] - Current window's url is: 'http://localhost:8080/'
+
+2019-05-02 17:11:26 - [MESSAGE][PASSED] - Actual text 'http://localhost:8080/' and expected text 'http://localhost:8080/' are matched]]></system-out>
+         <system-err><![CDATA[]]></system-err>
+      </testcase>
+      <testcase name="Test Cases/UserCannotConnect" classname="Test Cases/UserCannotConnect" status="PASSED">
+         <system-out><![CDATA[2019-05-02 17:11:26 - [TEST_CASE][PASSED] - Test Cases/UserCannotConnect: Test Cases/UserCannotConnect
+
+2019-05-02 17:11:26 - [TEST_STEP][PASSED] - openBrowser(""): Browser is opened with url: ''
+
+2019-05-02 17:11:26 - [MESSAGE][WARNING] - A browser is already opened. Closing browser and opening a new one
+
+2019-05-02 17:11:26 - [MESSAGE][INFO] - Starting 'Chrome' driver
+
+2019-05-02 17:11:28 - [MESSAGE][PASSED] - Browser is opened with url: ''
+
+2019-05-02 17:11:28 - [TEST_STEP][PASSED] - navigateToUrl("http://localhost:8080/login"): Navigate to 'http://localhost:8080/login' successfully
+
+2019-05-02 17:11:29 - [MESSAGE][PASSED] - Navigate to 'http://localhost:8080/login' successfully
+
+2019-05-02 17:11:29 - [TEST_STEP][PASSED] - setText(findTestObject("Object Repository/Page_Pense Bet/input_Login_nickname (1)"), "katalon"): Text 'katalon' is set on object 'Object Repository/Page_Pense Bet/input_Login_nickname (1)'
+
+2019-05-02 17:11:29 - [MESSAGE][PASSED] - Text 'katalon' is set on object 'Object Repository/Page_Pense Bet/input_Login_nickname (1)'
+
+2019-05-02 17:11:29 - [TEST_STEP][PASSED] - setEncryptedText(findTestObject("Object Repository/Page_Pense Bet/input_Login_password (1)"), "P9ET2sDE0SE="): Text ****** has been set on object 'Object Repository/Page_Pense Bet/input_Login_password (1)'
+
+2019-05-02 17:11:29 - [MESSAGE][PASSED] - Text ****** has been set on object 'Object Repository/Page_Pense Bet/input_Login_password (1)'
+
+2019-05-02 17:11:29 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Pense Bet/button_Login (1)")): Object: 'Object Repository/Page_Pense Bet/button_Login (1)' is clicked on
+
+2019-05-02 17:11:30 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Pense Bet/button_Login (1)' is clicked on
+
+2019-05-02 17:11:30 - [TEST_STEP][PASSED] - verifyElementPresent(findTestObject("Page_Pense Bet/p_Name or Password invalid please verify"), 0): Object 'Object Repository/Page_Pense Bet/p_Name or Password invalid please verify' is present
+
+2019-05-02 17:11:30 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30'
+
+2019-05-02 17:11:30 - [MESSAGE][PASSED] - Object 'Object Repository/Page_Pense Bet/p_Name or Password invalid please verify' is present]]></system-out>
+         <system-err><![CDATA[]]></system-err>
+      </testcase>
+      <testcase name="Test Cases/UserCanCreateBet" classname="Test Cases/UserCanCreateBet" status="PASSED">
+         <system-out><![CDATA[2019-05-02 17:11:30 - [TEST_CASE][PASSED] - Test Cases/UserCanCreateBet: Test Cases/UserCanCreateBet
+
+2019-05-02 17:11:30 - [TEST_STEP][PASSED] - openBrowser(""): Browser is opened with url: ''
+
+2019-05-02 17:11:30 - [MESSAGE][WARNING] - A browser is already opened. Closing browser and opening a new one
+
+2019-05-02 17:11:30 - [MESSAGE][INFO] - Starting 'Chrome' driver
+
+2019-05-02 17:11:33 - [MESSAGE][PASSED] - Browser is opened with url: ''
+
+2019-05-02 17:11:33 - [TEST_STEP][PASSED] - navigateToUrl("http://localhost:8080/login"): Navigate to 'http://localhost:8080/login' successfully
+
+2019-05-02 17:11:33 - [MESSAGE][PASSED] - Navigate to 'http://localhost:8080/login' successfully
+
+2019-05-02 17:11:33 - [TEST_STEP][PASSED] - setText(findTestObject("Object Repository/Page_Pense Bet/input_Login_nickname (2)"), "katalon"): Text 'katalon' is set on object 'Object Repository/Page_Pense Bet/input_Login_nickname (2)'
+
+2019-05-02 17:11:33 - [MESSAGE][PASSED] - Text 'katalon' is set on object 'Object Repository/Page_Pense Bet/input_Login_nickname (2)'
+
+2019-05-02 17:11:33 - [TEST_STEP][PASSED] - setEncryptedText(findTestObject("Object Repository/Page_Pense Bet/input_Login_password (2)"), "o+tS4OuGt32s9ezZj287yw=="): Text ****** has been set on object 'Object Repository/Page_Pense Bet/input_Login_password (2)'
+
+2019-05-02 17:11:33 - [MESSAGE][PASSED] - Text ****** has been set on object 'Object Repository/Page_Pense Bet/input_Login_password (2)'
+
+2019-05-02 17:11:33 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Pense Bet/button_Login (2)")): Object: 'Object Repository/Page_Pense Bet/button_Login (2)' is clicked on
+
+2019-05-02 17:11:33 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Pense Bet/button_Login (2)' is clicked on
+
+2019-05-02 17:11:33 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Pense Bet/i_katalon_fas fa-user ml-1")): Object: 'Object Repository/Page_Pense Bet/i_katalon_fas fa-user ml-1' is clicked on
+
+2019-05-02 17:11:34 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Pense Bet/i_katalon_fas fa-user ml-1' is clicked on
+
+2019-05-02 17:11:34 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Pense Bet/a_Create new bet")): Object: 'Object Repository/Page_Pense Bet/a_Create new bet' is clicked on
+
+2019-05-02 17:11:34 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Pense Bet/a_Create new bet' is clicked on
+
+2019-05-02 17:11:34 - [TEST_STEP][PASSED] - setText(findTestObject("Object Repository/Page_Pense Bet/input_Bet subject_subject"), "je paris qu'on aura 6 au projet de QDL"): Text 'je paris qu'on aura 6 au projet de QDL' is set on object 'Object Repository/Page_Pense Bet/input_Bet subject_subject'
+
+2019-05-02 17:11:34 - [MESSAGE][PASSED] - Text 'je paris qu'on aura 6 au projet de QDL' is set on object 'Object Repository/Page_Pense Bet/input_Bet subject_subject'
+
+2019-05-02 17:11:34 - [TEST_STEP][PASSED] - setText(findTestObject("Object Repository/Page_Pense Bet/input_Amount_amount"), "5"): Text '5' is set on object 'Object Repository/Page_Pense Bet/input_Amount_amount'
+
+2019-05-02 17:11:34 - [MESSAGE][PASSED] - Text '5' is set on object 'Object Repository/Page_Pense Bet/input_Amount_amount'
+
+2019-05-02 17:11:34 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Pense Bet/div_Amount_input-group col-12")): Object: 'Object Repository/Page_Pense Bet/div_Amount_input-group col-12' is clicked on
+
+2019-05-02 17:11:34 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Pense Bet/div_Amount_input-group col-12' is clicked on
+
+2019-05-02 17:11:34 - [TEST_STEP][PASSED] - setText(findTestObject("Object Repository/Page_Pense Bet/input_Amount_amount"), "5"): Text '5' is set on object 'Object Repository/Page_Pense Bet/input_Amount_amount'
+
+2019-05-02 17:11:34 - [MESSAGE][PASSED] - Text '5' is set on object 'Object Repository/Page_Pense Bet/input_Amount_amount'
+
+2019-05-02 17:11:34 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Pense Bet/button_Register Bet")): Object: 'Object Repository/Page_Pense Bet/button_Register Bet' is clicked on
+
+2019-05-02 17:11:34 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Pense Bet/button_Register Bet' is clicked on
+
+2019-05-02 17:11:34 - [TEST_STEP][PASSED] - verifyMatch(getUrl(), "http://localhost:8080/bet/.*", true): Actual text 'http://localhost:8080/bet/create' and expected text 'http://localhost:8080/bet/.*' are matched  using regular expression
+
+2019-05-02 17:11:34 - [MESSAGE][PASSED] - Current window's url is: 'http://localhost:8080/bet/create'
+
+2019-05-02 17:11:34 - [MESSAGE][PASSED] - Actual text 'http://localhost:8080/bet/create' and expected text 'http://localhost:8080/bet/.*' are matched  using regular expression]]></system-out>
+         <system-err><![CDATA[]]></system-err>
+      </testcase>
+      <testcase name="Test Cases/UserCreateBetFailSubject" classname="Test Cases/UserCreateBetFailSubject" status="PASSED">
+         <system-out><![CDATA[2019-05-02 17:11:34 - [TEST_CASE][PASSED] - Test Cases/UserCreateBetFailSubject: Test Cases/UserCreateBetFailSubject
+
+2019-05-02 17:11:34 - [TEST_STEP][PASSED] - openBrowser(""): Browser is opened with url: ''
+
+2019-05-02 17:11:34 - [MESSAGE][WARNING] - A browser is already opened. Closing browser and opening a new one
+
+2019-05-02 17:11:35 - [MESSAGE][INFO] - Starting 'Chrome' driver
+
+2019-05-02 17:11:37 - [MESSAGE][PASSED] - Browser is opened with url: ''
+
+2019-05-02 17:11:37 - [TEST_STEP][PASSED] - navigateToUrl("http://localhost:8080/login"): Navigate to 'http://localhost:8080/login' successfully
+
+2019-05-02 17:11:37 - [MESSAGE][PASSED] - Navigate to 'http://localhost:8080/login' successfully
+
+2019-05-02 17:11:37 - [TEST_STEP][PASSED] - setText(findTestObject("Object Repository/Page_Pense Bet/input_Login_nickname (4)"), "katalon"): Text 'katalon' is set on object 'Object Repository/Page_Pense Bet/input_Login_nickname (4)'
+
+2019-05-02 17:11:38 - [MESSAGE][PASSED] - Text 'katalon' is set on object 'Object Repository/Page_Pense Bet/input_Login_nickname (4)'
+
+2019-05-02 17:11:38 - [TEST_STEP][PASSED] - setEncryptedText(findTestObject("Object Repository/Page_Pense Bet/input_Login_password (4)"), "o+tS4OuGt32s9ezZj287yw=="): Text ****** has been set on object 'Object Repository/Page_Pense Bet/input_Login_password (4)'
+
+2019-05-02 17:11:38 - [MESSAGE][PASSED] - Text ****** has been set on object 'Object Repository/Page_Pense Bet/input_Login_password (4)'
+
+2019-05-02 17:11:38 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Pense Bet/button_Login (4)")): Object: 'Object Repository/Page_Pense Bet/button_Login (4)' is clicked on
+
+2019-05-02 17:11:38 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Pense Bet/button_Login (4)' is clicked on
+
+2019-05-02 17:11:38 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Pense Bet/a_Active")): Object: 'Object Repository/Page_Pense Bet/a_Active' is clicked on
+
+2019-05-02 17:11:38 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Pense Bet/a_Active' is clicked on
+
+2019-05-02 17:11:38 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Pense Bet/a_Waiting")): Object: 'Object Repository/Page_Pense Bet/a_Waiting' is clicked on
+
+2019-05-02 17:11:38 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Pense Bet/a_Waiting' is clicked on
+
+2019-05-02 17:11:38 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Pense Bet/a_katalon")): Object: 'Object Repository/Page_Pense Bet/a_katalon' is clicked on
+
+2019-05-02 17:11:38 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Pense Bet/a_katalon' is clicked on
+
+2019-05-02 17:11:38 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Pense Bet/a_Create new bet (1)")): Object: 'Object Repository/Page_Pense Bet/a_Create new bet (1)' is clicked on
+
+2019-05-02 17:11:38 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Pense Bet/a_Create new bet (1)' is clicked on
+
+2019-05-02 17:11:38 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Pense Bet/div_Create a new bet        Bet subject        Ending date        Amount    Register Bet")): Object: 'Object Repository/Page_Pense Bet/div_Create a new bet        Bet subject        Ending date        Amount    Register Bet' is clicked on
+
+2019-05-02 17:11:39 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Pense Bet/div_Create a new bet        Bet subject        Ending date        Amount    Register Bet' is clicked on
+
+2019-05-02 17:11:39 - [TEST_STEP][PASSED] - setText(findTestObject("Object Repository/Page_Pense Bet/input_Amount_amount (1)"), "10"): Text '10' is set on object 'Object Repository/Page_Pense Bet/input_Amount_amount (1)'
+
+2019-05-02 17:11:39 - [MESSAGE][PASSED] - Text '10' is set on object 'Object Repository/Page_Pense Bet/input_Amount_amount (1)'
+
+2019-05-02 17:11:39 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Pense Bet/button_Register Bet (1)")): Object: 'Object Repository/Page_Pense Bet/button_Register Bet (1)' is clicked on
+
+2019-05-02 17:11:39 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Pense Bet/button_Register Bet (1)' is clicked on]]></system-out>
+         <system-err><![CDATA[]]></system-err>
+      </testcase>
+      <testcase name="Test Cases/UserCanIgnoreBet" classname="Test Cases/UserCanIgnoreBet" status="FAILED">
+         <failure type="FAILED" message="Test Cases/UserCanIgnoreBet FAILED.
+Reason:
+com.kms.katalon.core.exception.StepFailedException: Unable to click on object 'Object Repository/Page_Pense Bet/button_Ignore bet'
+	at com.kms.katalon.core.keyword.internal.KeywordMain.stepFailed(KeywordMain.groovy:48)
+	at com.kms.katalon.core.webui.keyword.internal.WebUIKeywordMain.stepFailed(WebUIKeywordMain.groovy:65)
+	at com.kms.katalon.core.webui.keyword.internal.WebUIKeywordMain.runKeyword(WebUIKeywordMain.groovy:27)
+	at com.kms.katalon.core.webui.keyword.builtin.ClickKeyword.click(ClickKeyword.groovy:86)
+	at com.kms.katalon.core.webui.keyword.builtin.ClickKeyword.execute(ClickKeyword.groovy:67)
+	at com.kms.katalon.core.keyword.internal.KeywordExecutor.executeKeywordForPlatform(KeywordExecutor.groovy:56)
+	at com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords.click(WebUiBuiltInKeywords.groovy:616)
+	at com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords$click$3.call(Unknown Source)
+	at UserCanIgnoreBet.run(UserCanIgnoreBet:38)
+	at com.kms.katalon.core.main.ScriptEngine.run(ScriptEngine.java:194)
+	at com.kms.katalon.core.main.ScriptEngine.runScriptAsRawText(ScriptEngine.java:119)
+	at com.kms.katalon.core.main.TestCaseExecutor.runScript(TestCaseExecutor.java:331)
+	at com.kms.katalon.core.main.TestCaseExecutor.doExecute(TestCaseExecutor.java:322)
+	at com.kms.katalon.core.main.TestCaseExecutor.processExecutionPhase(TestCaseExecutor.java:301)
+	at com.kms.katalon.core.main.TestCaseExecutor.accessMainPhase(TestCaseExecutor.java:293)
+	at com.kms.katalon.core.main.TestCaseExecutor.execute(TestCaseExecutor.java:227)
+	at com.kms.katalon.core.main.TestSuiteExecutor.accessTestCaseMainPhase(TestSuiteExecutor.java:129)
+	at com.kms.katalon.core.main.TestSuiteExecutor.accessTestSuiteMainPhase(TestSuiteExecutor.java:112)
+	at com.kms.katalon.core.main.TestSuiteExecutor.execute(TestSuiteExecutor.java:81)
+	at com.kms.katalon.core.main.TestCaseMain.startTestSuite(TestCaseMain.java:157)
+	at com.kms.katalon.core.main.TestCaseMain$startTestSuite$0.call(Unknown Source)
+	at TempTestSuite1556809866028.run(TempTestSuite1556809866028.groovy:35)
+"/>
+         <system-out><![CDATA[2019-05-02 17:11:39 - [TEST_CASE][FAILED] - Test Cases/UserCanIgnoreBet: Test Cases/UserCanIgnoreBet FAILED.
+Reason:
+com.kms.katalon.core.exception.StepFailedException: Unable to click on object 'Object Repository/Page_Pense Bet/button_Ignore bet'
+	at com.kms.katalon.core.keyword.internal.KeywordMain.stepFailed(KeywordMain.groovy:48)
+	at com.kms.katalon.core.webui.keyword.internal.WebUIKeywordMain.stepFailed(WebUIKeywordMain.groovy:65)
+	at com.kms.katalon.core.webui.keyword.internal.WebUIKeywordMain.runKeyword(WebUIKeywordMain.groovy:27)
+	at com.kms.katalon.core.webui.keyword.builtin.ClickKeyword.click(ClickKeyword.groovy:86)
+	at com.kms.katalon.core.webui.keyword.builtin.ClickKeyword.execute(ClickKeyword.groovy:67)
+	at com.kms.katalon.core.keyword.internal.KeywordExecutor.executeKeywordForPlatform(KeywordExecutor.groovy:56)
+	at com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords.click(WebUiBuiltInKeywords.groovy:616)
+	at com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords$click$3.call(Unknown Source)
+	at UserCanIgnoreBet.run(UserCanIgnoreBet:38)
+	at com.kms.katalon.core.main.ScriptEngine.run(ScriptEngine.java:194)
+	at com.kms.katalon.core.main.ScriptEngine.runScriptAsRawText(ScriptEngine.java:119)
+	at com.kms.katalon.core.main.TestCaseExecutor.runScript(TestCaseExecutor.java:331)
+	at com.kms.katalon.core.main.TestCaseExecutor.doExecute(TestCaseExecutor.java:322)
+	at com.kms.katalon.core.main.TestCaseExecutor.processExecutionPhase(TestCaseExecutor.java:301)
+	at com.kms.katalon.core.main.TestCaseExecutor.accessMainPhase(TestCaseExecutor.java:293)
+	at com.kms.katalon.core.main.TestCaseExecutor.execute(TestCaseExecutor.java:227)
+	at com.kms.katalon.core.main.TestSuiteExecutor.accessTestCaseMainPhase(TestSuiteExecutor.java:129)
+	at com.kms.katalon.core.main.TestSuiteExecutor.accessTestSuiteMainPhase(TestSuiteExecutor.java:112)
+	at com.kms.katalon.core.main.TestSuiteExecutor.execute(TestSuiteExecutor.java:81)
+	at com.kms.katalon.core.main.TestCaseMain.startTestSuite(TestCaseMain.java:157)
+	at com.kms.katalon.core.main.TestCaseMain$startTestSuite$0.call(Unknown Source)
+	at TempTestSuite1556809866028.run(TempTestSuite1556809866028.groovy:35)
+
+
+2019-05-02 17:11:39 - [TEST_STEP][PASSED] - openBrowser(""): Browser is opened with url: ''
+
+2019-05-02 17:11:39 - [MESSAGE][WARNING] - A browser is already opened. Closing browser and opening a new one
+
+2019-05-02 17:11:40 - [MESSAGE][INFO] - Starting 'Chrome' driver
+
+2019-05-02 17:11:42 - [MESSAGE][PASSED] - Browser is opened with url: ''
+
+2019-05-02 17:11:42 - [TEST_STEP][PASSED] - navigateToUrl("http://localhost:8080/login"): Navigate to 'http://localhost:8080/login' successfully
+
+2019-05-02 17:11:42 - [MESSAGE][PASSED] - Navigate to 'http://localhost:8080/login' successfully
+
+2019-05-02 17:11:42 - [TEST_STEP][PASSED] - setText(findTestObject("Object Repository/Page_Pense Bet/input_Login_nickname (9)"), "katalon"): Text 'katalon' is set on object 'Object Repository/Page_Pense Bet/input_Login_nickname (9)'
+
+2019-05-02 17:11:42 - [MESSAGE][PASSED] - Text 'katalon' is set on object 'Object Repository/Page_Pense Bet/input_Login_nickname (9)'
+
+2019-05-02 17:11:42 - [TEST_STEP][PASSED] - setEncryptedText(findTestObject("Object Repository/Page_Pense Bet/input_Login_password (9)"), "o+tS4OuGt32s9ezZj287yw=="): Text ****** has been set on object 'Object Repository/Page_Pense Bet/input_Login_password (9)'
+
+2019-05-02 17:11:42 - [MESSAGE][PASSED] - Text ****** has been set on object 'Object Repository/Page_Pense Bet/input_Login_password (9)'
+
+2019-05-02 17:11:42 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Pense Bet/button_Login (9)")): Object: 'Object Repository/Page_Pense Bet/button_Login (9)' is clicked on
+
+2019-05-02 17:11:43 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Pense Bet/button_Login (9)' is clicked on
+
+2019-05-02 17:11:43 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Pense Bet/a_Waiting (2)")): Object: 'Object Repository/Page_Pense Bet/a_Waiting (2)' is clicked on
+
+2019-05-02 17:11:43 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Pense Bet/a_Waiting (2)' is clicked on
+
+2019-05-02 17:11:43 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Pense Bet/span_katalon")): Object: 'Object Repository/Page_Pense Bet/span_katalon' is clicked on
+
+2019-05-02 17:11:43 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Pense Bet/span_katalon' is clicked on
+
+2019-05-02 17:11:43 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Pense Bet/a_Create new bet (3)")): Object: 'Object Repository/Page_Pense Bet/a_Create new bet (3)' is clicked on
+
+2019-05-02 17:11:43 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Pense Bet/a_Create new bet (3)' is clicked on
+
+2019-05-02 17:11:43 - [TEST_STEP][PASSED] - setText(findTestObject("Object Repository/Page_Pense Bet/input_Bet subject_subject (3)"), "sdfgdhgf"): Text 'sdfgdhgf' is set on object 'Object Repository/Page_Pense Bet/input_Bet subject_subject (3)'
+
+2019-05-02 17:11:43 - [MESSAGE][PASSED] - Text 'sdfgdhgf' is set on object 'Object Repository/Page_Pense Bet/input_Bet subject_subject (3)'
+
+2019-05-02 17:11:43 - [TEST_STEP][PASSED] - setText(findTestObject("Object Repository/Page_Pense Bet/input_Amount_amount (3)"), "5"): Text '5' is set on object 'Object Repository/Page_Pense Bet/input_Amount_amount (3)'
+
+2019-05-02 17:11:43 - [MESSAGE][PASSED] - Text '5' is set on object 'Object Repository/Page_Pense Bet/input_Amount_amount (3)'
+
+2019-05-02 17:11:43 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Pense Bet/button_Register Bet (3)")): Object: 'Object Repository/Page_Pense Bet/button_Register Bet (3)' is clicked on
+
+2019-05-02 17:11:43 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Pense Bet/button_Register Bet (3)' is clicked on
+
+2019-05-02 17:11:43 - [TEST_STEP][FAILED] - click(findTestObject("Object Repository/Page_Pense Bet/button_Ignore bet")): click(findTestObject("Object Repository/Page_Pense Bet/button_Ignore bet")) FAILED.
+Reason:
+com.kms.katalon.core.exception.StepFailedException: Unable to click on object 'Object Repository/Page_Pense Bet/button_Ignore bet'
+	at com.kms.katalon.core.keyword.internal.KeywordMain.stepFailed(KeywordMain.groovy:48)
+	at com.kms.katalon.core.webui.keyword.internal.WebUIKeywordMain.stepFailed(WebUIKeywordMain.groovy:65)
+	at com.kms.katalon.core.webui.keyword.internal.WebUIKeywordMain.runKeyword(WebUIKeywordMain.groovy:27)
+	at com.kms.katalon.core.webui.keyword.builtin.ClickKeyword.click(ClickKeyword.groovy:86)
+	at com.kms.katalon.core.webui.keyword.builtin.ClickKeyword.execute(ClickKeyword.groovy:67)
+	at com.kms.katalon.core.keyword.internal.KeywordExecutor.executeKeywordForPlatform(KeywordExecutor.groovy:56)
+	at com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords.click(WebUiBuiltInKeywords.groovy:616)
+	at com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords$click$3.call(Unknown Source)
+	at UserCanIgnoreBet.run(UserCanIgnoreBet:38)
+	at com.kms.katalon.core.main.ScriptEngine.run(ScriptEngine.java:194)
+	at com.kms.katalon.core.main.ScriptEngine.runScriptAsRawText(ScriptEngine.java:119)
+	at com.kms.katalon.core.main.TestCaseExecutor.runScript(TestCaseExecutor.java:331)
+	at com.kms.katalon.core.main.TestCaseExecutor.doExecute(TestCaseExecutor.java:322)
+	at com.kms.katalon.core.main.TestCaseExecutor.processExecutionPhase(TestCaseExecutor.java:301)
+	at com.kms.katalon.core.main.TestCaseExecutor.accessMainPhase(TestCaseExecutor.java:293)
+	at com.kms.katalon.core.main.TestCaseExecutor.execute(TestCaseExecutor.java:227)
+	at com.kms.katalon.core.main.TestSuiteExecutor.accessTestCaseMainPhase(TestSuiteExecutor.java:129)
+	at com.kms.katalon.core.main.TestSuiteExecutor.accessTestSuiteMainPhase(TestSuiteExecutor.java:112)
+	at com.kms.katalon.core.main.TestSuiteExecutor.execute(TestSuiteExecutor.java:81)
+	at com.kms.katalon.core.main.TestCaseMain.startTestSuite(TestCaseMain.java:157)
+	at com.kms.katalon.core.main.TestCaseMain$startTestSuite$0.call(Unknown Source)
+	at TempTestSuite1556809866028.run(TempTestSuite1556809866028.groovy:35)
+
+
+2019-05-02 17:12:14 - [MESSAGE][INFO] - Unable to find the element located by 'By.xpath: (//button[@type='submit'])[4]'. Please recheck the objects properties to make sure the desired element is located. 
+
+2019-05-02 17:12:14 - [MESSAGE][FAILED] - Unable to click on object 'Object Repository/Page_Pense Bet/button_Ignore bet'
+[[ATTACHMENT|D:\\dev\\JEE\\Pense-Bet\\Katalon\\Pense-Bet\\Reports\\Pense-Bet\\20190502_171106\\1556809934333.png]]
+
+2019-05-02 17:12:14 - [MESSAGE][FAILED] - click(findTestObject("Object Repository/Page_Pense Bet/button_Ignore bet")) FAILED.
+Reason:
+com.kms.katalon.core.exception.StepFailedException: Unable to click on object 'Object Repository/Page_Pense Bet/button_Ignore bet'
+	at com.kms.katalon.core.keyword.internal.KeywordMain.stepFailed(KeywordMain.groovy:48)
+	at com.kms.katalon.core.webui.keyword.internal.WebUIKeywordMain.stepFailed(WebUIKeywordMain.groovy:65)
+	at com.kms.katalon.core.webui.keyword.internal.WebUIKeywordMain.runKeyword(WebUIKeywordMain.groovy:27)
+	at com.kms.katalon.core.webui.keyword.builtin.ClickKeyword.click(ClickKeyword.groovy:86)
+	at com.kms.katalon.core.webui.keyword.builtin.ClickKeyword.execute(ClickKeyword.groovy:67)
+	at com.kms.katalon.core.keyword.internal.KeywordExecutor.executeKeywordForPlatform(KeywordExecutor.groovy:56)
+	at com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords.click(WebUiBuiltInKeywords.groovy:616)
+	at com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords$click$3.call(Unknown Source)
+	at UserCanIgnoreBet.run(UserCanIgnoreBet:38)
+	at com.kms.katalon.core.main.ScriptEngine.run(ScriptEngine.java:194)
+	at com.kms.katalon.core.main.ScriptEngine.runScriptAsRawText(ScriptEngine.java:119)
+	at com.kms.katalon.core.main.TestCaseExecutor.runScript(TestCaseExecutor.java:331)
+	at com.kms.katalon.core.main.TestCaseExecutor.doExecute(TestCaseExecutor.java:322)
+	at com.kms.katalon.core.main.TestCaseExecutor.processExecutionPhase(TestCaseExecutor.java:301)
+	at com.kms.katalon.core.main.TestCaseExecutor.accessMainPhase(TestCaseExecutor.java:293)
+	at com.kms.katalon.core.main.TestCaseExecutor.execute(TestCaseExecutor.java:227)
+	at com.kms.katalon.core.main.TestSuiteExecutor.accessTestCaseMainPhase(TestSuiteExecutor.java:129)
+	at com.kms.katalon.core.main.TestSuiteExecutor.accessTestSuiteMainPhase(TestSuiteExecutor.java:112)
+	at com.kms.katalon.core.main.TestSuiteExecutor.execute(TestSuiteExecutor.java:81)
+	at com.kms.katalon.core.main.TestCaseMain.startTestSuite(TestCaseMain.java:157)
+	at com.kms.katalon.core.main.TestCaseMain$startTestSuite$0.call(Unknown Source)
+	at TempTestSuite1556809866028.run(TempTestSuite1556809866028.groovy:35)]]></system-out>
+         <system-err><![CDATA[2019-05-02 17:11:39 - [TEST_CASE][FAILED] - Test Cases/UserCanIgnoreBet: Test Cases/UserCanIgnoreBet FAILED.
+Reason:
+com.kms.katalon.core.exception.StepFailedException: Unable to click on object 'Object Repository/Page_Pense Bet/button_Ignore bet'
+	at com.kms.katalon.core.keyword.internal.KeywordMain.stepFailed(KeywordMain.groovy:48)
+	at com.kms.katalon.core.webui.keyword.internal.WebUIKeywordMain.stepFailed(WebUIKeywordMain.groovy:65)
+	at com.kms.katalon.core.webui.keyword.internal.WebUIKeywordMain.runKeyword(WebUIKeywordMain.groovy:27)
+	at com.kms.katalon.core.webui.keyword.builtin.ClickKeyword.click(ClickKeyword.groovy:86)
+	at com.kms.katalon.core.webui.keyword.builtin.ClickKeyword.execute(ClickKeyword.groovy:67)
+	at com.kms.katalon.core.keyword.internal.KeywordExecutor.executeKeywordForPlatform(KeywordExecutor.groovy:56)
+	at com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords.click(WebUiBuiltInKeywords.groovy:616)
+	at com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords$click$3.call(Unknown Source)
+	at UserCanIgnoreBet.run(UserCanIgnoreBet:38)
+	at com.kms.katalon.core.main.ScriptEngine.run(ScriptEngine.java:194)
+	at com.kms.katalon.core.main.ScriptEngine.runScriptAsRawText(ScriptEngine.java:119)
+	at com.kms.katalon.core.main.TestCaseExecutor.runScript(TestCaseExecutor.java:331)
+	at com.kms.katalon.core.main.TestCaseExecutor.doExecute(TestCaseExecutor.java:322)
+	at com.kms.katalon.core.main.TestCaseExecutor.processExecutionPhase(TestCaseExecutor.java:301)
+	at com.kms.katalon.core.main.TestCaseExecutor.accessMainPhase(TestCaseExecutor.java:293)
+	at com.kms.katalon.core.main.TestCaseExecutor.execute(TestCaseExecutor.java:227)
+	at com.kms.katalon.core.main.TestSuiteExecutor.accessTestCaseMainPhase(TestSuiteExecutor.java:129)
+	at com.kms.katalon.core.main.TestSuiteExecutor.accessTestSuiteMainPhase(TestSuiteExecutor.java:112)
+	at com.kms.katalon.core.main.TestSuiteExecutor.execute(TestSuiteExecutor.java:81)
+	at com.kms.katalon.core.main.TestCaseMain.startTestSuite(TestCaseMain.java:157)
+	at com.kms.katalon.core.main.TestCaseMain$startTestSuite$0.call(Unknown Source)
+	at TempTestSuite1556809866028.run(TempTestSuite1556809866028.groovy:35)]]></system-err>
+      </testcase>
+      <testcase name="Test Cases/UserCanParticipateBet" classname="Test Cases/UserCanParticipateBet" status="FAILED">
+         <failure type="FAILED" message="Test Cases/UserCanParticipateBet FAILED.
+Reason:
+com.kms.katalon.core.exception.StepFailedException: Unable to click on object 'Object Repository/Page_Pense Bet/button_Agree'
+	at com.kms.katalon.core.keyword.internal.KeywordMain.stepFailed(KeywordMain.groovy:48)
+	at com.kms.katalon.core.webui.keyword.internal.WebUIKeywordMain.stepFailed(WebUIKeywordMain.groovy:65)
+	at com.kms.katalon.core.webui.keyword.internal.WebUIKeywordMain.runKeyword(WebUIKeywordMain.groovy:27)
+	at com.kms.katalon.core.webui.keyword.builtin.ClickKeyword.click(ClickKeyword.groovy:86)
+	at com.kms.katalon.core.webui.keyword.builtin.ClickKeyword.execute(ClickKeyword.groovy:67)
+	at com.kms.katalon.core.keyword.internal.KeywordExecutor.executeKeywordForPlatform(KeywordExecutor.groovy:56)
+	at com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords.click(WebUiBuiltInKeywords.groovy:616)
+	at com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords$click$3.call(Unknown Source)
+	at UserCanParticipateBet.run(UserCanParticipateBet:38)
+	at com.kms.katalon.core.main.ScriptEngine.run(ScriptEngine.java:194)
+	at com.kms.katalon.core.main.ScriptEngine.runScriptAsRawText(ScriptEngine.java:119)
+	at com.kms.katalon.core.main.TestCaseExecutor.runScript(TestCaseExecutor.java:331)
+	at com.kms.katalon.core.main.TestCaseExecutor.doExecute(TestCaseExecutor.java:322)
+	at com.kms.katalon.core.main.TestCaseExecutor.processExecutionPhase(TestCaseExecutor.java:301)
+	at com.kms.katalon.core.main.TestCaseExecutor.accessMainPhase(TestCaseExecutor.java:293)
+	at com.kms.katalon.core.main.TestCaseExecutor.execute(TestCaseExecutor.java:227)
+	at com.kms.katalon.core.main.TestSuiteExecutor.accessTestCaseMainPhase(TestSuiteExecutor.java:129)
+	at com.kms.katalon.core.main.TestSuiteExecutor.accessTestSuiteMainPhase(TestSuiteExecutor.java:112)
+	at com.kms.katalon.core.main.TestSuiteExecutor.execute(TestSuiteExecutor.java:81)
+	at com.kms.katalon.core.main.TestCaseMain.startTestSuite(TestCaseMain.java:157)
+	at com.kms.katalon.core.main.TestCaseMain$startTestSuite$0.call(Unknown Source)
+	at TempTestSuite1556809866028.run(TempTestSuite1556809866028.groovy:35)
+"/>
+         <system-out><![CDATA[2019-05-02 17:12:14 - [TEST_CASE][FAILED] - Test Cases/UserCanParticipateBet: Test Cases/UserCanParticipateBet FAILED.
+Reason:
+com.kms.katalon.core.exception.StepFailedException: Unable to click on object 'Object Repository/Page_Pense Bet/button_Agree'
+	at com.kms.katalon.core.keyword.internal.KeywordMain.stepFailed(KeywordMain.groovy:48)
+	at com.kms.katalon.core.webui.keyword.internal.WebUIKeywordMain.stepFailed(WebUIKeywordMain.groovy:65)
+	at com.kms.katalon.core.webui.keyword.internal.WebUIKeywordMain.runKeyword(WebUIKeywordMain.groovy:27)
+	at com.kms.katalon.core.webui.keyword.builtin.ClickKeyword.click(ClickKeyword.groovy:86)
+	at com.kms.katalon.core.webui.keyword.builtin.ClickKeyword.execute(ClickKeyword.groovy:67)
+	at com.kms.katalon.core.keyword.internal.KeywordExecutor.executeKeywordForPlatform(KeywordExecutor.groovy:56)
+	at com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords.click(WebUiBuiltInKeywords.groovy:616)
+	at com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords$click$3.call(Unknown Source)
+	at UserCanParticipateBet.run(UserCanParticipateBet:38)
+	at com.kms.katalon.core.main.ScriptEngine.run(ScriptEngine.java:194)
+	at com.kms.katalon.core.main.ScriptEngine.runScriptAsRawText(ScriptEngine.java:119)
+	at com.kms.katalon.core.main.TestCaseExecutor.runScript(TestCaseExecutor.java:331)
+	at com.kms.katalon.core.main.TestCaseExecutor.doExecute(TestCaseExecutor.java:322)
+	at com.kms.katalon.core.main.TestCaseExecutor.processExecutionPhase(TestCaseExecutor.java:301)
+	at com.kms.katalon.core.main.TestCaseExecutor.accessMainPhase(TestCaseExecutor.java:293)
+	at com.kms.katalon.core.main.TestCaseExecutor.execute(TestCaseExecutor.java:227)
+	at com.kms.katalon.core.main.TestSuiteExecutor.accessTestCaseMainPhase(TestSuiteExecutor.java:129)
+	at com.kms.katalon.core.main.TestSuiteExecutor.accessTestSuiteMainPhase(TestSuiteExecutor.java:112)
+	at com.kms.katalon.core.main.TestSuiteExecutor.execute(TestSuiteExecutor.java:81)
+	at com.kms.katalon.core.main.TestCaseMain.startTestSuite(TestCaseMain.java:157)
+	at com.kms.katalon.core.main.TestCaseMain$startTestSuite$0.call(Unknown Source)
+	at TempTestSuite1556809866028.run(TempTestSuite1556809866028.groovy:35)
+
+
+2019-05-02 17:12:14 - [TEST_STEP][PASSED] - openBrowser(""): Browser is opened with url: ''
+
+2019-05-02 17:12:14 - [MESSAGE][WARNING] - A browser is already opened. Closing browser and opening a new one
+
+2019-05-02 17:12:15 - [MESSAGE][INFO] - Starting 'Chrome' driver
+
+2019-05-02 17:12:17 - [MESSAGE][PASSED] - Browser is opened with url: ''
+
+2019-05-02 17:12:17 - [TEST_STEP][PASSED] - navigateToUrl("http://localhost:8080/login"): Navigate to 'http://localhost:8080/login' successfully
+
+2019-05-02 17:12:17 - [MESSAGE][PASSED] - Navigate to 'http://localhost:8080/login' successfully
+
+2019-05-02 17:12:17 - [TEST_STEP][PASSED] - setText(findTestObject("Object Repository/Page_Pense Bet/input_Login_nickname (5)"), "katalon"): Text 'katalon' is set on object 'Object Repository/Page_Pense Bet/input_Login_nickname (5)'
+
+2019-05-02 17:12:18 - [MESSAGE][PASSED] - Text 'katalon' is set on object 'Object Repository/Page_Pense Bet/input_Login_nickname (5)'
+
+2019-05-02 17:12:18 - [TEST_STEP][PASSED] - setEncryptedText(findTestObject("Object Repository/Page_Pense Bet/input_Login_password (5)"), "o+tS4OuGt32s9ezZj287yw=="): Text ****** has been set on object 'Object Repository/Page_Pense Bet/input_Login_password (5)'
+
+2019-05-02 17:12:18 - [MESSAGE][PASSED] - Text ****** has been set on object 'Object Repository/Page_Pense Bet/input_Login_password (5)'
+
+2019-05-02 17:12:18 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Pense Bet/button_Login (5)")): Object: 'Object Repository/Page_Pense Bet/button_Login (5)' is clicked on
+
+2019-05-02 17:12:18 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Pense Bet/button_Login (5)' is clicked on
+
+2019-05-02 17:12:18 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Pense Bet/a_katalon (1)")): Object: 'Object Repository/Page_Pense Bet/a_katalon (1)' is clicked on
+
+2019-05-02 17:12:18 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Pense Bet/a_katalon (1)' is clicked on
+
+2019-05-02 17:12:18 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Pense Bet/a_Create new bet (2)")): Object: 'Object Repository/Page_Pense Bet/a_Create new bet (2)' is clicked on
+
+2019-05-02 17:12:18 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Pense Bet/a_Create new bet (2)' is clicked on
+
+2019-05-02 17:12:18 - [TEST_STEP][PASSED] - setText(findTestObject("Object Repository/Page_Pense Bet/input_Bet subject_subject (2)"), "test1"): Text 'test1' is set on object 'Object Repository/Page_Pense Bet/input_Bet subject_subject (2)'
+
+2019-05-02 17:12:18 - [MESSAGE][PASSED] - Text 'test1' is set on object 'Object Repository/Page_Pense Bet/input_Bet subject_subject (2)'
+
+2019-05-02 17:12:18 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Pense Bet/div_Amount_input-group col-12 (1)")): Object: 'Object Repository/Page_Pense Bet/div_Amount_input-group col-12 (1)' is clicked on
+
+2019-05-02 17:12:18 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Pense Bet/div_Amount_input-group col-12 (1)' is clicked on
+
+2019-05-02 17:12:18 - [TEST_STEP][PASSED] - setText(findTestObject("Object Repository/Page_Pense Bet/input_Amount_amount (2)"), "5"): Text '5' is set on object 'Object Repository/Page_Pense Bet/input_Amount_amount (2)'
+
+2019-05-02 17:12:18 - [MESSAGE][PASSED] - Text '5' is set on object 'Object Repository/Page_Pense Bet/input_Amount_amount (2)'
+
+2019-05-02 17:12:18 - [TEST_STEP][PASSED] - click(findTestObject("Object Repository/Page_Pense Bet/button_Register Bet (2)")): Object: 'Object Repository/Page_Pense Bet/button_Register Bet (2)' is clicked on
+
+2019-05-02 17:12:18 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Pense Bet/button_Register Bet (2)' is clicked on
+
+2019-05-02 17:12:18 - [TEST_STEP][FAILED] - click(findTestObject("Object Repository/Page_Pense Bet/button_Agree")): click(findTestObject("Object Repository/Page_Pense Bet/button_Agree")) FAILED.
+Reason:
+com.kms.katalon.core.exception.StepFailedException: Unable to click on object 'Object Repository/Page_Pense Bet/button_Agree'
+	at com.kms.katalon.core.keyword.internal.KeywordMain.stepFailed(KeywordMain.groovy:48)
+	at com.kms.katalon.core.webui.keyword.internal.WebUIKeywordMain.stepFailed(WebUIKeywordMain.groovy:65)
+	at com.kms.katalon.core.webui.keyword.internal.WebUIKeywordMain.runKeyword(WebUIKeywordMain.groovy:27)
+	at com.kms.katalon.core.webui.keyword.builtin.ClickKeyword.click(ClickKeyword.groovy:86)
+	at com.kms.katalon.core.webui.keyword.builtin.ClickKeyword.execute(ClickKeyword.groovy:67)
+	at com.kms.katalon.core.keyword.internal.KeywordExecutor.executeKeywordForPlatform(KeywordExecutor.groovy:56)
+	at com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords.click(WebUiBuiltInKeywords.groovy:616)
+	at com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords$click$3.call(Unknown Source)
+	at UserCanParticipateBet.run(UserCanParticipateBet:38)
+	at com.kms.katalon.core.main.ScriptEngine.run(ScriptEngine.java:194)
+	at com.kms.katalon.core.main.ScriptEngine.runScriptAsRawText(ScriptEngine.java:119)
+	at com.kms.katalon.core.main.TestCaseExecutor.runScript(TestCaseExecutor.java:331)
+	at com.kms.katalon.core.main.TestCaseExecutor.doExecute(TestCaseExecutor.java:322)
+	at com.kms.katalon.core.main.TestCaseExecutor.processExecutionPhase(TestCaseExecutor.java:301)
+	at com.kms.katalon.core.main.TestCaseExecutor.accessMainPhase(TestCaseExecutor.java:293)
+	at com.kms.katalon.core.main.TestCaseExecutor.execute(TestCaseExecutor.java:227)
+	at com.kms.katalon.core.main.TestSuiteExecutor.accessTestCaseMainPhase(TestSuiteExecutor.java:129)
+	at com.kms.katalon.core.main.TestSuiteExecutor.accessTestSuiteMainPhase(TestSuiteExecutor.java:112)
+	at com.kms.katalon.core.main.TestSuiteExecutor.execute(TestSuiteExecutor.java:81)
+	at com.kms.katalon.core.main.TestCaseMain.startTestSuite(TestCaseMain.java:157)
+	at com.kms.katalon.core.main.TestCaseMain$startTestSuite$0.call(Unknown Source)
+	at TempTestSuite1556809866028.run(TempTestSuite1556809866028.groovy:35)
+
+
+2019-05-02 17:12:49 - [MESSAGE][INFO] - Unable to find the element located by 'By.xpath: (//button[@type='submit'])[2]'. Please recheck the objects properties to make sure the desired element is located. 
+
+2019-05-02 17:12:49 - [MESSAGE][FAILED] - Unable to click on object 'Object Repository/Page_Pense Bet/button_Agree'
+[[ATTACHMENT|D:\\dev\\JEE\\Pense-Bet\\Katalon\\Pense-Bet\\Reports\\Pense-Bet\\20190502_171106\\1556809969452.png]]
+
+2019-05-02 17:12:49 - [MESSAGE][FAILED] - click(findTestObject("Object Repository/Page_Pense Bet/button_Agree")) FAILED.
+Reason:
+com.kms.katalon.core.exception.StepFailedException: Unable to click on object 'Object Repository/Page_Pense Bet/button_Agree'
+	at com.kms.katalon.core.keyword.internal.KeywordMain.stepFailed(KeywordMain.groovy:48)
+	at com.kms.katalon.core.webui.keyword.internal.WebUIKeywordMain.stepFailed(WebUIKeywordMain.groovy:65)
+	at com.kms.katalon.core.webui.keyword.internal.WebUIKeywordMain.runKeyword(WebUIKeywordMain.groovy:27)
+	at com.kms.katalon.core.webui.keyword.builtin.ClickKeyword.click(ClickKeyword.groovy:86)
+	at com.kms.katalon.core.webui.keyword.builtin.ClickKeyword.execute(ClickKeyword.groovy:67)
+	at com.kms.katalon.core.keyword.internal.KeywordExecutor.executeKeywordForPlatform(KeywordExecutor.groovy:56)
+	at com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords.click(WebUiBuiltInKeywords.groovy:616)
+	at com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords$click$3.call(Unknown Source)
+	at UserCanParticipateBet.run(UserCanParticipateBet:38)
+	at com.kms.katalon.core.main.ScriptEngine.run(ScriptEngine.java:194)
+	at com.kms.katalon.core.main.ScriptEngine.runScriptAsRawText(ScriptEngine.java:119)
+	at com.kms.katalon.core.main.TestCaseExecutor.runScript(TestCaseExecutor.java:331)
+	at com.kms.katalon.core.main.TestCaseExecutor.doExecute(TestCaseExecutor.java:322)
+	at com.kms.katalon.core.main.TestCaseExecutor.processExecutionPhase(TestCaseExecutor.java:301)
+	at com.kms.katalon.core.main.TestCaseExecutor.accessMainPhase(TestCaseExecutor.java:293)
+	at com.kms.katalon.core.main.TestCaseExecutor.execute(TestCaseExecutor.java:227)
+	at com.kms.katalon.core.main.TestSuiteExecutor.accessTestCaseMainPhase(TestSuiteExecutor.java:129)
+	at com.kms.katalon.core.main.TestSuiteExecutor.accessTestSuiteMainPhase(TestSuiteExecutor.java:112)
+	at com.kms.katalon.core.main.TestSuiteExecutor.execute(TestSuiteExecutor.java:81)
+	at com.kms.katalon.core.main.TestCaseMain.startTestSuite(TestCaseMain.java:157)
+	at com.kms.katalon.core.main.TestCaseMain$startTestSuite$0.call(Unknown Source)
+	at TempTestSuite1556809866028.run(TempTestSuite1556809866028.groovy:35)]]></system-out>
+         <system-err><![CDATA[2019-05-02 17:12:14 - [TEST_CASE][FAILED] - Test Cases/UserCanParticipateBet: Test Cases/UserCanParticipateBet FAILED.
+Reason:
+com.kms.katalon.core.exception.StepFailedException: Unable to click on object 'Object Repository/Page_Pense Bet/button_Agree'
+	at com.kms.katalon.core.keyword.internal.KeywordMain.stepFailed(KeywordMain.groovy:48)
+	at com.kms.katalon.core.webui.keyword.internal.WebUIKeywordMain.stepFailed(WebUIKeywordMain.groovy:65)
+	at com.kms.katalon.core.webui.keyword.internal.WebUIKeywordMain.runKeyword(WebUIKeywordMain.groovy:27)
+	at com.kms.katalon.core.webui.keyword.builtin.ClickKeyword.click(ClickKeyword.groovy:86)
+	at com.kms.katalon.core.webui.keyword.builtin.ClickKeyword.execute(ClickKeyword.groovy:67)
+	at com.kms.katalon.core.keyword.internal.KeywordExecutor.executeKeywordForPlatform(KeywordExecutor.groovy:56)
+	at com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords.click(WebUiBuiltInKeywords.groovy:616)
+	at com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords$click$3.call(Unknown Source)
+	at UserCanParticipateBet.run(UserCanParticipateBet:38)
+	at com.kms.katalon.core.main.ScriptEngine.run(ScriptEngine.java:194)
+	at com.kms.katalon.core.main.ScriptEngine.runScriptAsRawText(ScriptEngine.java:119)
+	at com.kms.katalon.core.main.TestCaseExecutor.runScript(TestCaseExecutor.java:331)
+	at com.kms.katalon.core.main.TestCaseExecutor.doExecute(TestCaseExecutor.java:322)
+	at com.kms.katalon.core.main.TestCaseExecutor.processExecutionPhase(TestCaseExecutor.java:301)
+	at com.kms.katalon.core.main.TestCaseExecutor.accessMainPhase(TestCaseExecutor.java:293)
+	at com.kms.katalon.core.main.TestCaseExecutor.execute(TestCaseExecutor.java:227)
+	at com.kms.katalon.core.main.TestSuiteExecutor.accessTestCaseMainPhase(TestSuiteExecutor.java:129)
+	at com.kms.katalon.core.main.TestSuiteExecutor.accessTestSuiteMainPhase(TestSuiteExecutor.java:112)
+	at com.kms.katalon.core.main.TestSuiteExecutor.execute(TestSuiteExecutor.java:81)
+	at com.kms.katalon.core.main.TestCaseMain.startTestSuite(TestCaseMain.java:157)
+	at com.kms.katalon.core.main.TestCaseMain$startTestSuite$0.call(Unknown Source)
+	at TempTestSuite1556809866028.run(TempTestSuite1556809866028.groovy:35)]]></system-err>
+      </testcase>
+      <testcase name="Test Cases/UserCreateBetFailDate" classname="Test Cases/UserCreateBetFailDate" status="ERROR">
+         <error type="ERROR" message="Test Cases/UserCreateBetFailDate FAILED.
+Reason:
+groovy.lang.MissingPropertyException: No such property: Keys for class: Script1556804582015
+	at UserCreateBetFailDate.run(UserCreateBetFailDate:24)
+	at com.kms.katalon.core.main.ScriptEngine.run(ScriptEngine.java:194)
+	at com.kms.katalon.core.main.ScriptEngine.runScriptAsRawText(ScriptEngine.java:119)
+	at com.kms.katalon.core.main.TestCaseExecutor.runScript(TestCaseExecutor.java:331)
+	at com.kms.katalon.core.main.TestCaseExecutor.doExecute(TestCaseExecutor.java:322)
+	at com.kms.katalon.core.main.TestCaseExecutor.processExecutionPhase(TestCaseExecutor.java:301)
+	at com.kms.katalon.core.main.TestCaseExecutor.accessMainPhase(TestCaseExecutor.java:293)
+	at com.kms.katalon.core.main.TestCaseExecutor.execute(TestCaseExecutor.java:227)
+	at com.kms.katalon.core.main.TestSuiteExecutor.accessTestCaseMainPhase(TestSuiteExecutor.java:129)
+	at com.kms.katalon.core.main.TestSuiteExecutor.accessTestSuiteMainPhase(TestSuiteExecutor.java:112)
+	at com.kms.katalon.core.main.TestSuiteExecutor.execute(TestSuiteExecutor.java:81)
+	at com.kms.katalon.core.main.TestCaseMain.startTestSuite(TestCaseMain.java:157)
+	at com.kms.katalon.core.main.TestCaseMain$startTestSuite$0.call(Unknown Source)
+	at TempTestSuite1556809866028.run(TempTestSuite1556809866028.groovy:35)
+"/>
+         <system-out><![CDATA[2019-05-02 17:12:49 - [TEST_CASE][ERROR] - Test Cases/UserCreateBetFailDate: Test Cases/UserCreateBetFailDate FAILED.
+Reason:
+groovy.lang.MissingPropertyException: No such property: Keys for class: Script1556804582015
+	at UserCreateBetFailDate.run(UserCreateBetFailDate:24)
+	at com.kms.katalon.core.main.ScriptEngine.run(ScriptEngine.java:194)
+	at com.kms.katalon.core.main.ScriptEngine.runScriptAsRawText(ScriptEngine.java:119)
+	at com.kms.katalon.core.main.TestCaseExecutor.runScript(TestCaseExecutor.java:331)
+	at com.kms.katalon.core.main.TestCaseExecutor.doExecute(TestCaseExecutor.java:322)
+	at com.kms.katalon.core.main.TestCaseExecutor.processExecutionPhase(TestCaseExecutor.java:301)
+	at com.kms.katalon.core.main.TestCaseExecutor.accessMainPhase(TestCaseExecutor.java:293)
+	at com.kms.katalon.core.main.TestCaseExecutor.execute(TestCaseExecutor.java:227)
+	at com.kms.katalon.core.main.TestSuiteExecutor.accessTestCaseMainPhase(TestSuiteExecutor.java:129)
+	at com.kms.katalon.core.main.TestSuiteExecutor.accessTestSuiteMainPhase(TestSuiteExecutor.java:112)
+	at com.kms.katalon.core.main.TestSuiteExecutor.execute(TestSuiteExecutor.java:81)
+	at com.kms.katalon.core.main.TestCaseMain.startTestSuite(TestCaseMain.java:157)
+	at com.kms.katalon.core.main.TestCaseMain$startTestSuite$0.call(Unknown Source)
+	at TempTestSuite1556809866028.run(TempTestSuite1556809866028.groovy:35)
+
+
+2019-05-02 17:12:49 - [TEST_STEP][PASSED] - openBrowser(""): Browser is opened with url: ''
+
+2019-05-02 17:12:49 - [MESSAGE][WARNING] - A browser is already opened. Closing browser and opening a new one
+
+2019-05-02 17:12:50 - [MESSAGE][INFO] - Starting 'Chrome' driver
+
+2019-05-02 17:12:52 - [MESSAGE][PASSED] - Browser is opened with url: ''
+
+2019-05-02 17:12:52 - [TEST_STEP][PASSED] - navigateToUrl("http://localhost:8080/login"): Navigate to 'http://localhost:8080/login' successfully
+
+2019-05-02 17:12:53 - [MESSAGE][PASSED] - Navigate to 'http://localhost:8080/login' successfully
+
+2019-05-02 17:12:53 - [TEST_STEP][PASSED] - setText(findTestObject("Page_Pense Bet/input_Login_nickname"), "katalon"): Text 'katalon' is set on object 'Object Repository/Page_Pense Bet/input_Login_nickname'
+
+2019-05-02 17:12:53 - [MESSAGE][PASSED] - Text 'katalon' is set on object 'Object Repository/Page_Pense Bet/input_Login_nickname'
+
+2019-05-02 17:12:53 - [TEST_STEP][PASSED] - setEncryptedText(findTestObject("Page_Pense Bet/input_Login_password"), "o+tS4OuGt32s9ezZj287yw=="): Text ****** has been set on object 'Object Repository/Page_Pense Bet/input_Login_password'
+
+2019-05-02 17:12:53 - [MESSAGE][PASSED] - Text ****** has been set on object 'Object Repository/Page_Pense Bet/input_Login_password'
+
+2019-05-02 17:12:53 - [TEST_STEP][ERROR] - sendKeys(findTestObject("Page_Pense Bet/input_Login_password"), Keys.chord(ENTER)): sendKeys(findTestObject("Page_Pense Bet/input_Login_password"), Keys.chord(ENTER)) FAILED.
+Reason:
+groovy.lang.MissingPropertyException: No such property: Keys for class: Script1556804582015
+	at UserCreateBetFailDate.run(UserCreateBetFailDate:24)
+	at com.kms.katalon.core.main.ScriptEngine.run(ScriptEngine.java:194)
+	at com.kms.katalon.core.main.ScriptEngine.runScriptAsRawText(ScriptEngine.java:119)
+	at com.kms.katalon.core.main.TestCaseExecutor.runScript(TestCaseExecutor.java:331)
+	at com.kms.katalon.core.main.TestCaseExecutor.doExecute(TestCaseExecutor.java:322)
+	at com.kms.katalon.core.main.TestCaseExecutor.processExecutionPhase(TestCaseExecutor.java:301)
+	at com.kms.katalon.core.main.TestCaseExecutor.accessMainPhase(TestCaseExecutor.java:293)
+	at com.kms.katalon.core.main.TestCaseExecutor.execute(TestCaseExecutor.java:227)
+	at com.kms.katalon.core.main.TestSuiteExecutor.accessTestCaseMainPhase(TestSuiteExecutor.java:129)
+	at com.kms.katalon.core.main.TestSuiteExecutor.accessTestSuiteMainPhase(TestSuiteExecutor.java:112)
+	at com.kms.katalon.core.main.TestSuiteExecutor.execute(TestSuiteExecutor.java:81)
+	at com.kms.katalon.core.main.TestCaseMain.startTestSuite(TestCaseMain.java:157)
+	at com.kms.katalon.core.main.TestCaseMain$startTestSuite$0.call(Unknown Source)
+	at TempTestSuite1556809866028.run(TempTestSuite1556809866028.groovy:35)
+
+
+2019-05-02 17:12:53 - [MESSAGE][ERROR] - sendKeys(findTestObject("Page_Pense Bet/input_Login_password"), Keys.chord(ENTER)) FAILED.
+Reason:
+groovy.lang.MissingPropertyException: No such property: Keys for class: Script1556804582015
+	at UserCreateBetFailDate.run(UserCreateBetFailDate:24)
+	at com.kms.katalon.core.main.ScriptEngine.run(ScriptEngine.java:194)
+	at com.kms.katalon.core.main.ScriptEngine.runScriptAsRawText(ScriptEngine.java:119)
+	at com.kms.katalon.core.main.TestCaseExecutor.runScript(TestCaseExecutor.java:331)
+	at com.kms.katalon.core.main.TestCaseExecutor.doExecute(TestCaseExecutor.java:322)
+	at com.kms.katalon.core.main.TestCaseExecutor.processExecutionPhase(TestCaseExecutor.java:301)
+	at com.kms.katalon.core.main.TestCaseExecutor.accessMainPhase(TestCaseExecutor.java:293)
+	at com.kms.katalon.core.main.TestCaseExecutor.execute(TestCaseExecutor.java:227)
+	at com.kms.katalon.core.main.TestSuiteExecutor.accessTestCaseMainPhase(TestSuiteExecutor.java:129)
+	at com.kms.katalon.core.main.TestSuiteExecutor.accessTestSuiteMainPhase(TestSuiteExecutor.java:112)
+	at com.kms.katalon.core.main.TestSuiteExecutor.execute(TestSuiteExecutor.java:81)
+	at com.kms.katalon.core.main.TestCaseMain.startTestSuite(TestCaseMain.java:157)
+	at com.kms.katalon.core.main.TestCaseMain$startTestSuite$0.call(Unknown Source)
+	at TempTestSuite1556809866028.run(TempTestSuite1556809866028.groovy:35)]]></system-out>
+         <system-err><![CDATA[2019-05-02 17:12:49 - [TEST_CASE][ERROR] - Test Cases/UserCreateBetFailDate: Test Cases/UserCreateBetFailDate FAILED.
+Reason:
+groovy.lang.MissingPropertyException: No such property: Keys for class: Script1556804582015
+	at UserCreateBetFailDate.run(UserCreateBetFailDate:24)
+	at com.kms.katalon.core.main.ScriptEngine.run(ScriptEngine.java:194)
+	at com.kms.katalon.core.main.ScriptEngine.runScriptAsRawText(ScriptEngine.java:119)
+	at com.kms.katalon.core.main.TestCaseExecutor.runScript(TestCaseExecutor.java:331)
+	at com.kms.katalon.core.main.TestCaseExecutor.doExecute(TestCaseExecutor.java:322)
+	at com.kms.katalon.core.main.TestCaseExecutor.processExecutionPhase(TestCaseExecutor.java:301)
+	at com.kms.katalon.core.main.TestCaseExecutor.accessMainPhase(TestCaseExecutor.java:293)
+	at com.kms.katalon.core.main.TestCaseExecutor.execute(TestCaseExecutor.java:227)
+	at com.kms.katalon.core.main.TestSuiteExecutor.accessTestCaseMainPhase(TestSuiteExecutor.java:129)
+	at com.kms.katalon.core.main.TestSuiteExecutor.accessTestSuiteMainPhase(TestSuiteExecutor.java:112)
+	at com.kms.katalon.core.main.TestSuiteExecutor.execute(TestSuiteExecutor.java:81)
+	at com.kms.katalon.core.main.TestCaseMain.startTestSuite(TestCaseMain.java:157)
+	at com.kms.katalon.core.main.TestCaseMain$startTestSuite$0.call(Unknown Source)
+	at TempTestSuite1556809866028.run(TempTestSuite1556809866028.groovy:35)]]></system-err>
+      </testcase>
+      <testcase name="Test Cases/UserCreation" classname="Test Cases/UserCreation" status="PASSED">
+         <system-out><![CDATA[2019-05-02 17:12:53 - [TEST_CASE][PASSED] - Test Cases/UserCreation: Test Cases/UserCreation
+
+2019-05-02 17:12:53 - [TEST_STEP][PASSED] - openBrowser(""): Browser is opened with url: ''
+
+2019-05-02 17:12:53 - [MESSAGE][WARNING] - A browser is already opened. Closing browser and opening a new one
+
+2019-05-02 17:12:54 - [MESSAGE][INFO] - Starting 'Chrome' driver
+
+2019-05-02 17:12:56 - [MESSAGE][PASSED] - Browser is opened with url: ''
+
+2019-05-02 17:12:56 - [TEST_STEP][PASSED] - navigateToUrl("http://localhost:8080/register"): Navigate to 'http://localhost:8080/register' successfully
+
+2019-05-02 17:12:56 - [MESSAGE][PASSED] - Navigate to 'http://localhost:8080/register' successfully
+
+2019-05-02 17:12:56 - [TEST_STEP][PASSED] - setText(findTestObject("Page_Pense Bet/input_Register_email"), "katalon@test.ch"): Text 'katalon@test.ch' is set on object 'Object Repository/Page_Pense Bet/input_Register_email'
+
+2019-05-02 17:12:56 - [MESSAGE][PASSED] - Text 'katalon@test.ch' is set on object 'Object Repository/Page_Pense Bet/input_Register_email'
+
+2019-05-02 17:12:56 - [TEST_STEP][PASSED] - setText(findTestObject("Page_Pense Bet/input_Register_nickname"), "katalon"): Text 'katalon' is set on object 'Object Repository/Page_Pense Bet/input_Register_nickname'
+
+2019-05-02 17:12:56 - [MESSAGE][PASSED] - Text 'katalon' is set on object 'Object Repository/Page_Pense Bet/input_Register_nickname'
+
+2019-05-02 17:12:56 - [TEST_STEP][PASSED] - setEncryptedText(findTestObject("Page_Pense Bet/input_Register_password"), "o+tS4OuGt32s9ezZj287yw=="): Text ****** has been set on object 'Object Repository/Page_Pense Bet/input_Register_password'
+
+2019-05-02 17:12:56 - [MESSAGE][PASSED] - Text ****** has been set on object 'Object Repository/Page_Pense Bet/input_Register_password'
+
+2019-05-02 17:12:56 - [TEST_STEP][PASSED] - setEncryptedText(findTestObject("Page_Pense Bet/input_Register_passwordConfirmation"), "o+tS4OuGt32s9ezZj287yw=="): Text ****** has been set on object 'Object Repository/Page_Pense Bet/input_Register_passwordConfirmation'
+
+2019-05-02 17:12:56 - [MESSAGE][PASSED] - Text ****** has been set on object 'Object Repository/Page_Pense Bet/input_Register_passwordConfirmation'
+
+2019-05-02 17:12:56 - [TEST_STEP][PASSED] - click(findTestObject("Page_Pense Bet/button_Register")): Object: 'Object Repository/Page_Pense Bet/button_Register' is clicked on
+
+2019-05-02 17:12:57 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Pense Bet/button_Register' is clicked on
+
+2019-05-02 17:12:57 - [TEST_STEP][PASSED] - closeBrowser(): Browser is closed
+
+2019-05-02 17:12:57 - [MESSAGE][PASSED] - Browser is closed]]></system-out>
+         <system-err><![CDATA[]]></system-err>
+      </testcase>
+      <system-out><![CDATA[2019-05-02 17:11:07 - [TEST_SUITE][FAILED] - Pense-Bet: Test Cases/UserCanIgnoreBet FAILED.
+Reason:
+com.kms.katalon.core.exception.StepFailedException: Unable to click on object 'Object Repository/Page_Pense Bet/button_Ignore bet'
+	at com.kms.katalon.core.keyword.internal.KeywordMain.stepFailed(KeywordMain.groovy:48)
+	at com.kms.katalon.core.webui.keyword.internal.WebUIKeywordMain.stepFailed(WebUIKeywordMain.groovy:65)
+	at com.kms.katalon.core.webui.keyword.internal.WebUIKeywordMain.runKeyword(WebUIKeywordMain.groovy:27)
+	at com.kms.katalon.core.webui.keyword.builtin.ClickKeyword.click(ClickKeyword.groovy:86)
+	at com.kms.katalon.core.webui.keyword.builtin.ClickKeyword.execute(ClickKeyword.groovy:67)
+	at com.kms.katalon.core.keyword.internal.KeywordExecutor.executeKeywordForPlatform(KeywordExecutor.groovy:56)
+	at com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords.click(WebUiBuiltInKeywords.groovy:616)
+	at com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords$click$3.call(Unknown Source)
+	at UserCanIgnoreBet.run(UserCanIgnoreBet:38)
+	at com.kms.katalon.core.main.ScriptEngine.run(ScriptEngine.java:194)
+	at com.kms.katalon.core.main.ScriptEngine.runScriptAsRawText(ScriptEngine.java:119)
+	at com.kms.katalon.core.main.TestCaseExecutor.runScript(TestCaseExecutor.java:331)
+	at com.kms.katalon.core.main.TestCaseExecutor.doExecute(TestCaseExecutor.java:322)
+	at com.kms.katalon.core.main.TestCaseExecutor.processExecutionPhase(TestCaseExecutor.java:301)
+	at com.kms.katalon.core.main.TestCaseExecutor.accessMainPhase(TestCaseExecutor.java:293)
+	at com.kms.katalon.core.main.TestCaseExecutor.execute(TestCaseExecutor.java:227)
+	at com.kms.katalon.core.main.TestSuiteExecutor.accessTestCaseMainPhase(TestSuiteExecutor.java:129)
+	at com.kms.katalon.core.main.TestSuiteExecutor.accessTestSuiteMainPhase(TestSuiteExecutor.java:112)
+	at com.kms.katalon.core.main.TestSuiteExecutor.execute(TestSuiteExecutor.java:81)
+	at com.kms.katalon.core.main.TestCaseMain.startTestSuite(TestCaseMain.java:157)
+	at com.kms.katalon.core.main.TestCaseMain$startTestSuite$0.call(Unknown Source)
+	at TempTestSuite1556809866028.run(TempTestSuite1556809866028.groovy:35)]]></system-out>
+      <system-err><![CDATA[2019-05-02 17:11:07 - [TEST_SUITE][FAILED] - Pense-Bet: Test Cases/UserCanIgnoreBet FAILED.
+Reason:
+com.kms.katalon.core.exception.StepFailedException: Unable to click on object 'Object Repository/Page_Pense Bet/button_Ignore bet'
+	at com.kms.katalon.core.keyword.internal.KeywordMain.stepFailed(KeywordMain.groovy:48)
+	at com.kms.katalon.core.webui.keyword.internal.WebUIKeywordMain.stepFailed(WebUIKeywordMain.groovy:65)
+	at com.kms.katalon.core.webui.keyword.internal.WebUIKeywordMain.runKeyword(WebUIKeywordMain.groovy:27)
+	at com.kms.katalon.core.webui.keyword.builtin.ClickKeyword.click(ClickKeyword.groovy:86)
+	at com.kms.katalon.core.webui.keyword.builtin.ClickKeyword.execute(ClickKeyword.groovy:67)
+	at com.kms.katalon.core.keyword.internal.KeywordExecutor.executeKeywordForPlatform(KeywordExecutor.groovy:56)
+	at com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords.click(WebUiBuiltInKeywords.groovy:616)
+	at com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords$click$3.call(Unknown Source)
+	at UserCanIgnoreBet.run(UserCanIgnoreBet:38)
+	at com.kms.katalon.core.main.ScriptEngine.run(ScriptEngine.java:194)
+	at com.kms.katalon.core.main.ScriptEngine.runScriptAsRawText(ScriptEngine.java:119)
+	at com.kms.katalon.core.main.TestCaseExecutor.runScript(TestCaseExecutor.java:331)
+	at com.kms.katalon.core.main.TestCaseExecutor.doExecute(TestCaseExecutor.java:322)
+	at com.kms.katalon.core.main.TestCaseExecutor.processExecutionPhase(TestCaseExecutor.java:301)
+	at com.kms.katalon.core.main.TestCaseExecutor.accessMainPhase(TestCaseExecutor.java:293)
+	at com.kms.katalon.core.main.TestCaseExecutor.execute(TestCaseExecutor.java:227)
+	at com.kms.katalon.core.main.TestSuiteExecutor.accessTestCaseMainPhase(TestSuiteExecutor.java:129)
+	at com.kms.katalon.core.main.TestSuiteExecutor.accessTestSuiteMainPhase(TestSuiteExecutor.java:112)
+	at com.kms.katalon.core.main.TestSuiteExecutor.execute(TestSuiteExecutor.java:81)
+	at com.kms.katalon.core.main.TestCaseMain.startTestSuite(TestCaseMain.java:157)
+	at com.kms.katalon.core.main.TestCaseMain$startTestSuite$0.call(Unknown Source)
+	at TempTestSuite1556809866028.run(TempTestSuite1556809866028.groovy:35)]]></system-err>
+   </testsuite>
+</testsuites>

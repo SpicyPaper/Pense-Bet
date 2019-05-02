@@ -17,15 +17,16 @@ WebUI.openBrowser('')
 
 WebUI.navigateToUrl('http://localhost:8080/register')
 
-WebUI.setText(findTestObject('Page_Pense Bet/input_Register_email'), 'katalon@test.ch')
+WebUI.setText(findTestObject('Object Repository/Page_Pense Bet/input_Register_email (1)'), 'katalon2@test.ch')
 
-WebUI.setText(findTestObject('Page_Pense Bet/input_Register_nickname'), 'katalon')
+WebUI.setText(findTestObject('Object Repository/Page_Pense Bet/input_Register_nickname (1)'), 'katalon2')
 
-WebUI.setEncryptedText(findTestObject('Page_Pense Bet/input_Register_password'), 'o+tS4OuGt32s9ezZj287yw==')
+WebUI.setEncryptedText(findTestObject('Object Repository/Page_Pense Bet/input_Register_password (1)'), 'o+tS4OuGt32s9ezZj287yw==')
 
-WebUI.setEncryptedText(findTestObject('Page_Pense Bet/input_Register_passwordConfirmation'), 'o+tS4OuGt32s9ezZj287yw==')
+WebUI.setEncryptedText(findTestObject('Object Repository/Page_Pense Bet/input_Register_passwordConfirmation (1)'), 'P9ET2sDE0SE=')
 
-WebUI.click(findTestObject('Page_Pense Bet/button_Register'))
+WebUI.click(findTestObject('Object Repository/Page_Pense Bet/button_Register (1)'))
 
-WebUI.closeBrowser()
+WebUI.verifyElementPresent(findTestObject('Page_Pense Bet/label_The password and its confirmation doesnt match retry'), 
+    0)
 

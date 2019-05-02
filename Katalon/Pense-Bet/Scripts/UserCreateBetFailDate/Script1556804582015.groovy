@@ -15,17 +15,23 @@ import internal.GlobalVariable as GlobalVariable
 
 WebUI.openBrowser('')
 
-WebUI.navigateToUrl('http://localhost:8080/register')
+WebUI.navigateToUrl('http://localhost:8080/login')
 
-WebUI.setText(findTestObject('Page_Pense Bet/input_Register_email'), 'katalon@test.ch')
+WebUI.setText(findTestObject('Page_Pense Bet/input_Login_nickname'), 'katalon')
 
-WebUI.setText(findTestObject('Page_Pense Bet/input_Register_nickname'), 'katalon')
+WebUI.setEncryptedText(findTestObject('Page_Pense Bet/input_Login_password'), 'o+tS4OuGt32s9ezZj287yw==')
 
-WebUI.setEncryptedText(findTestObject('Page_Pense Bet/input_Register_password'), 'o+tS4OuGt32s9ezZj287yw==')
+WebUI.sendKeys(findTestObject('Page_Pense Bet/input_Login_password'), Keys.chord(Keys.ENTER))
 
-WebUI.setEncryptedText(findTestObject('Page_Pense Bet/input_Register_passwordConfirmation'), 'o+tS4OuGt32s9ezZj287yw==')
+WebUI.click(findTestObject('Page_Pense Bet/a_katalon'))
 
-WebUI.click(findTestObject('Page_Pense Bet/button_Register'))
+WebUI.click(findTestObject('Page_Pense Bet/a_Create new bet'))
 
-WebUI.closeBrowser()
+WebUI.setText(findTestObject('Page_Pense Bet/input_Bet subject_subject'), 'je paris qu’on aura 6 au projet de QDL')
+
+WebUI.click(findTestObject('Page_Pense Bet/form_Bet subject        Ending date        Amount    Register Bet'))
+
+WebUI.setText(findTestObject('Page_Pense Bet/input_Amount_amount'), '10')
+
+WebUI.click(findTestObject('Page_Pense Bet/button_Register Bet'))
 

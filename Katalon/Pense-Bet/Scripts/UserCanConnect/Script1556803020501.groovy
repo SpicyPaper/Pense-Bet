@@ -15,17 +15,13 @@ import internal.GlobalVariable as GlobalVariable
 
 WebUI.openBrowser('')
 
-WebUI.navigateToUrl('http://localhost:8080/register')
+WebUI.navigateToUrl('http://localhost:8080/login')
 
-WebUI.setText(findTestObject('Page_Pense Bet/input_Register_email'), 'katalon@test.ch')
+WebUI.setText(findTestObject('Object Repository/Page_Pense Bet/input_Login_nickname'), 'katalon')
 
-WebUI.setText(findTestObject('Page_Pense Bet/input_Register_nickname'), 'katalon')
+WebUI.setEncryptedText(findTestObject('Object Repository/Page_Pense Bet/input_Login_password'), 'o+tS4OuGt32s9ezZj287yw==')
 
-WebUI.setEncryptedText(findTestObject('Page_Pense Bet/input_Register_password'), 'o+tS4OuGt32s9ezZj287yw==')
+WebUI.click(findTestObject('Object Repository/Page_Pense Bet/button_Login'))
 
-WebUI.setEncryptedText(findTestObject('Page_Pense Bet/input_Register_passwordConfirmation'), 'o+tS4OuGt32s9ezZj287yw==')
-
-WebUI.click(findTestObject('Page_Pense Bet/button_Register'))
-
-WebUI.closeBrowser()
+WebUI.verifyMatch(WebUI.getUrl(), 'http://localhost:8080/', false)
 

@@ -47,9 +47,7 @@
 						
 							<h2 class="">Answer to the bet</h2>
 							
-							<p>
-								Chose what you want to do with this bet.
-							</p>
+							<p th:text="${bet.subject}"></p>
 							
 							<div class="btn-group">
 					            <form class="mr-3" th:action="@{/bet/} + ${bet.id} + @{/participate/accept/true}" method="post">

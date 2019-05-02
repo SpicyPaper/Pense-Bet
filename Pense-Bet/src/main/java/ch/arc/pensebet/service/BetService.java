@@ -40,7 +40,13 @@ public class BetService implements IBetService {
 	
 	@Override
 	public Optional<Bet> findBetById(Integer id) {
-		return betRepository.findById(id);
+		Optional<Bet> elisaBet = betRepository.findById(id);
+		if (elisaBet.get().getEndingDate().compareTo(new Date()) < 0)
+		{
+			elisaBet.get().setState(stateRepository.findByName("ENDED"));
+			betRepository.save(elisaBet.get());
+		}
+		return elisaBet;
 	}
 
 	@Override
@@ -71,12 +77,12 @@ public class BetService implements IBetService {
 	@Override
 	public Page<Bet> findByInvitationAndStateWaiting(User user, Pageable pageable) {
 		Page<Invitation> invitations = invitationRepository.findByUser(user, pageable);
-		return new PageImpl<>(invitations.getContent().stream().parallel().map(Invitation::getBet).collect(Collectors.toList()), pageable, invitations.getTotalElements());
+		Page<Bet> bets = new PageImpl<>(invitations.getContent().stream().parallel().map(Invitation::getBet).collect(Collectors.toList()));
+		return detectEnded(bets, pageable);
 	}
 
 	@Override
 	public List<Bet> findBySubjectAndParticipant(User participant, String betSubject) {
-		System.out.println("okok");
 		return findBySubject(betSubject, betRepository.findByParticipant(participant.getId()));
 	}
 
@@ -87,7 +93,6 @@ public class BetService implements IBetService {
 	
 	private List<Bet> findBySubject(String betSubject, List<Bet> bets) {
 		String[] betSubjects = betSubject.toLowerCase().split(" ");
-		System.out.println("okokok");
 		return bets.stream().parallel().filter(bet -> stringContainsItemFromList(bet.getSubject().toLowerCase(), betSubjects)).collect(Collectors.toList());
 	}
 	
@@ -162,7 +167,6 @@ public class BetService implements IBetService {
 				betsNotEnded.add(bet);
 			}
 		}
-		return new PageImpl<>(betsNotEnded, pageable, bets.getTotalElements());
+		return new PageImpl<>(betsNotEnded, pageable, betsNotEnded.size());
 	}
-
 }

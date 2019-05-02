@@ -51,7 +51,7 @@ public class DetailBetController {
 		Bet bet = betService.findBetById(id).get();
 		User user = userService.findUserByNickname(authentication.getName());
 		
-		if (invitedUserId(bet).contains(user.getId()))
+		if (invitedUserId(bet).contains(user.getId()) && !isBetOver(bet))
 		{
 			model.addAttribute("canAnswer", true);
 		}
@@ -112,7 +112,7 @@ public class DetailBetController {
 	@PostMapping("/bet/{id}/participate/accept/{agree}")
 	public ModelAndView participateBet(@PathVariable("id") Integer id, @PathVariable("agree") boolean agree, Authentication authentication)
 	{
-		ModelAndView modelAndView = new ModelAndView("redirect:/");
+		ModelAndView modelAndView = new ModelAndView("redirect:/bet/" + id);
 		Bet bet = betService.findBetById(id).get();
 		User user = userService.findUserByNickname(authentication.getName());
 		Participation participation = new Participation();
@@ -130,7 +130,7 @@ public class DetailBetController {
 	@PostMapping("/bet/{id}/confirm/{result}")
 	public ModelAndView confirmBet(@PathVariable("id") Integer id, @PathVariable("result") boolean result, Authentication authentication)
 	{
-		ModelAndView modelAndView = new ModelAndView("redirect:/");
+		ModelAndView modelAndView = new ModelAndView("redirect:/bet/" + id);
 		Bet bet = betService.findBetById(id).get();
 		User user = userService.findUserByNickname(authentication.getName());
 		if (isBetOwner(bet, user))
@@ -145,6 +145,9 @@ public class DetailBetController {
 	{
 		bet.setResult(betResult);
 		bet.setState(stateService.findStateByName("CLOSED"));
+		bet.getInvitations().stream().parallel().forEach(invitation -> {
+			bet.cancelInvitation(invitation.getUser());
+		});
 		betService.saveBet(bet);
 		
 		int numberParticipant = bet.getParticipations().size();
@@ -152,27 +155,32 @@ public class DetailBetController {
 		{
 			float totalAmount = bet.getAmount() * numberParticipant;
 			int numberCorrectAnswer = (int) bet.getParticipations().stream().filter(p -> p.isAgree() == betResult).count();
-			float moneyPerWinner = totalAmount / numberCorrectAnswer;
-			bet.getParticipations().stream().filter(p -> p.isAgree() == betResult).forEach(p -> {
-				p.getUser().addMoney(moneyPerWinner);
-				userService.saveUser(p.getUser());
-			});
-			bet.setMoneyPerWinner(moneyPerWinner);
-			betService.saveBet(bet);
+			
+			if (numberCorrectAnswer > 0)
+			{
+				float moneyPerWinner = totalAmount / numberCorrectAnswer;
+				bet.getParticipations().stream().parallel().filter(p -> p.isAgree() == betResult).forEach(p -> {
+					p.getUser().addMoney(moneyPerWinner);
+					userService.saveUser(p.getUser());
+				});
+				bet.setMoneyPerWinner(moneyPerWinner);
+				betService.saveBet(bet);
+			}
 		}
 	}
 	
 	
 	@PostMapping("/bet/{id}/participate/refuse")
-	public String refuseBet(@PathVariable("id") Integer id, Authentication authentication)
+	public ModelAndView refuseBet(@PathVariable("id") Integer id, Authentication authentication)
 	{
+		ModelAndView modelAndView = new ModelAndView("redirect:/bet/user/waiting/1");
 		Bet bet = betService.findBetById(id).get();
 		User user = userService.findUserByNickname(authentication.getName());
 		
 		bet.cancelInvitation(user);
 		betService.saveBet(bet);
 		
-		return "index";
+		return modelAndView;
 	}
 	
 	private List<User> getInvitableUsers(List<User> allUsers, Bet bet)

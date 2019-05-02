@@ -13,3 +13,29 @@ import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable as GlobalVariable
 
+WebUI.openBrowser('')
+
+WebUI.navigateToUrl('http://localhost:8080/login')
+
+WebUI.setText(findTestObject('Object Repository/Page_Pense Bet/input_Login_nickname (9)'), 'katalon')
+
+WebUI.setEncryptedText(findTestObject('Object Repository/Page_Pense Bet/input_Login_password (9)'), 'o+tS4OuGt32s9ezZj287yw==')
+
+WebUI.click(findTestObject('Object Repository/Page_Pense Bet/button_Login (9)'))
+
+WebUI.click(findTestObject('Object Repository/Page_Pense Bet/a_Waiting (2)'))
+
+WebUI.click(findTestObject('Object Repository/Page_Pense Bet/span_katalon'))
+
+WebUI.click(findTestObject('Object Repository/Page_Pense Bet/a_Create new bet (3)'))
+
+WebUI.setText(findTestObject('Object Repository/Page_Pense Bet/input_Bet subject_subject (3)'), 'sdfgdhgf')
+
+WebUI.setText(findTestObject('Object Repository/Page_Pense Bet/input_Amount_amount (3)'), '5')
+
+WebUI.click(findTestObject('Object Repository/Page_Pense Bet/button_Register Bet (3)'))
+
+WebUI.click(findTestObject('Object Repository/Page_Pense Bet/button_Ignore bet'))
+
+WebUI.closeBrowser()
+

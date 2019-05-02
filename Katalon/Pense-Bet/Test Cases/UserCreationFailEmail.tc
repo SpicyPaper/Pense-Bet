@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>UserCreationFailEmail</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>b5487c08-9142-451b-8a54-6baab8605c1f</testCaseGuid>
+</TestCaseEntity>

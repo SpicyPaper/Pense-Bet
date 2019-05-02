@@ -10,6 +10,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import ch.arc.pensebet.model.Bet;
+import ch.arc.pensebet.model.Role;
+import ch.arc.pensebet.model.State;
 import ch.arc.pensebet.model.User;
 
 @RunWith(SpringRunner.class)
@@ -20,7 +22,6 @@ public class PenseBetApplicationTests {
 	public void contextLoads() {
 	}
 	
-	@SuppressWarnings("deprecation")
 	@Test
 	public void testUserModel() {
 		String email = "g@pensebet.ch";
@@ -62,6 +63,26 @@ public class PenseBetApplicationTests {
 		assertEquals(endingDate.getYear(), bet.getEndingDate().getYear());
 		assertEquals(moneyPerWinner, bet.getMoneyPerWinner(), 0.01);
 		assertEquals(result, bet.getResult());
+	}
+
+	@Test
+	public void testRoleModel() {
+		String name = "ROLE";
+		
+		Role role = new Role();
+		role.setName(name);
+		
+		assertEquals(name, role.getName());
+	}
+
+	@Test
+	public void testStateModel() {
+		String name = "STATE";
+		
+		State state = new State();
+		state.setName(name);
+		
+		assertEquals(name, state.getName());
 	}
 
 }

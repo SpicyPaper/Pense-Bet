@@ -23,7 +23,7 @@ public class ParticipationService implements IParticipationService {
 
 	@Override
 	public List<Participation> findParticipationsByBet(Bet bet) {
-		return findAllParticipations().stream().filter(p -> p.getBet().getId() == bet.getId()).collect(Collectors.toList());
+		return findAllParticipations().stream().filter(p -> p.getBet().getId().equals(bet.getId())).collect(Collectors.toList());
 	}
 	
 }

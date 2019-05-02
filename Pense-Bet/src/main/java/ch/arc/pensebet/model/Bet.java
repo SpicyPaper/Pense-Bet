@@ -172,8 +172,8 @@ public class Bet {
 	    while(iterator.hasNext()) {
 	        Invitation invitation = iterator.next();
 	        
-	        if (invitation.getBet().getId() == getId() && 
-					invitation.getUser().getId() == user.getId())
+	        if (invitation.getBet().getId().equals(getId()) && 
+					invitation.getUser().getId().equals(user.getId()))
 			{
 	        	invitation.setBet(null);
 	        	invitation.setUser(null);

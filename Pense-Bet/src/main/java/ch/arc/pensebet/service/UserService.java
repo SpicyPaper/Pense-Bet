@@ -1,6 +1,7 @@
 package ch.arc.pensebet.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -35,6 +36,13 @@ public class UserService implements IUserService {
 
 	@Override
 	public User findOne(Integer id) {
-		return userRepository.findById(id).get();
+		Optional<User> user = userRepository.findById(id);
+		
+		if (user.isPresent())
+		{
+			return user.get();
+		}
+		
+		return null;
 	}
 }

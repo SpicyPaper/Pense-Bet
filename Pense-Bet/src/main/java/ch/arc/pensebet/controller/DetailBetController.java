@@ -72,17 +72,17 @@ public class DetailBetController {
 	
 	private List<Integer> invitedUserId(Bet bet)
 	{
-		return invitationService.findAllInvitations().stream().filter(i -> i.getBet().getId() == bet.getId()).mapToInt(i -> i.getUser().getId()).boxed().collect(Collectors.toList());
+		return invitationService.findAllInvitations().stream().filter(i -> i.getBet().getId().equals(bet.getId())).mapToInt(i -> i.getUser().getId()).boxed().collect(Collectors.toList());
 	}
 	
 	private List<Integer> participatedUserId(Bet bet)
 	{
-		return participationService.findAllParticipations().stream().filter(i -> i.getBet().getId() == bet.getId()).mapToInt(i -> i.getUser().getId()).boxed().collect(Collectors.toList());
+		return participationService.findAllParticipations().stream().filter(i -> i.getBet().getId().equals(bet.getId())).mapToInt(i -> i.getUser().getId()).boxed().collect(Collectors.toList());
 	}
 	
 	private List<Integer> wonParticipatedUserId(Bet bet)
 	{
-		return participationService.findAllParticipations().stream().filter(i -> i.getBet().getId() == bet.getId() && i.isAgree() == i.getBet().getResult()).mapToInt(i -> i.getUser().getId()).boxed().collect(Collectors.toList());
+		return participationService.findAllParticipations().stream().filter(i -> i.getBet().getId().equals(bet.getId()) && i.isAgree() == i.getBet().getResult()).mapToInt(i -> i.getUser().getId()).boxed().collect(Collectors.toList());
 	}
 	
 	@PostMapping("/bet/{id}")
@@ -121,7 +121,7 @@ public class DetailBetController {
 	
 	private boolean isBetOwner(Bet bet, User user)
 	{
-		return user.getId() == bet.getOwner().getId();
+		return user.getId().equals(bet.getOwner().getId());
 	}
 	
 	private boolean isBetOver(Bet bet)
@@ -210,12 +210,12 @@ public class DetailBetController {
 		for(User u : allUsers)
 		{
 			boolean userOk = true;
-			if (u.getId() == bet.getOwner().getId())
+			if (u.getId().equals(bet.getOwner().getId()))
 				continue;
 			
 			for(Invitation i : invitations)
 			{
-				if (u.getId() == i.getUser().getId() && i.getBet().getId() == bet.getId())
+				if (u.getId().equals(i.getUser().getId()) && i.getBet().getId().equals(bet.getId()))
 				{
 					userOk = false;
 					break;
@@ -223,7 +223,7 @@ public class DetailBetController {
 			}
 			for(Participation p : participations)
 			{
-				if (u.getId() == p.getUser().getId() && p.getBet().getId() == bet.getId())
+				if (u.getId().equals(p.getUser().getId()) && p.getBet().getId().equals(bet.getId()))
 				{
 					userOk = false;
 					break;

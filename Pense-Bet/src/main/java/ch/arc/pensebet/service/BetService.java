@@ -42,7 +42,7 @@ public class BetService implements IBetService {
 	public Optional<Bet> findBetById(Integer id) {
 		Optional<Bet> elisaBet = betRepository.findById(id);
 
-		if (elisaBet.get().getResult() != null)
+		if (elisaBet.isPresent() && elisaBet.get().getResult() != null)
 		{
 			elisaBet.get().setState(stateRepository.findByName("CLOSED"));
 			betRepository.save(elisaBet.get());
@@ -114,7 +114,7 @@ public class BetService implements IBetService {
 	public Page<Bet> findByParticipantAndState(User user, State state, Pageable pageable) {
 		Page<Participation> participations = participationRepository.findByUser(user, pageable);
 		return new PageImpl<>(participations.getContent().stream().parallel()
-				.filter(participation -> participation.getBet().getState().getId() == state.getId())
+				.filter(participation -> participation.getBet().getState().getId().equals(state.getId()))
 				.map(Participation::getBet).collect(Collectors.toList()), pageable, participations.getTotalElements());
 	}
 
@@ -134,7 +134,14 @@ public class BetService implements IBetService {
 	}
 
 	public Bet findOne(Integer id) {
-		return findBetById(id).get();
+		Optional<Bet> bet = findBetById(id);
+		
+		if (bet.isPresent())
+		{
+			return bet.get();
+		}
+		
+		return null;
 	}
 
 	@Override
